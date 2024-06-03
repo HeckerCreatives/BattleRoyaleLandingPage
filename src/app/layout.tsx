@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className=" overscroll-x-none">
-          <Toaster/>
+        <Toaster/>
         {children}
         </div>
         </body>

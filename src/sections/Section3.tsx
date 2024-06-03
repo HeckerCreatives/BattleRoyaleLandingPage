@@ -73,7 +73,7 @@ export default function Section3() {
                 <div className=' grid place-items-center grid-cols-2 bg-red-950 rounded-lg h-[550px]'>
 
                     <div className=' w-full h-full flex items-center justify-center rounded-xl'>
-                        <img src={`${process.env.NEXT_PUBLIC_API_URL}/${img}`} alt="" width={400} height={400} />
+                        <img src={`${process.env.NEXT_PUBLIC_API_URL}/${img}`} alt="" width={400} height={400} className=' rounded-lg' />
                     </div>
 
                     <div className=' flex flex-col gap-5 w-full h-auto rounded-xl p-6 text-white'>
@@ -155,7 +155,7 @@ export default function Section3() {
                             <div className=' rounded-lg'
                             
                             >
-                                <img src={`${process.env.NEXT_PUBLIC_API_URL}/${news.banner}`} alt="" width={200} height={200} />
+                                <img src={`${process.env.NEXT_PUBLIC_API_URL}/${news.banner}`} alt="" width={200} height={200} className=' rounded-md' />
                                 </div>
                                 <div className=' flex flex-col gap-1 w-[70%]'>
                                     <p className='text-lg font-semibold line-clamp-2'>{news.title}</p>
