@@ -229,23 +229,7 @@ export default function Navbar() {
             setIsLoading(false)
             console.log(response.data)
           } catch (error) {
-            if (axios.isAxiosError(error)) {
-            const axiosError = error as AxiosError;
-            setIsLoading(false)
-            if (axiosError.response && axiosError.response.status === 400) {
-              const response = axiosError.response.data as ResError
-              if (response.message === 'failed'){
-                setIsLoading(false)
-                toast({
-                  variant: "destructive",
-                  title: `${response.message}`,
-                  description: `${response.data}`,
-                })
-              
-              }
-              
-            }
-          } 
+          
           }
          setLoading(false)
       }
@@ -341,18 +325,7 @@ export default function Navbar() {
                 setFunds(response.data.data.funds)
                 console.log(response.data)
             } catch (error) {
-                 if (axios.isAxiosError(error)) {
-                    const axiosError = error as AxiosError;
-                    if (axiosError.response && axiosError.response.status === 401) {
-                        localStorage.setItem('auth', 'false');
-                        router.push('/')
-                        toast({
-                        variant: "destructive",
-                        title: "Unauthorized",
-                        })
                 
-                    }
-                } 
             }
         }
         playerData()
