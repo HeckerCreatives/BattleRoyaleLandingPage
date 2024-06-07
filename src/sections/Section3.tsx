@@ -63,15 +63,17 @@ export default function Section3() {
      style={{backgroundImage: "url('/assets/section 3 BG.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
     >
         <div className=' hidden max-w-[1920px] w-full lg:flex flex-row items-start justify-center text-white'>
-            <motion.div 
-             variants={fadeIn('right', .2)}
-            initial='hidden'
-            whileInView={'show'}
-            viewport={{once:false, amount: 0.2}}
-            className=' flex flex-col gap-2 p-6 w-[60%] h-auto'>
-                <h2 className=' text-3xl font-bold italic'>LATEST NEWS</h2>
+            
+               
 
                 {data.length !== 0 && (
+                    <motion.div 
+                    variants={fadeIn('right', .2)}
+                    initial='hidden'
+                    whileInView={'show'}
+                    viewport={{once:false, amount: 0.2}}
+                    className=' flex flex-col gap-2 p-6 w-[60%] h-auto'>
+                     <h2 className=' text-3xl font-bold italic'>LATEST NEWS</h2>
                     <div className=' grid place-items-center grid-cols-2 bg-red-950 rounded-lg h-[550px]'>
 
                     <div className=' w-full h-full flex items-center justify-center rounded-xl'>
@@ -102,16 +104,17 @@ export default function Section3() {
                     </div>
 
                     </div>
+                     </motion.div>
                 )}
                
 
               
-            </motion.div>
+           
 
             
                 { data.length === 0 && (
                     <div className=' w-full flex items-center justify-center mt-10'>
-                     <p className=' text-sm text-zinc-200'>No news yet!</p>
+                      <h2 className=' text-3xl font-bold italic'>NO NEWS YET!</h2>
 
                     </div>
                 )} 
