@@ -70,7 +70,9 @@ export default function Section3() {
             viewport={{once:false, amount: 0.2}}
             className=' flex flex-col gap-2 p-6 w-[60%] h-auto'>
                 <h2 className=' text-3xl font-bold italic'>LATEST NEWS</h2>
-                <div className=' grid place-items-center grid-cols-2 bg-red-950 rounded-lg h-[550px]'>
+
+                {data.length !== 0 && (
+                    <div className=' grid place-items-center grid-cols-2 bg-red-950 rounded-lg h-[550px]'>
 
                     <div className=' w-full h-full flex items-center justify-center rounded-xl'>
                         <img src={`${process.env.NEXT_PUBLIC_API_URL}/${img}`} alt="" width={400} height={400} className=' rounded-lg' />
@@ -99,90 +101,104 @@ export default function Section3() {
 
                     </div>
 
-                </div>
+                    </div>
+                )}
+               
 
               
             </motion.div>
 
-            <motion.div 
-             variants={fadeIn('left', .2)}
-            initial='hidden'
-            whileInView={'show'}
-            viewport={{once:false, amount: 0.2}}
-            className=' w-[30%] h-[500px] mt-8'>
-
-                <div className=' w-full grid grid-cols-1 gap-6 mt-10 h-[500px]'>
-
-                    {loading ? (
-                        <>
-                        <div className='w-full flex items-center gap-4'>
-                          
-                               <Skeleton className="w-[100px] h-[100px] rounded-md bg-zinc-300 bg-opacity-30" />
-                            
-                            <div className=' flex flex-col gap-1 w-[70%]'>
-                                <Skeleton className="w-full h-[30px] rounded-md bg-zinc-300 bg-opacity-30" />
-                                <Skeleton className="w-full h-[70px] rounded-md bg-zinc-300 bg-opacity-30" />
-                            </div>
-
-                        </div>
-
-                        <div className='w-full flex items-center gap-4 mt-4'>
-                          
-                               <Skeleton className="w-[100px] h-[100px] rounded-md bg-zinc-300 bg-opacity-30" />
-                            
-                            <div className=' flex flex-col gap-1 w-[70%]'>
-                                <Skeleton className="w-full h-[30px] rounded-md bg-zinc-300 bg-opacity-30" />
-                                <Skeleton className="w-full h-[70px] rounded-md bg-zinc-300 bg-opacity-30" />
-                            </div>
-
-                        </div>
-
-                        <div className='w-full flex items-center gap-4 mt-4'>
-                          
-                               <Skeleton className="w-[100px] h-[100px] rounded-md bg-zinc-300 bg-opacity-30" />
-                            
-                            <div className=' flex flex-col gap-1 w-[70%]'>
-                                <Skeleton className="w-full h-[30px] rounded-md bg-zinc-300 bg-opacity-30" />
-                                <Skeleton className="w-full h-[70px] rounded-md bg-zinc-300 bg-opacity-30" />
-                            </div>
-
-                        </div>
-                        </>
-                    ):(
-                        <>
-                         { data.map((news, idx) =>(
-                         <div onClick={() => {setTitle(news.title); setDescription(news.description); setImg(news.banner); setId(news.newsid)}} key={idx} className={`w-full flex items-center p-3 gap-4 ${ news.newsid === id && ' bg-red-950 rounded-md'}`}>
-                            <div className=' rounded-lg'
-                            
-                            >
-                                <img src={`${process.env.NEXT_PUBLIC_API_URL}/${news.banner}`} alt="" width={200} height={200} className=' rounded-md' />
-                                </div>
-                                <div className=' flex flex-col gap-1 w-[70%]'>
-                                    <p className='text-lg font-semibold line-clamp-2'>{news.title}</p>
-                                    <p className=' text-sm text-zinc-100 line-clamp-3'>{news.description}</p>
-                                </div>
-                                
-
-                            </div>
-                        ))}
-                        </>
-                    )}
-
-                    <div className=' flex items-center justify-center gap-4 mt-4'>
-                            <button 
-                            onClick={() => setCurrentpage( currentpage - 1)}
-                            disabled={loading ? true : currentpage === 0} 
-                            className=' text-secondary'><MdOutlineKeyboardArrowLeft size={40}/></button>
-                            <p className=' text-lg font-bold bg-zinc-950 px-4 py-2 text-center  rounded-md'>{currentpage + 1}</p>
-                            <button
-                            onClick={() => setCurrentpage(currentpage + 1)}
-                            disabled={ loading ? true :  currentpage + 1 === totalpages}
-                            className=' text-secondary'><MdOutlineKeyboardArrowRight size={40}/></button>
+            
+                { data.length === 0 && (
+                    <div className=' w-full flex items-center justify-center mt-10'>
+                     <p className=' text-sm text-zinc-200'>No news yet!</p>
 
                     </div>
-                    
-                </div>
-            </motion.div>
+                )} 
+
+                {data.length !== 0 && (
+                    <motion.div 
+                    variants={fadeIn('left', .2)}
+                    initial='hidden'
+                    whileInView={'show'}
+                    viewport={{once:false, amount: 0.2}}
+                    className=' w-[30%] h-[500px] mt-8'>
+
+                        <div className=' w-full grid grid-cols-1 gap-6 mt-10 h-[500px]'>
+
+                            {loading ? (
+                                <>
+                                <div className='w-full flex items-center gap-4'>
+                                
+                                    <Skeleton className="w-[100px] h-[100px] rounded-md bg-zinc-300 bg-opacity-30" />
+                                    
+                                    <div className=' flex flex-col gap-1 w-[70%]'>
+                                        <Skeleton className="w-full h-[30px] rounded-md bg-zinc-300 bg-opacity-30" />
+                                        <Skeleton className="w-full h-[70px] rounded-md bg-zinc-300 bg-opacity-30" />
+                                    </div>
+
+                                </div>
+
+                                <div className='w-full flex items-center gap-4 mt-4'>
+                                
+                                    <Skeleton className="w-[100px] h-[100px] rounded-md bg-zinc-300 bg-opacity-30" />
+                                    
+                                    <div className=' flex flex-col gap-1 w-[70%]'>
+                                        <Skeleton className="w-full h-[30px] rounded-md bg-zinc-300 bg-opacity-30" />
+                                        <Skeleton className="w-full h-[70px] rounded-md bg-zinc-300 bg-opacity-30" />
+                                    </div>
+
+                                </div>
+
+                                <div className='w-full flex items-center gap-4 mt-4'>
+                                
+                                    <Skeleton className="w-[100px] h-[100px] rounded-md bg-zinc-300 bg-opacity-30" />
+                                    
+                                    <div className=' flex flex-col gap-1 w-[70%]'>
+                                        <Skeleton className="w-full h-[30px] rounded-md bg-zinc-300 bg-opacity-30" />
+                                        <Skeleton className="w-full h-[70px] rounded-md bg-zinc-300 bg-opacity-30" />
+                                    </div>
+
+                                </div>
+                                </>
+                            ):(
+                                <>
+                                { data.map((news, idx) =>(
+                                <div onClick={() => {setTitle(news.title); setDescription(news.description); setImg(news.banner); setId(news.newsid)}} key={idx} className={`w-full flex items-center p-3 gap-4 ${ news.newsid === id && ' bg-red-950 rounded-md'}`}>
+                                    <div className=' rounded-lg'
+                                    
+                                    >
+                                        <img src={`${process.env.NEXT_PUBLIC_API_URL}/${news.banner}`} alt="" width={200} height={200} className=' rounded-md' />
+                                        </div>
+                                        <div className=' flex flex-col gap-1 w-[70%]'>
+                                            <p className='text-lg font-semibold line-clamp-2'>{news.title}</p>
+                                            <p className=' text-sm text-zinc-100 line-clamp-3'>{news.description}</p>
+                                        </div>
+                                        
+
+                                    </div>
+                                ))}
+                                </>
+                            )}
+
+                            <div className=' flex items-center justify-center gap-4 mt-4'>
+                                    <button 
+                                    onClick={() => setCurrentpage( currentpage - 1)}
+                                    disabled={loading ? true : currentpage === 0} 
+                                    className=' text-secondary'><MdOutlineKeyboardArrowLeft size={40}/></button>
+                                    <p className=' text-lg font-bold bg-zinc-950 px-4 py-2 text-center  rounded-md'>{currentpage + 1}</p>
+                                    <button
+                                    onClick={() => setCurrentpage(currentpage + 1)}
+                                    disabled={ loading ? true :  currentpage + 1 === totalpages}
+                                    className=' text-secondary'><MdOutlineKeyboardArrowRight size={40}/></button>
+
+                            </div>
+                            
+                        </div>
+                    </motion.div>
+                )}
+
+            
         </div>
 
         <div className='lg:hidden max-w-[1920px] w-[90%] flex flex-col items-start justify-center text-white gap-4 '>
