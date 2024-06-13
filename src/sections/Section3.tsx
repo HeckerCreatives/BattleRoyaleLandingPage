@@ -35,8 +35,6 @@ export default function Section3() {
     const [img, setImg] = useState('')
     const [id,setId] = useState('')
 
-
-
     useEffect(() => {
         const news = async () => {
             setLoading(true)
@@ -59,12 +57,10 @@ export default function Section3() {
 
 
   return (
-    <div id='news' className=' w-screen flex items-start justify-center h-auto pb-40 md:pb-56 lg:pb-20 py-20'
+    <div id='news' className=' w-screen flex items-start justify-center h-auto pb-40 md:pb-56 lg:pb-40 py-20'
      style={{backgroundImage: "url('/assets/section 3 BG.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
     >
         <div className=' hidden max-w-[1920px] w-full lg:flex flex-row items-start justify-center text-white'>
-            
-               
 
                 {data.length !== 0 && (
                     <motion.div 
@@ -108,10 +104,6 @@ export default function Section3() {
                 )}
                
 
-              
-           
-
-            
                 { data.length === 0 && (
                     <div className=' w-full flex items-center justify-center mt-10'>
                       <h2 className=' text-3xl font-bold italic'>NO NEWS YET!</h2>
@@ -227,8 +219,8 @@ export default function Section3() {
                         <DialogTrigger>
                              <h2 className=' flex items-center gap-4 text-2xl font-bold italic mt-5'>READ MORE <RiArrowRightDoubleLine size={50} className=' text-secondary'/></h2>
                         </DialogTrigger>
-                        <DialogContent className=' text-white p-10 bg-zinc-950 border-zinc-900 flex flex-col items-center gap-4'>
-                           <img src={`${process.env.NEXT_PUBLIC_API_URL}/${img}`} alt="" width={500} height={500} />
+                        <DialogContent className=' text-white p-10 bg-zinc-950 border-zinc-900 w-[90%] md:w-[400px] flex flex-col items-center gap-4'>
+                           <img src={`${process.env.NEXT_PUBLIC_API_URL}/${img}`} alt="image" width={500} height={500} />
                            <div className=' w-full'>
                             <p className=' text-secondary text-lg font-semibold'>{title}</p>
                            </div>
