@@ -84,10 +84,9 @@ export default function NavbarUser() {
             </Link> 
             <div className=' flex items-center justify-center gap-4'>
                 <Link href='/' className=' lg:text-sm xl:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>HOME</Link>
-                <Link href='/#games' className=' lg:text-sm xl:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>GAMES</Link>
-                <Link href='/#reviews' className=' lg:text-sm xl:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>REVIEWS</Link>
+                
                 <Link href='/#news' className=' lg:text-sm xl:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>NEWS</Link>
-                <Link href='/#contact' className=' lg:text-sm xl:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>CONTACT</Link>
+                <Link href='/#contact' className=' lg:text-sm xl:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>NEWSLETTER</Link>
 
             </div>
 
@@ -95,8 +94,8 @@ export default function NavbarUser() {
                  
                   <Popover>
                   <PopoverTrigger className=' flex items-center gap-2 justify-end'>
-                     <div className=' w-12 h-12 bg-zinc-950 rounded-md'>
-
+                     <div className=' w-12 h-12 rounded-md flex items-center justify-center'>
+                        <img src="/assets/logo 06 B.png" alt="" width={100} className=' hover:scale-110 ease-in-out duration-200' />
                     </div>
                     <div className=' flex flex-col gap-1 text-amber-950'>
                         <p className=' text-sm font-semibold'>{name}</p>
@@ -138,11 +137,11 @@ export default function NavbarUser() {
 
              <Popover>
                   <PopoverTrigger className=' flex items-center gap-2 justify-end '>
-                     <div className=' w-12 h-12 bg-zinc-950 rounded-md'>
-
+                     <div className=' w-12 h-12 rounded-md flex items-center justify-center'>
+                        <img src="/assets/logo 06 B.png" alt="" width={100} className=' hover:scale-110 ease-in-out duration-200' />
                     </div>
-                    <div className=' flex flex-col gap-1 text-white'>
-                        <p className=' text-sm font-semibold'>Player Name</p>
+                    <div className=' w-full flex flex-col items-start  justify-start text-white'>
+                        <p className=' text-sm font-semibold'>{name}</p>
                         <p className=' text-xs'>Lorem Ipsum</p>
 
                     </div>
@@ -156,10 +155,9 @@ export default function NavbarUser() {
 
             <div className=' flex flex-col items-center justify-center gap-4'>
                <Link href='/' className=' text-sm text-white font-bold'>HOME</Link>
-                <Link href='/#games' className=' text-sm text-white font-bold'>GAMES</Link>
-                <Link href='/#reviews' className=' text-sm text-white font-bold'>REVIEWS</Link>
+                
                 <Link href='/#news' className=' text-sm text-white font-bold'>NEWS</Link>
-                <Link href='/#contact' className=' text-sm text-white font-bold'>CONTACT</Link>
+                <Link href='/#newsletter' className=' text-sm text-white font-bold'>NEWSLETTER</Link>
             </div>
 
             <p className=' text-xs text-zinc-300 mt-10'>Follow us :</p>

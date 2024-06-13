@@ -34,6 +34,9 @@ export default function Section3() {
     const [description, setDescription] = useState('')
     const [img, setImg] = useState('')
     const [id,setId] = useState('')
+    const [ imgurlleft, setImgurlleft] = useState(`${process.env.NEXT_PUBLIC_API_URL}/${img.replace(/\\/g, '/')}`)
+
+    console.log('right', imgurlleft)
 
     useEffect(() => {
         const news = async () => {
@@ -55,6 +58,8 @@ export default function Section3() {
         news()
     },[currentpage])
 
+    console.log(totalpages)
+
 
   return (
     <div id='news' className=' w-screen flex items-start justify-center h-auto pb-40 md:pb-56 lg:pb-40 py-20'
@@ -72,8 +77,16 @@ export default function Section3() {
                      <h2 className=' text-3xl font-bold italic'>LATEST NEWS</h2>
                     <div className=' grid place-items-center grid-cols-2 bg-red-950 rounded-lg h-[550px]'>
 
-                    <div className=' w-full h-full flex items-center justify-center rounded-xl'>
-                        <img src={`${process.env.NEXT_PUBLIC_API_URL}/${img}`} alt="" width={400} height={400} className=' rounded-lg' />
+                    <div className=' w-[90%] h-[300px] bg-red-900 flex items-center justify-center rounded-xl'
+                     style={{
+                        backgroundImage: `url('${process.env.NEXT_PUBLIC_API_URL}/${img.replace(/\\/g, '/')}')`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat"
+                    }}
+                    >
+                        
+                        {/* <img src={`${process.env.NEXT_PUBLIC_API_URL}/${img.replace(/\\/g, '/')}`} alt="" width={400} height={400} className=' rounded-lg' /> */}
                     </div>
 
                     <div className=' flex flex-col gap-5 w-full h-auto rounded-xl p-6 text-white'>
@@ -85,14 +98,24 @@ export default function Section3() {
                         <DialogTrigger>
                              <h2 className=' flex items-center gap-4 text-2xl font-bold italic mt-5'>READ MORE <RiArrowRightDoubleLine size={50} className=' text-secondary'/></h2>
                         </DialogTrigger>
-                        <DialogContent className=' text-white p-10 bg-zinc-950 border-zinc-900 flex flex-col items-center gap-4'>
-                           <img src={`${process.env.NEXT_PUBLIC_API_URL}/${img}`} alt="" width={500} height={500} />
+                        <DialogContent className=' text-white p-10 bg-zinc-950 border-zinc-900 w-[80%] h-[80%] flex flex-col items-center gap-4'>
+                            <div className=' w-full h-[40%] rounded-md' 
+                             style={{
+                                backgroundImage: `url('${process.env.NEXT_PUBLIC_API_URL}/${img.replace(/\\/g, '/')}')`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                                backgroundRepeat: "no-repeat"
+                            }}
+                            >
+
+                            </div>
+                        
                            <div className=' w-full'>
-                            <p className=' text-secondary text-lg font-semibold'>{title}</p>
+                            <p className=' text-secondary text-2xl font-bold'>{title}</p>
                            </div>
 
-                           <div className=' overflow-y-auto'>
-                            <p className=' text-sm text-zinc-300'>{description}</p>
+                           <div className=' w-full h-[50%] overflow-y-auto'>
+                            <p className=' text-lg text- start text-zinc-300 whitespace-pre-line'>{description}</p>
                            </div>
                         </DialogContent>
                         </Dialog>
@@ -157,26 +180,48 @@ export default function Section3() {
                                 </div>
                                 </>
                             ):(
-                                <>
-                                { data.map((news, idx) =>(
-                                <div onClick={() => {setTitle(news.title); setDescription(news.description); setImg(news.banner); setId(news.newsid)}} key={idx} className={`w-full flex items-center p-3 gap-4 ${ news.newsid === id && ' bg-red-950 rounded-md'}`}>
-                                    <div className=' rounded-lg'
-                                    
-                                    >
-                                        <img src={`${process.env.NEXT_PUBLIC_API_URL}/${news.banner}`} alt="" width={200} height={200} className=' rounded-md' />
+                                <div className=' flex flex-col gap-4'>
+                                { data.map((news, idx) => {
+                                    const imageUrl = `${process.env.NEXT_PUBLIC_API_URL}/${news.banner.replace(/\\/g, '/')}`;
+                                  
+                                    return (
+                                        <div 
+                                            onClick={() => { 
+                                                setTitle(news.title); 
+                                                setDescription(news.description); 
+                                                setImg(news.banner); 
+                                                setId(news.newsid); 
+                                            }} 
+                                            key={idx} 
+                                            className={`w-full flex items-center p-3 gap-4 h-[170px] ${news.newsid === id ? 'bg-red-950 rounded-md h-[170px]' : ''}`}
+                                        >
+                                            <div className='rounded-lg'>
+                                                <div 
+                                                    className='h-[120px] w-[200px] rounded-md background-image' 
+                                                    style={{
+                                                        backgroundImage: `url('${imageUrl}')`,
+                                                        backgroundSize: "cover",
+                                                        backgroundPosition: "center",
+                                                        backgroundRepeat: "no-repeat"
+                                                    }}
+                                                >
+                                                    {/* Temporarily remove the <img> tag */}
+                                                    {/* <img src={imageUrl} alt="" /> */}
+                                                </div>
+                                            </div>
+                                            <div className='flex flex-col gap-1 w-[70%]'>
+                                                <p className='text-lg font-semibold line-clamp-2'>{news.title}</p>
+                                                <p className='text-sm text-zinc-100 line-clamp-3'                                                
+                                                >{news.description}</p>
+                                            </div>
                                         </div>
-                                        <div className=' flex flex-col gap-1 w-[70%]'>
-                                            <p className='text-lg font-semibold line-clamp-2'>{news.title}</p>
-                                            <p className=' text-sm text-zinc-100 line-clamp-3'>{news.description}</p>
-                                        </div>
-                                        
+                                    );
+                                })}
 
-                                    </div>
-                                ))}
-                                </>
+                                </div>
                             )}
 
-                            <div className=' flex items-center justify-center gap-4 mt-4'>
+                            <div className={` ${ totalpages === 1 ? 'hidden' : 'flex items-center justify-center gap-4 mt-4'}`}>
                                     <button 
                                     onClick={() => setCurrentpage( currentpage - 1)}
                                     disabled={loading ? true : currentpage === 0} 
@@ -197,17 +242,26 @@ export default function Section3() {
         </div>
 
         <div className='lg:hidden max-w-[1920px] w-[90%] flex flex-col items-start justify-center text-white gap-4 '>
-            <motion.div 
+
+            { data.length !== 0 && (
+                <>
+                 <motion.div 
              variants={fadeIn('right', .2)}
             initial='hidden'
             whileInView={'show'}
             viewport={{once:false, amount: 0.2}}
             className=' flex flex-col gap-2 w-full h-auto'>
                 <h2 className=' text-3xl font-bold italic'>LATEST NEWS</h2>
-                <div className=' grid place-items-center grid-cols-1 bg-red-950 rounded-lg h-auto'>
+                <div className=' grid place-items-center grid-cols-1 bg-red-950 rounded-lg h-auto p-4'>
 
-                    <div className=' w-full h-full flex items-center justify-center rounded-xl'>
-                        <img src={`${process.env.NEXT_PUBLIC_API_URL}/${img}`} alt="" width={400} height={400} className=' w-[400px] h-[400px]' />
+                   <div className=' w-full h-[300px] bg-red-900 flex items-center justify-center rounded-xl'
+                     style={{
+                        backgroundImage: `url('${process.env.NEXT_PUBLIC_API_URL}/${img.replace(/\\/g, '/')}')`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat"
+                    }}
+                    >
                     </div>
 
                     <div className=' flex flex-col gap-5 w-full h-auto rounded-xl p-6 text-white'>
@@ -219,14 +273,14 @@ export default function Section3() {
                         <DialogTrigger>
                              <h2 className=' flex items-center gap-4 text-2xl font-bold italic mt-5'>READ MORE <RiArrowRightDoubleLine size={50} className=' text-secondary'/></h2>
                         </DialogTrigger>
-                        <DialogContent className=' text-white p-10 bg-zinc-950 border-zinc-900 w-[90%] md:w-[400px] flex flex-col items-center gap-4'>
+                        <DialogContent className=' text-white p-8 bg-zinc-950 border-zinc-900 w-[90%] md:w-[400px] flex flex-col items-center gap-4'>
                            <img src={`${process.env.NEXT_PUBLIC_API_URL}/${img}`} alt="image" width={500} height={500} />
                            <div className=' w-full'>
                             <p className=' text-secondary text-lg font-semibold'>{title}</p>
                            </div>
 
-                           <div className=' overflow-y-auto'>
-                            <p className=' text-sm text-zinc-300'>{description}</p>
+                           <div className=' w-full h-[250px] overflow-y-auto'>
+                            <p className=' text-sm text-zinc-300 text-start'>{description}</p>
                            </div>
                         </DialogContent>
                         </Dialog>
@@ -236,9 +290,20 @@ export default function Section3() {
                 </div>
 
               
-            </motion.div>
+                </motion.div>
+                </>
+            )}
 
-            <motion.div 
+            { data.length === 0 && (
+                    <div className=' w-full flex items-center justify-center mt-10'>
+                      <h2 className=' text-3xl font-bold italic'>NO NEWS YET!</h2>
+
+                    </div>
+                )} 
+
+            { data.length !== 0 && (
+                <>
+                    <motion.div 
              variants={fadeIn('left', .2)}
             initial='hidden'
             whileInView={'show'}
@@ -302,7 +367,9 @@ export default function Section3() {
                         </>
                     )}
 
-                    <div className=' flex items-center justify-center gap-4 mt-4'>
+                    
+
+                    <div className={` ${ totalpages === 1 ? 'hidden' : 'flex items-center justify-center gap-4 mt-4'}`}>
                             <button 
                             onClick={() => setCurrentpage( currentpage - 1)}
                             disabled={loading ? true : currentpage === 0} 
@@ -316,7 +383,12 @@ export default function Section3() {
                     </div>
                     
                 </div>
-            </motion.div>
+                    </motion.div>
+                </>
+            )}
+           
+
+           
         </div>
 
     

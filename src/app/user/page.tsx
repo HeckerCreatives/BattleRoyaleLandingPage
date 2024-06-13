@@ -197,7 +197,7 @@ export default function page() {
     };
 
   return (
-    <div className=' w-screen h-auto flex flex-col items-center justify-start bg-zinc-950 overflow-x-hidden '>
+    <div className=' w-screen h-auto flex flex-col items-center justify-start bg-zinc-950 overscroll-x-none '>
         <div className=' max-w-[1920px] flex flex-col items-center justify-start gap-10 w-screen h-auto pb-40 bg-zinc-900 '>
         <NavbarUser/>
             <p className=' text-xl font-semibold text-zinc-200 w-[90%] md:w-[70%] text-start py-2 border-b-2 border-zinc-800'>Account Management</p>
@@ -210,17 +210,16 @@ export default function page() {
                     <div className=' w-full flex items-center gap-4'>
                         <Input placeholder='Email' value={email} type='email' className=' w-[70%] bg-zinc-900 border-none text-white'/>
                         <Dialog>
-                        <DialogTrigger className='h-10 w-[40%] md:w-[30%]'
-                         style={{backgroundImage: "url('/assets/button.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                        <DialogTrigger className='h-10 w-[30%]'
                         >
                               <button
                            
-                            className=' h-10 w-[40%] md:w-[30%] text-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
+                            className=' w-full text-sm py-2 bg-secondary rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
                             >
                                 
                             Edit</button>
                         </DialogTrigger>
-                        <DialogContent className=' bg-zinc-950 border-none p-6'>
+                        <DialogContent className=' w-[95%] md:w-[70%] lg:w-[50%] bg-zinc-950 border-none p-6'>
                             <h2 className=' text-lg font-semibold text-secondary'>Change Email</h2>
                             <p className=' text-sm text-white'>New Email</p>
                            <Input placeholder='Enter your new email' value={newemail} onChange={(e) => setNewemail(e.target.value)} type='email' required className=' w-full bg-zinc-900 border-none text-white'/>
@@ -228,7 +227,7 @@ export default function page() {
                            <button
                            onClick={handleEmail}
                            style={{backgroundImage: "url('/assets/button.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                            className=' mt-4 h-12 w-[50%] md:w-[50%] text-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200 flex items-center justify-center gap-1'
+                            className=' mt-4 h-12 w-[200px] text-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200 flex items-center justify-center gap-1'
                             >
                             { passwordload === true && (
                                 <div className="loader">
@@ -259,17 +258,16 @@ export default function page() {
                     <div className=' w-full flex items-center gap-4'>
                         <Input placeholder='Password' value='test12345' type='password' className=' w-[70%] bg-zinc-900 border-none text-white'/>
                         <Dialog>
-                        <DialogTrigger className='h-10 w-[40%] md:w-[30%]'
-                         style={{backgroundImage: "url('/assets/button.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                        <DialogTrigger className='h-10 w-[30%]'
                         >
                               <button
                            
-                            className=' h-10 w-[40%] md:w-[30%] text-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
+                            className=' h-10 w-full text-sm font-bold py-2 rounded-lg text-amber-950 hover:scale-110 ease-in-out duration-200 bg-secondary'
                             >
                                 
                             Edit</button>
                         </DialogTrigger>
-                        <DialogContent className=' bg-zinc-950 border-none p-6'>
+                        <DialogContent className=' bg-zinc-950 border-none p-6 w-[95%] md:w-[70%] lg:w-[50%]'>
                             <h2 className=' text-lg font-semibold text-secondary'>Change Password</h2>
                             <p className=' text-sm text-white'>New Password</p>
                            <Input placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} type='password' className=' w-full bg-zinc-900 border-none text-white'/>
@@ -277,7 +275,7 @@ export default function page() {
                            <button
                            onClick={changePassword}
                            style={{backgroundImage: "url('/assets/button.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                            className=' mt-4 h-12 w-[50%] md:w-[50%] text-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200 flex items-center justify-center gap-1'
+                            className=' mt-4 h-12 w-[200px] text-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200 flex items-center justify-center gap-1'
                             >
                             { passwordload === true && (
                                 <div className="loader">
@@ -305,8 +303,7 @@ export default function page() {
                     <div className=' w-full flex items-center gap-4'>
                         <Input placeholder='Funds' value={funds} type='text' className=' w-[70%] bg-zinc-900 border-none text-white'/>
                         <button
-                        style={{backgroundImage: "url('/assets/button.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                        className=' h-10 w-[40%] md:w-[30%] text-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
+                        className=' h-10 w-[30%] py-2 text-sm bg-secondary rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
                         >Add</button>
                     </div>
                 </div>

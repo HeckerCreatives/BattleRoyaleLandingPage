@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Newsletter() {
   return (
-    <div id='contact' className=' flex items-center justify-center w-screen h-[500px]'
+    <div id='newsletter' className=' flex items-center justify-center w-screen h-[500px]'
      style={{backgroundImage: "url('/assets/6th section BG.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
     >
 
