@@ -16,8 +16,6 @@ import {
 } from "@/components/ui/dialog"
 import { list } from 'postcss'
 
-
-
 interface News {
     banner:string
 description:string
@@ -25,6 +23,8 @@ newsid:string
 title:string
 
 }
+
+
 export default function Section3() {
     const [data, setData] = useState<News[]>([])
     const [ totalpages, setTotalpages] = useState(0)
