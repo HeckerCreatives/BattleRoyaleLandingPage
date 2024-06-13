@@ -207,7 +207,7 @@ export default function Section3() {
                 <div className=' grid place-items-center grid-cols-1 bg-red-950 rounded-lg h-auto'>
 
                     <div className=' w-full h-full flex items-center justify-center rounded-xl'>
-                        <img src={`${process.env.NEXT_PUBLIC_API_URL}/${img}`} alt="" width={400} height={400} />
+                        <img src={`${process.env.NEXT_PUBLIC_API_URL}/${img}`} alt="" width={400} height={400} className=' w-[400px] h-[400px]' />
                     </div>
 
                     <div className=' flex flex-col gap-5 w-full h-auto rounded-xl p-6 text-white'>
