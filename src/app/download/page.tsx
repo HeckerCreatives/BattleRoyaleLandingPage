@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div className=' w-screen h-auto flex flex-col items-center justify-start overflow-x-hidden'
+    <div className=' download w-screen h-auto flex flex-col items-center justify-start'
     style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
     
     >
