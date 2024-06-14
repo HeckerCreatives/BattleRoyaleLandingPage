@@ -337,7 +337,7 @@ export default function Navbar() {
   return (
     <>
 
-     <div className=' sticky top-10 h-32 w-[80%] text-white max-w-[1920px] hidden lg:block'
+     <div className=' sticky top-4 h-32 w-[80%] text-white max-w-[1920px] hidden lg:block'
      style={{backgroundImage: "url('/assets/navigator TAB.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
     >
         <div className=' max-w-[1920px] relative grid grid-cols-3 px-8 h-full z-20'>
@@ -408,6 +408,8 @@ export default function Navbar() {
           </div>
         </SheetTrigger>
         <SheetContent className=' border-none p-0 m-0'
+         style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
+
         >
           <div className=' absolute flex flex-col items-center justify-start py-10 gap-5 top-0 w-full h-full bg-opacity-80'
          style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
