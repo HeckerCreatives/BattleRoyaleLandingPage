@@ -133,9 +133,10 @@ export default function NavbarUser() {
           </div>
         </SheetTrigger>
         <SheetContent className=' border-none p-0 m-0'
-         style={{backgroundImage: "url('/assets/sheetbg.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+          style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
+
         >
-          <div className=' absolute flex flex-col items-center justify-start py-10 gap-5 top-0 w-full h-full bg-amber-950 bg-opacity-80'>
+          <div className=' absolute flex flex-col items-center justify-start py-10 gap-5 top-0 w-full h-full bg-opacity-80'>
             <img src="/assets/logo 06 B.png" alt="" width={90} className=' hover:scale-110 ease-in-out duration-200' />
 
              <Popover>

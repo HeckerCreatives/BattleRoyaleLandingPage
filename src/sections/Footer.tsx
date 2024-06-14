@@ -10,7 +10,7 @@ export default function Footer() {
         <div className=' max-w-[1920px] w-full lg:w-[70%] h-auto flex items-center justify-center gap-10'>
             {/* <img src="/assets/character A.png" alt="" className=' relative mb-40 lg:block hidden'/> */}
             <div className=' flex flex-col gap-10 items-center justify-start'>
-                <img src="/login/RISE OF FEARLESS plain.png" alt="" height={200} width={200} className=' relative lg:w-[200px] w-[150px]'/>
+                <img src="/v2/auth/assets/rof.png" alt="" height={200} width={200} className=' relative lg:w-[200px] w-[150px]'/>
 
                 <div className=' flex md:flex-row flex-col items-center gap-4 lg:gap-6 text-white'>
 

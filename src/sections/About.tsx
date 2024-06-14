@@ -1,6 +1,17 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 export default function About() {
+  const [open, setOpen] = useState(false)
+
   return (
     <div id='about' className=' w-full h-auto flex flex-col gap-24 items-center justify-center py-20'
      style={{backgroundImage: "url('/v2/about/BG.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
@@ -12,14 +23,23 @@ export default function About() {
             style={{backgroundImage: "url('/v2/header/assets/BG A.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
             
             >
-              <button className=''>
+             
+            <Dialog>
+            <DialogTrigger>
+             <button className=''>
                 <img src="/v2/about/Play Button.png" alt="" className=' hover:scale-110 ease-in-out duration-300' />
               </button>
+            </DialogTrigger>
+            <DialogContent className=' text-white aspect-video p-4 bg-zinc-950 border-zinc-900 flex flex-col items-center gap-4'>
+              <iframe className=' z-50 w-full h-full' src="https://www.youtube.com/embed/He-jKBESg9I?si=hDspTGvkSUsfHzss" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            </DialogContent>
+            </Dialog>
+
 
             </div>
 
             <div className=' h-[400px] lg:h-[500px] lg:w-[40%] w-full border-orange-300 border-spacing-4 rounded-md p-10 flex flex-col gap-4'
-            style={{backgroundImage: "url('/v2/about/Description Tab.png')", backgroundSize: "cover", backgroundPosition: "top", backgroundRepeat:"no-repeat"}}
+            style={{backgroundImage: "url('/v2/about/desc.png')", backgroundSize: "cover", backgroundPosition: "top", backgroundRepeat:"no-repeat"}}
             >
                 <h2 className=' text-4xl font-bold text-amber-950'>Title</h2>
                 <p className=' text-sm md:text-lg text-amber-900'>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
@@ -28,7 +48,7 @@ export default function About() {
         </div>
 
         <div className='relative max-w-[1920px] w-[90%] lg:w-[85%] h-[500px] grid grid-cols-1 md:grid-cols-2 rounded-lg'
-        style={{backgroundImage: "url('/v2/about/About Tab.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+        style={{backgroundImage: "url('/v2/about/tab.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
         
         >
             <div className=' w-full h-[500px] flex flex-col gap-4 p-6'>
