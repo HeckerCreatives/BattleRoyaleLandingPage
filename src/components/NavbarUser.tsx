@@ -159,7 +159,6 @@ export default function NavbarUser() {
 
             <div className=' flex flex-col items-center justify-center gap-4'>
                 <Link href='/' className=' lg:text-sm text-orange-100 font-bold '>HOME</Link>
-               
                 <Link href='/#news' className=' lg:text-sm text-orange-100 font-bold '>NEWS</Link>
                 <Link href='/#maps' className=' lg:text-sm text-orange-100 font-bold '>MAPS</Link>
                 <Link href='/#about' className=' lg:text-sm text-orange-100 font-bold '>ABOUT</Link>

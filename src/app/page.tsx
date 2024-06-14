@@ -57,7 +57,6 @@ export default function Home() {
       </div>
     ): (
        <div className=" flex flex-col items-center overflow-x-hidden">
-        <Socials/>
         <main>
           <Hero/>
           {/* <Section2/> */}
