@@ -168,9 +168,9 @@ export default function login() {
 
       </div>
 
-      <div className=' hidden 2xl:block absolute bottom-0 w-screen h-48 bg-gradient-to-t from-zinc-950 to-[#00000088]'>
+      <div className=' hidden 2xl:block absolute bottom-0 w-screen h-32 bg-gradient-to-t from-zinc-950 to-[#00000000]'>
 
-      </div><div className=' hidden 2xl:block absolute bottom-0 w-screen h-48 bg-gradient-to-t from-zinc-950 to-[#00000088]'
+      </div><div className=' hidden 2xl:block absolute bottom-0 w-screen h-32 bg-gradient-to-t from-zinc-950 to-[#00000088]'
       style={{backgroundImage: "url('/assets/header BG.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
       
       >
@@ -186,17 +186,17 @@ export default function login() {
         
         >
 
-           <div onClick={back} className=' absolute top-8 left-8 bg-orange-300 rounded-md px-2 py-1 text-amber-950 flex items-center justify-center gap-2'>
+           <div onClick={back} className=' absolute top-8 left-6 bg-orange-300 rounded-md px-2 py-1 text-amber-950 flex items-center justify-center gap-2'>
             <IoMdArrowBack size={15}/>
             <p className=' text-xs cursor-default'>Back</p>
           </div>
                     
 
-              <div className=' w-full flex flex-col items-start gap-2 lg:gap-4 p-8 mt-4'>
+              <div className=' w-full flex flex-col items-start gap-2 lg:gap-4 p-6'>
                  <div className=' flex flex-col items-start mt-8'>
                   <img src="/login/Rise of Fearless plain.png" width={100} alt="" className=' xl:hidden block'/>
                   <p className=' text-lg font-semibold text-orange-300'>Sign Up</p>
-                  <p className=' text-xs text-zinc-400 mb-6'>Enter your account details</p>
+                  <p className=' text-xs text-zinc-400 mb-2'>Enter your account details</p>
 
                 </div>
                       <Input placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} type='text' className=' bg-zinc-950 border-orange-300 text-white'/>
@@ -255,7 +255,7 @@ export default function login() {
                             <span className=" text-red-400 text-xs">{errors.email}</span>
                           )}
 
-                          <p className=' text-xs text-zinc-400 mt-12 flex items-center gap-6'>Already have an account?<a href="/auth/login" className=' text-xs font-semibold px-4 py-1 border-2 border-orange-400 rounded-md text-orange-400'>Log In</a></p>
+                          <p className=' text-xs text-zinc-400 mt-4 flex items-center gap-6'>Already have an account?<a href="/auth/login" className=' text-xs font-semibold px-4 py-1 border-2 border-orange-400 rounded-md text-orange-400'>Log In</a></p>
 
 
               </div>
@@ -266,29 +266,33 @@ export default function login() {
 
           </div>
 
-          <div className=' hidden 2xl:flex flex-col items-center gap-6 text-xs text-white absolute bottom-6 w-[500px]'>
-            <p className=' text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+          <div className=' hidden 2xl:flex flex-col items-center gap-4 text-xs text-white absolute bottom-3 w-[500px]'>
+            <p className=' text-center text-xs'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
             <div className=' flex items-center gap-4 lg:gap-10'>
                     <Link href='https://web.facebook.com/'>
-                        <img src="/assets/fb.png" alt="" width={30} className=' lg:w-[30px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
+                        <img src="/assets/fb.png" alt="" width={30} className=' lg:w-[20px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
 
                      <Link href='https://discord.com/'>
-                        <img src="/assets/discord.png" alt="" width={30} className=' lg:w-[30px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
+                        <img src="/assets/discord.png" alt="" width={30} className=' lg:w-[20px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
 
                      <Link href='https://www.tiktok.com/'>
-                        <img src="/assets/tiktok.png" alt="" width={30} className=' lg:w-[30px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
+                        <img src="/assets/tiktok.png" alt="" width={30} className=' lg:w-[20px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
 
                     <Link href='https://web.telegram.org/'>
-                        <img src="/assets/telegram.png" alt="" width={30} className=' lg:w-[30px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
+                        <img src="/assets/telegram.png" alt="" width={30} className=' lg:w-[20px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
 
             </div>
 
-                <p className=' text-xs lg:text-sm text-zinc-300'>www.loremipsum.com</p>
+               <div className=' flex items-center gap-4'>
+                <a href="" className=' hover:text-orange-300 ease-in-out duration-200'>Terms & Conditions</a>
+                <a href="" className=' hover:text-orange-300 ease-in-out duration-200'>Privacy Policy</a>
+
+               </div>
           </div>
     </div>
   )
