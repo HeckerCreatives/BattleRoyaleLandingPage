@@ -3,20 +3,43 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <div className=' flex items-center justify-center w-screen h-[400px] bg-zinc-950'
+    <div className=' flex items-center justify-center w-screen h-auto bg-zinc-950 py-10'
+     style={{backgroundImage: "url('/v2/about/BG.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
     
     >
-        <div className=' max-w-[1920px] w-full lg:w-[70%] h-[400px] flex items-center justify-center lg:justify-between gap-10'>
-            <img src="/assets/character A.png" alt="" className=' relative mb-40 lg:block hidden'/>
+        <div className=' max-w-[1920px] w-full lg:w-[70%] h-auto flex items-center justify-center gap-10'>
+            {/* <img src="/assets/character A.png" alt="" className=' relative mb-40 lg:block hidden'/> */}
             <div className=' flex flex-col gap-10 items-center justify-start'>
-                <img src="/assets/RISE OF FEARLESS text logo.png" alt="" height={200} width={200} className=' relative lg:w-[200px] w-[150px]'/>
+                <img src="/login/RISE OF FEARLESS plain.png" alt="" height={200} width={200} className=' relative lg:w-[200px] w-[150px]'/>
 
-                <div className=' flex items-center gap-4 md:gap-8 text-white'>
-                    <Link href='' className=' text-xs md:text-sm font-bold hover:text-amber-700 ease-in-out duration-300'>HOME</Link>
-                    <Link href='' className=' text-xs md:text-sm font-bold hover:text-amber-700 ease-in-out duration-300'>GAMES</Link>
-                    <Link href='' className=' text-xs md:text-sm font-bold hover:text-amber-700 ease-in-out duration-300'>REVIEWS</Link>
-                    <Link href='' className=' text-xs md:text-sm font-bold hover:text-amber-700 ease-in-out duration-300'>NEWS</Link>
-                    <Link href='' className=' text-xs md:text-sm font-bold hover:text-amber-700 ease-in-out duration-300'>CONTACT</Link>
+                <div className=' flex md:flex-row flex-col items-center gap-4 lg:gap-6 text-white'>
+
+                    <a href='/' className=' text-xs md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
+                    style={{backgroundImage: "url('/pd/Button A.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                    
+                    >HOME</a>
+
+                     <a href='/#news' className=' text-xs md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
+                    style={{backgroundImage: "url('/pd/Button B.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                    
+                    >NEWS</a>
+
+                    <a href='/#maps' className=' text-xs md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
+                    style={{backgroundImage: "url('/pd/Button B.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                    
+                    >MAPS</a>
+
+                     <a href='/#newsletter' className=' text-xs md:text-xs font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
+                    style={{backgroundImage: "url('/pd/Button B.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                    
+                    >NEWSLETTER</a>
+
+                     <a href='/#about' className=' text-xs md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
+                    style={{backgroundImage: "url('/pd/Button C.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                    
+                    >ABOUT</a>
+
+
 
                 </div>
 
@@ -43,7 +66,7 @@ export default function Footer() {
 
 
             </div>
-            <img src="/assets/character B.png" alt="" height={200} width={200} className=' relative mb-40 lg:block hidden'/>
+            {/* <img src="/assets/character B.png" alt="" height={200} width={200} className=' relative mb-40 lg:block hidden'/> */}
 
         </div>
 

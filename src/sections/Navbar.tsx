@@ -337,7 +337,7 @@ export default function Navbar() {
   return (
     <>
 
-     <div className=' absolute top-10 h-32 w-[80%] text-white max-w-[1920px] hidden lg:block'
+     <div className=' sticky top-10 h-32 w-[80%] text-white max-w-[1920px] hidden lg:block'
      style={{backgroundImage: "url('/assets/navigator TAB.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
     >
         <div className=' max-w-[1920px] relative grid grid-cols-3 px-8 h-full z-20'>
@@ -346,9 +346,10 @@ export default function Navbar() {
             </Link> 
             <div className=' flex items-center justify-center gap-4'>
                 <Link href='' className=' lg:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>HOME</Link>
-                {/* <Link href='#games' className=' lg:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>GAMES</Link>
-                <Link href='#reviews' className=' lg:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>REVIEWS</Link> */}
+               
                 <Link href='#news' className=' lg:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>NEWS</Link>
+                <Link href='#maps' className=' lg:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>MAPS</Link>
+                <Link href='#about' className=' lg:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>ABOUT</Link>
                 <Link href='#newsletter' className=' lg:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>NEWSLETTER</Link>
 
             </div>
@@ -407,15 +408,17 @@ export default function Navbar() {
           </div>
         </SheetTrigger>
         <SheetContent className=' border-none p-0 m-0'
-         style={{backgroundImage: "url('/assets/sheetbg.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
         >
-          <div className=' absolute flex flex-col items-center justify-start py-10 gap-5 top-0 w-full h-full bg-amber-950 bg-opacity-80'>
+          <div className=' absolute flex flex-col items-center justify-start py-10 gap-5 top-0 w-full h-full bg-opacity-80'
+         style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
+          
+          >
             <img src="/assets/logo 06 B.png" alt="" width={90} className=' hover:scale-110 ease-in-out duration-200' />
 
             { auth === 'true' && (
                  <Popover>
                   <PopoverTrigger className=' flex items-center gap-2 justify-end text-white'>
-                     <div className=' w-12 h-12 bg-zinc-950 rounded-md'>
+                     <div className=' w-12 h-12 flex items-center justify-center rounded-md'>
                         <img src="/assets/logo 06 B.png" alt="" width={50} className=' hover:scale-110 ease-in-out duration-200' />
                     </div>
                     <div className=' flex flex-col items-start justify-start'>
@@ -433,9 +436,12 @@ export default function Navbar() {
               )}
 
             <div className=' flex flex-col items-center justify-center gap-4'>
-               <Link href='/' className=' text-sm text-white font-bold'>HOME</Link>
-                <Link href='#news' className=' text-sm text-white font-bold'>NEWS</Link>
-                <Link href='#newsletter' className=' text-sm text-white font-bold'>NEWSLETTER</Link>
+                <Link href='/' className=' lg:text-sm text-orange-100 font-bold '>HOME</Link>
+               
+                <Link href='/#news' className=' lg:text-sm text-orange-100 font-bold '>NEWS</Link>
+                <Link href='/#maps' className=' lg:text-sm text-orange-100 font-bold '>MAPS</Link>
+                <Link href='/#about' className=' lg:text-sm text-orange-100 font-bold '>ABOUT</Link>
+                <Link href='/#newsletter' className=' lg:text-sm text-orange-100 font-bold '>NEWSLETTER</Link>
             </div>
 
 

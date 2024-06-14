@@ -164,13 +164,13 @@ export default function login() {
       <img src="/login/Rise of Fearless plain.png" width={100} alt="" className=' hidden xl:block absolute top-8 left-8 z-20'/>
 
 
-      <div className=' hidden xl:block absolute top-0 w-screen h-32 bg-gradient-to-b from-zinc-950 to-[#00000088]'>
+      <div className=' hidden xl:block absolute top-0 w-screen h-32 bg-gradient-to-b from-zinc-950 to-[#00000000]'>
 
       </div>
 
-      <div className=' hidden xl:block absolute bottom-0 w-screen h-48 bg-gradient-to-t from-zinc-950 to-[#00000088]'>
+      <div className=' hidden 2xl:block absolute bottom-0 w-screen h-48 bg-gradient-to-t from-zinc-950 to-[#00000088]'>
 
-      </div><div className=' hidden xl:block absolute bottom-0 w-screen h-48 bg-gradient-to-t from-zinc-950 to-[#00000088]'
+      </div><div className=' hidden 2xl:block absolute bottom-0 w-screen h-48 bg-gradient-to-t from-zinc-950 to-[#00000088]'
       style={{backgroundImage: "url('/assets/header BG.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
       
       >
@@ -266,7 +266,7 @@ export default function login() {
 
           </div>
 
-          <div className=' hidden xl:flex flex-col items-center gap-6 text-xs text-white absolute bottom-6 w-[500px]'>
+          <div className=' hidden 2xl:flex flex-col items-center gap-6 text-xs text-white absolute bottom-6 w-[500px]'>
             <p className=' text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
 
             <div className=' flex items-center gap-4 lg:gap-10'>

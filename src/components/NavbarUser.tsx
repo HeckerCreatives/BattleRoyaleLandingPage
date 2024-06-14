@@ -83,10 +83,13 @@ export default function NavbarUser() {
               <img src="/assets/logo 06 B.png" alt="" width={180} height={180} className='hover:scale-110 ease-in-out duration-200 xl:w-[180px] lg:w-[160px]' />
             </Link> 
             <div className=' flex items-center justify-center gap-4'>
-                <Link href='/' className=' lg:text-sm xl:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>HOME</Link>
-                
-                <Link href='/#news' className=' lg:text-sm xl:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>NEWS</Link>
-                <Link href='/#contact' className=' lg:text-sm xl:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>NEWSLETTER</Link>
+                <Link href='' className=' lg:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>HOME</Link>
+               
+                <Link href='#news' className=' lg:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>NEWS</Link>
+                <Link href='#maps' className=' lg:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>MAPS</Link>
+                <Link href='#about' className=' lg:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>ABOUT</Link>
+                <Link href='#newsletter' className=' lg:text-sm text-amber-950 font-bold hover:text-secondary ease-in-out duration-500'>NEWSLETTER</Link>
+
 
             </div>
 
@@ -95,9 +98,9 @@ export default function NavbarUser() {
                   <Popover>
                   <PopoverTrigger className=' flex items-center gap-2 justify-end'>
                      <div className=' w-12 h-12 rounded-md flex items-center justify-center'>
-                        <img src="/assets/logo 06 B.png" alt="" width={100} className=' hover:scale-110 ease-in-out duration-200' />
+                        <img src="/assets/logo 06 B.png" alt="" width={120} className=' hover:scale-110 ease-in-out duration-200' />
                     </div>
-                    <div className=' flex flex-col gap-1 text-amber-950'>
+                    <div className=' flex flex-col items-start gap-1 text-amber-950'>
                         <p className=' text-sm font-semibold'>{name}</p>
                         <p className=' text-xs'>Player</p>
                     </div>
@@ -154,10 +157,12 @@ export default function NavbarUser() {
                 </Popover>
 
             <div className=' flex flex-col items-center justify-center gap-4'>
-               <Link href='/' className=' text-sm text-white font-bold'>HOME</Link>
-                
-                <Link href='/#news' className=' text-sm text-white font-bold'>NEWS</Link>
-                <Link href='/#newsletter' className=' text-sm text-white font-bold'>NEWSLETTER</Link>
+                <Link href='/' className=' lg:text-sm text-orange-100 font-bold '>HOME</Link>
+               
+                <Link href='/#news' className=' lg:text-sm text-orange-100 font-bold '>NEWS</Link>
+                <Link href='/#maps' className=' lg:text-sm text-orange-100 font-bold '>MAPS</Link>
+                <Link href='/#about' className=' lg:text-sm text-orange-100 font-bold '>ABOUT</Link>
+                <Link href='/#newsletter' className=' lg:text-sm text-orange-100 font-bold '>NEWSLETTER</Link>
             </div>
 
             <p className=' text-xs text-zinc-300 mt-10'>Follow us :</p>

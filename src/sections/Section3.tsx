@@ -62,10 +62,11 @@ export default function Section3() {
 
 
   return (
-    <div id='news' className=' w-screen flex items-start justify-center h-auto pb-40 md:pb-56 lg:pb-40 py-20'
-     style={{backgroundImage: "url('/assets/section 3 BG.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+    <div id='news' className=' relative z-30 w-screen flex items-start justify-center h-auto md:py-40 py-20'
+     style={{backgroundImage: "url('/v2/news/assets/BG.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
     >
         <div className=' hidden max-w-[1920px] w-full lg:flex flex-row items-start justify-center text-white'>
+                     <h2 className=' text-3xl font-bold italic absolute top-14 left-24'>LATEST NEWS</h2>
 
                 {data.length !== 0 && (
                     <motion.div 
@@ -73,11 +74,12 @@ export default function Section3() {
                     initial='hidden'
                     whileInView={'show'}
                     viewport={{once:false, amount: 0.2}}
-                    className=' flex flex-col gap-2 p-6 w-[60%] h-auto'>
-                     <h2 className=' text-3xl font-bold italic'>LATEST NEWS</h2>
-                    <div className=' grid place-items-center grid-cols-2 bg-red-950 rounded-lg h-[550px]'>
+                    className=' flex flex-col gap-2 p-6 lg:w-[60%] xl:w-[50%] h-auto'>
+                    <div className=' grid place-items-center grid-cols-2 rounded-lg h-[550px] p-6'
+                    style={{backgroundImage: "url('/v2/news/assets/Tab Big.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                    >
 
-                    <div className=' w-[90%] h-[300px] bg-red-900 flex items-center justify-center rounded-xl'
+                    <div className=' w-[90%] h-[400px] lg:h-[280px] bg-red-900 flex items-center justify-center rounded-xl'
                      style={{
                         backgroundImage: `url('${process.env.NEXT_PUBLIC_API_URL}/${img.replace(/\\/g, '/')}')`,
                         backgroundSize: "cover",
@@ -95,8 +97,8 @@ export default function Section3() {
                         <h2 className=' text-lg font-semibold text-zinc-200 line-clamp-4'>{description}</h2>
                        
                         <Dialog>
-                        <DialogTrigger>
-                             <h2 className=' flex items-center gap-4 text-2xl font-bold italic mt-5'>READ MORE <RiArrowRightDoubleLine size={50} className=' text-secondary'/></h2>
+                        <DialogTrigger className=' bg-gradient-to-r from-orange-300 to-orange-400 rounded-md w-[200px] py-2 flex items-center justify-center'>
+                             <h2 className=' flex items-center gap-2 text-amber-950 text-lg font-bold italic'>READ MORE <RiArrowRightDoubleLine size={30} className=' text-amber-950'/></h2>
                         </DialogTrigger>
                         <DialogContent className=' text-white p-10 bg-zinc-950 border-zinc-900 w-[80%] h-[80%] flex flex-col items-center gap-4'>
                             <div className=' w-full h-[40%] rounded-md' 
@@ -140,9 +142,9 @@ export default function Section3() {
                     initial='hidden'
                     whileInView={'show'}
                     viewport={{once:false, amount: 0.2}}
-                    className=' w-[30%] h-[500px] mt-8'>
+                    className=' w-[30%] h-[500px] lg:mt-24 xl:mt-20 2xl:mt-8'>
 
-                        <div className=' w-full grid grid-cols-1 gap-6 mt-10 h-[500px]'>
+                        <div className=' w-full grid grid-cols-1 gap-6 h-[500px]'>
 
                             {loading ? (
                                 <>
@@ -180,7 +182,7 @@ export default function Section3() {
                                 </div>
                                 </>
                             ):(
-                                <div className=' flex flex-col gap-4'>
+                                <div className=' flex flex-col items-start justify-start lg:h-[450px] xl:h-[480px] 2xl:h-[520px]'>
                                 { data.map((news, idx) => {
                                     const imageUrl = `${process.env.NEXT_PUBLIC_API_URL}/${news.banner.replace(/\\/g, '/')}`;
                                   
@@ -193,11 +195,14 @@ export default function Section3() {
                                                 setId(news.newsid); 
                                             }} 
                                             key={idx} 
-                                            className={`w-full flex items-center p-3 gap-4 h-[170px] ${news.newsid === id ? 'bg-red-950 rounded-md h-[170px]' : ''}`}
-                                        >
+                                            className={`w-full flex items-center gap-4 h-[150px] lg:h-[120px] xl:h-[140px] 2xl:h-[170px] px-6 ${news.newsid === id ? ' rounded-md h-[160px] ' : ''}`}
+
+                                            style={{backgroundImage: "url('/v2/news/assets/Tab Small A.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+
+                                            >
                                             <div className='rounded-lg'>
                                                 <div 
-                                                    className='h-[120px] w-[200px] rounded-md background-image' 
+                                                    className=' h-[70px]  2xl:h-[110px] w-[120px] 2xl:w-[200px] rounded-md background-image' 
                                                     style={{
                                                         backgroundImage: `url('${imageUrl}')`,
                                                         backgroundSize: "cover",
@@ -252,9 +257,12 @@ export default function Section3() {
             viewport={{once:false, amount: 0.2}}
             className=' flex flex-col gap-2 w-full h-auto'>
                 <h2 className=' text-3xl font-bold italic'>LATEST NEWS</h2>
-                <div className=' grid place-items-center grid-cols-1 bg-red-950 rounded-lg h-auto p-4'>
+                <div className=' grid place-items-center grid-cols-1 rounded-lg h-auto p-8 mt-6'
+                style={{backgroundImage: "url('/v2/news/assets/Tab Big.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                
+                >
 
-                   <div className=' w-full h-[300px] bg-red-900 flex items-center justify-center rounded-xl'
+                   <div className=' w-full h-[280px] bg-red-900 flex items-center justify-center rounded-xl'
                      style={{
                         backgroundImage: `url('${process.env.NEXT_PUBLIC_API_URL}/${img.replace(/\\/g, '/')}')`,
                         backgroundSize: "cover",
@@ -270,8 +278,8 @@ export default function Section3() {
                         <h2 className=' text-lg font-semibold text-zinc-200 line-clamp-4'>{description}</h2>
                        
                         <Dialog>
-                        <DialogTrigger>
-                             <h2 className=' flex items-center gap-4 text-2xl font-bold italic mt-5'>READ MORE <RiArrowRightDoubleLine size={50} className=' text-secondary'/></h2>
+                       <DialogTrigger className=' bg-gradient-to-r from-orange-300 to-orange-400 rounded-md w-[200px] py-2 flex items-center justify-center'>
+                             <h2 className=' flex items-center gap-2 text-amber-950 text-lg font-bold italic'>READ MORE <RiArrowRightDoubleLine size={30} className=' text-amber-950'/></h2>
                         </DialogTrigger>
                         <DialogContent className=' text-white p-8 bg-zinc-950 border-zinc-900 w-[90%] md:w-[400px] flex flex-col items-center gap-4'>
                            <img src={`${process.env.NEXT_PUBLIC_API_URL}/${img}`} alt="image" width={500} height={500} />
@@ -308,9 +316,9 @@ export default function Section3() {
             initial='hidden'
             whileInView={'show'}
             viewport={{once:false, amount: 0.2}}
-            className=' w-full h-[500px] mt-8'>
+            className=' w-full h-[500px] mt-4'>
 
-                <div className=' w-full grid grid-cols-1 gap-6 mt-10 h-[500px]'>
+                <div className=' w-full grid grid-cols-1 gap-6  h-[500px]'>
 
                     {loading ? (
                         <div className=' w-full h-auto flex flex-col gap-4 items-center justify-center'>
@@ -350,7 +358,10 @@ export default function Section3() {
                     ):(
                         <>
                          { data.map((news, idx) =>(
-                         <div onClick={() => {setTitle(news.title); setDescription(news.description); setImg(news.banner); setId(news.newsid)}} key={idx} className={`w-full flex items-center p-3 gap-4 ${ news.newsid === id && ' bg-red-950 rounded-md'}`}>
+                         <div onClick={() => {setTitle(news.title); setDescription(news.description); setImg(news.banner); setId(news.newsid)}} key={idx} className={`w-full flex items-center py-3 px-8 gap-4 ${ news.newsid === id && ' bg-red-950 rounded-md'}`}
+                        style={{backgroundImage: "url('/v2/news/assets/Tab Small A.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                         
+                         >
                             <div className=' rounded-lg'
                             
                             >

@@ -10,6 +10,8 @@ import Section4 from "@/sections/Section4";
 import Section5 from "@/sections/Section5";
 import Socials from "@/sections/Socials";
 import Image from "next/image";
+import Maps from "@/sections/Maps";
+import About from "@/sections/About";
 
 export default function Home() {
 
@@ -56,13 +58,14 @@ export default function Home() {
     ): (
        <div className=" flex flex-col items-center overflow-x-hidden">
         <Socials/>
-        <Navbar/>
         <main>
           <Hero/>
           {/* <Section2/> */}
           <Section3/>
-          <Section4/>
-          <Section5/>
+          <Maps/>
+          <About/>
+          {/* <Section4/>
+          <Section5/> */}
           <Newsletter/>
         </main>
         <Footer/>

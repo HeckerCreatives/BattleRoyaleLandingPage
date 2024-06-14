@@ -197,16 +197,29 @@ export default function page() {
     };
 
   return (
-    <div className=' w-screen h-auto flex flex-col items-center justify-start bg-zinc-950 overscroll-x-none '>
-        <div className=' max-w-[1920px] flex flex-col items-center justify-start gap-10 w-screen h-auto pb-40 bg-zinc-900 '>
+    <div className=' w-screen h-auto flex flex-col items-center justify-start overscroll-x-none '
+    style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
+    
+    >
+        <div className=' max-w-[1920px] flex flex-col items-center justify-start gap-10 w-screen h-auto pb-40 '
+        style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
+        >
         <NavbarUser/>
-            <p className=' text-xl font-semibold text-zinc-200 w-[90%] md:w-[70%] text-start py-2 border-b-2 border-zinc-800'>Account Management</p>
+            
 
-            <div className=' w-[90%] md:w-[70%] grid-cols-1 grid lg:grid-cols-2 gap-10'>
-                <div className=' flex flex-col gap-6 bg-zinc-950 rounded-lg w-full h-auto p-4 md:p-10'>
-                    <p className=' text-lg text-zinc-200 '>User Information</p>
-
-                    <Input placeholder='Username' value={name} type='text' className=' w-[60%] md:w-[68%] bg-zinc-900 border-none text-white'/>
+            <div className=' relative w-[90%] md:w-[60%] grid-cols-1 grid xl:grid-cols-2 gap-10 h-[500px] mt-10 border-[1px] border-orange-300 rounded-lg'
+            style={{backgroundImage: "url('/pd/Tab.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+            
+            >
+                <div className=' absolute top-4 left-4 bg-gradient-to-r from-amber-950 to-[#643c0000] w-full py-2 px-4'>
+                    <h2 className=' text-white text-xl font-bold'>Account Management</h2>
+                </div>
+                <div className=' flex flex-col gap-2 rounded-lg w-full h-auto p-4 md:p-10 mt-20'
+                
+                >
+                    <p className=' text-sm text-orange-200'>Username</p>
+                    <Input placeholder='Username' value={name} type='text' className=' w-[70%] md:w-[68%] bg-zinc-900 border-none text-white'/>
+                    <p className=' text-sm text-orange-200'>Email</p>
                     <div className=' w-full flex items-center gap-4'>
                         <Input placeholder='Email' value={email} type='email' className=' w-[70%] bg-zinc-900 border-none text-white'/>
                         <Dialog>
@@ -214,7 +227,7 @@ export default function page() {
                         >
                               <button
                            
-                            className=' w-full text-sm py-2 bg-secondary rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
+                            className=' w-full text-sm py-2 bg-gradient-to-r from-orange-300 to-orange-400 rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
                             >
                                 
                             Edit</button>
@@ -254,7 +267,7 @@ export default function page() {
                         </Dialog>
                        
                     </div>
-
+                    <p className=' text-sm text-orange-200'>Password</p>
                     <div className=' w-full flex items-center gap-4'>
                         <Input placeholder='Password' value='test12345' type='password' className=' w-[70%] bg-zinc-900 border-none text-white'/>
                         <Dialog>
@@ -262,7 +275,7 @@ export default function page() {
                         >
                               <button
                            
-                            className=' h-10 w-full text-sm font-bold py-2 rounded-lg text-amber-950 hover:scale-110 ease-in-out duration-200 bg-secondary'
+                            className=' h-10 w-full text-sm font-bold py-2 rounded-lg text-amber-950 hover:scale-110 ease-in-out duration-200 bg-gradient-to-r from-orange-300 to-orange-400'
                             >
                                 
                             Edit</button>
@@ -299,13 +312,19 @@ export default function page() {
 
                       
                     </div>
+                    <p className=' text-sm text-orange-200'>Credits</p>
 
                     <div className=' w-full flex items-center gap-4'>
                         <Input placeholder='Funds' value={funds} type='text' className=' w-[70%] bg-zinc-900 border-none text-white'/>
                         <button
-                        className=' h-10 w-[30%] py-2 text-sm bg-secondary rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
+                        className=' h-10 w-[30%] py-2 text-sm bg-gradient-to-r from-orange-300 to-orange-400 rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
                         >Add</button>
                     </div>
+                </div>
+
+                <div className=' relative w-full h-[500px] xl:flex items-end justify-end hidden'>
+                    <img src="/pd/Tab Character.png" alt="" width={500} className=' relative left-20 bottom-0 md:block hidden'/>
+
                 </div>
 
             </div>
