@@ -8,7 +8,7 @@ import Navbar from './Navbar'
 
 export default function Hero() {
   return (
-    <div className=' h-[100dvh] lg:h-[screen] w-screen flex flex-col items-center justify-center text-white'
+    <div className=' h-[100dvh] lg:h-[screen] w-screen flex flex-col items-center justify-end text-white'
     style={{backgroundImage: "url('/v2/header/assets/BG B.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
     >
       <Navbar/>
@@ -56,7 +56,7 @@ export default function Hero() {
         </div>
 
         <div className='relative max-w-[1920px] w-[90%] lg:w-[78%] h-[80%] flex items-end justify-end py-20'>
-          <img src="/v2/header/assets/Character.png" alt="" width={520} className=' lg:w-[260px] xl:w-[280px] 2xl:w-[380px] absolute right-0 bottom-0 z-20 lg:block hidden' />
+          <img src="/v2/header/assets/Character.png" alt="" width={520} className=' lg:w-[280px] xl:w-[290px] 2xl:w-[380px] absolute right-0 bottom-0 z-20 lg:block hidden' />
 
           <div className=' relative h-[90%] grid grid-cols-1 lg:grid-cols-2 rounded-lg'
         style={{backgroundImage: "url('/v2/header/assets/BG A.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
@@ -70,8 +70,14 @@ export default function Hero() {
             </div> */}
 
             <div className=' flex justify-center items-center gap-2 mt-6'>
+              <a href="/download">
               <img src="/astore.png" alt="" width={200} className=' 2xl:w-[200px] w-[120px]' />
+              </a>
+
+              <a href="/download">
               <img src="/gp.png" alt="" width={200} className=' 2xl:w-[200px] w-[120px]' />
+
+              </a>
 
             </div>
           </div>
