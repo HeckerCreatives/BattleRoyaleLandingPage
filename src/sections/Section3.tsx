@@ -66,7 +66,10 @@ export default function Section3() {
      style={{backgroundImage: "url('/v2/news/assets/BG.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
     >
         <div className=' hidden max-w-[1920px] w-full lg:flex flex-row items-start justify-center text-white'>
-                     <h2 className=' text-3xl font-bold italic absolute top-14 left-24'>LATEST NEWS</h2>
+            {data.length !== 0 && (
+                <h2 className=' text-3xl font-bold italic absolute top-14 left-24'>LATEST NEWS</h2>
+
+            )}
 
                 {data.length !== 0 && (
                     <motion.div 

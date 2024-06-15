@@ -62,7 +62,11 @@ export default function Footer() {
 
                 </div>
 
-                <p className=' text-xs lg:text-sm text-zinc-300'>www.loremipsum.com</p>
+                <div className=' flex items-center gap-4'>
+                    <a href="/terms&conditions" className=' text-sm text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Terms & Conditions</a>
+                    <a href="/privacy" className=' text-sm text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Privacy Policy</a>
+
+                </div>
 
 
             </div>

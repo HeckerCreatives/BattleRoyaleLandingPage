@@ -93,7 +93,7 @@ export default function login() {
 
       </div>
 
-      <div className=' hidden 2xl:block absolute bottom-0 w-screen h-48 bg-gradient-to-t from-zinc-950 to-[#00000000]'
+      <div className=' hidden 2xl:block absolute bottom-0 w-screen h-32 bg-gradient-to-t from-zinc-950 to-[#00000000]'
       style={{backgroundImage: "url('/assets/header BG.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
       
       >
@@ -158,31 +158,34 @@ export default function login() {
     
           </div>
 
-          <div className=' hidden 2xl:flex flex-col items-center gap-6 text-xs text-white absolute bottom-6 w-[500px]'>
-            <p className=' text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <div className=' hidden 2xl:flex flex-col items-center gap-4 text-xs text-white absolute bottom-3 w-[500px]'>
+            <p className=' text-center text-xs'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
             <div className=' flex items-center gap-4 lg:gap-10'>
                     <Link href='https://web.facebook.com/'>
-                        <img src="/assets/fb.png" alt="" width={30} className=' lg:w-[30px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
+                        <img src="/assets/fb.png" alt="" width={30} className=' lg:w-[20px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
 
                      <Link href='https://discord.com/'>
-                        <img src="/assets/discord.png" alt="" width={30} className=' lg:w-[30px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
+                        <img src="/assets/discord.png" alt="" width={30} className=' lg:w-[20px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
 
                      <Link href='https://www.tiktok.com/'>
-                        <img src="/assets/tiktok.png" alt="" width={30} className=' lg:w-[30px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
+                        <img src="/assets/tiktok.png" alt="" width={30} className=' lg:w-[20px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
 
                     <Link href='https://web.telegram.org/'>
-                        <img src="/assets/telegram.png" alt="" width={30} className=' lg:w-[30px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
+                        <img src="/assets/telegram.png" alt="" width={30} className=' lg:w-[20px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
 
             </div>
 
-                <p className=' text-xs lg:text-sm text-zinc-300'>www.loremipsum.com</p>
+              
+             <div className=' flex items-center gap-4'>
+                <a href="/terms&conditions" className=' text-xs text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Terms & Conditions</a>
+                <a href="/privacy" className=' text-xs text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Privacy Policy</a>
+              </div>
           </div>
-
     </div>
   )
 }

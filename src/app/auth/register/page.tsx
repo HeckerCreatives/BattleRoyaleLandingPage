@@ -288,11 +288,11 @@ export default function login() {
 
             </div>
 
-               <div className=' flex items-center gap-4'>
-                <a href="" className=' hover:text-orange-300 ease-in-out duration-200'>Terms & Conditions</a>
-                <a href="" className=' hover:text-orange-300 ease-in-out duration-200'>Privacy Policy</a>
-
-               </div>
+              
+             <div className=' flex items-center gap-4'>
+                <a href="/terms&conditions" className=' text-xs text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Terms & Conditions</a>
+                <a href="/privacy" className=' text-xs text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Privacy Policy</a>
+              </div>
           </div>
     </div>
   )

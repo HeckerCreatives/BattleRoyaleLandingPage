@@ -1,5 +1,7 @@
+"use client"
 import NavbarUser from '@/components/NavbarUser'
 import Footer from '@/sections/Footer'
+import Navbar from '@/sections/Navbar'
 import React from 'react'
 
 export default function page() {
@@ -11,7 +13,7 @@ export default function page() {
         <div className=' max-w-[1920px] flex flex-col items-center justify-start gap-10 w-screen h-auto pb-40 '
         style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
         >
-        <NavbarUser/>
+        <Navbar/>
 
         <div className=' w-[60%] h-[500px] flex flex-col gap-6 items-center justify-center'>
             <h2 className=' text-4xl font-bold text-orange-200'>Play Game</h2>
