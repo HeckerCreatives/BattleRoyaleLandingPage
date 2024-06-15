@@ -167,19 +167,19 @@ export default function NavbarUser() {
 
             <p className=' text-xs text-zinc-300 mt-10'>Follow us :</p>
             <div className=' flex items-center gap-4'>
-                    <Link href=''>
+                    <Link href='https://web.facebook.com/'>
                         <img src="/assets/fb.png" alt="" width={25} />
                     </Link>
 
-                     <Link href=''>
+                     <Link href='https://discord.com/'>
                         <img src="/assets/discord.png" alt="" width={25} />
                     </Link>
 
-                     <Link href=''>
+                     <Link href='https://www.tiktok.com/'>
                         <img src="/assets/tiktok.png" alt="" width={25} />
                     </Link>
 
-                    <Link href=''>
+                    <Link href='https://web.telegram.org/'>
                         <img src="/assets/telegram.png" alt="" width={25} />
                     </Link>
 
