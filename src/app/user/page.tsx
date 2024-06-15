@@ -207,14 +207,14 @@ export default function page() {
         <NavbarUser/>
             
 
-            <div className=' relative w-[90%] md:w-[60%] grid-cols-1 grid xl:grid-cols-2 gap-10 h-[500px] mt-10 border-[1px] border-orange-300 rounded-lg'
+            <div className=' relative w-[90%] md:w-[60%] grid-cols-1 grid xl:grid-cols-2 gap-10 h-auto mt-10 border-[1px] border-orange-300 rounded-lg'
             style={{backgroundImage: "url('/pd/Tab.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
             
             >
                 <div className=' absolute top-4 left-4 bg-gradient-to-r from-amber-950 to-[#643c0000] w-full py-2 px-4'>
                     <h2 className=' text-white text-xl font-bold'>Account Management</h2>
                 </div>
-                <div className=' flex flex-col gap-2 rounded-lg w-full h-auto p-4 md:p-10 mt-20'
+                <div className=' flex flex-col gap-2 rounded-lg w-full h-auto p-4 md:p-10 mt-12'
                 
                 >
                     <p className=' text-sm text-orange-200'>Username</p>
@@ -316,13 +316,41 @@ export default function page() {
 
                     <div className=' w-full flex items-center gap-4'>
                         <Input placeholder='Funds' value={funds} type='text' className=' w-[70%] bg-zinc-900 border-none text-white'/>
-                        <button
-                        className=' h-10 w-[30%] py-2 text-sm bg-gradient-to-r from-orange-300 to-orange-400 rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
-                        >Add</button>
+                        
+                        <Dialog>
+                        <DialogTrigger className=' w-[30%]'>
+                            <button
+                            className=' h-10 w-full py-2 text-sm bg-gradient-to-r from-orange-300 to-orange-400 rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
+                            >Add</button>
+                        </DialogTrigger>
+                        <DialogContent className=' flex items-center justify-center w-[90%] md:w-[400px] h-[300px] bg-zinc-950 border-zinc-900'>
+                           <p className=' text-white'>Coming Soon!</p>
+                        </DialogContent>
+                        </Dialog>
+                    </div>
+
+                    <div className=' w-full grid grid-cols-3 gap-4 mt-4'>
+                        <div className=' bg-zinc-950 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
+                            <h2 className=' text-xl font-bold text-orange-300'>0</h2>
+                            <p className=' text-sm text-zinc-400'>Total Kills</p>
+
+                        </div>
+
+                         <div className=' bg-zinc-950 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
+                            <h2 className=' text-xl font-bold text-orange-300'>0</h2>
+                            <p className=' text-sm text-zinc-400'>Total Deaths</p>
+
+                        </div>
+
+                         <div className=' bg-zinc-950 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
+                            <h2 className=' text-xl font-bold text-orange-300'>0</h2>
+                            <p className=' text-sm text-zinc-400'>Current Rank</p>
+
+                        </div>
                     </div>
                 </div>
 
-                <div className=' relative w-full h-[500px] xl:flex items-end justify-end hidden'>
+                <div className=' relative w-full h-full xl:flex items-end justify-end hidden'>
                     <img src="/pd/Tab Character.png" alt="" width={500} className=' relative left-20 bottom-0 md:block hidden'/>
 
                 </div>
