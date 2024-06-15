@@ -11,7 +11,7 @@ export default function page() {
     style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
     
     >
-        <div className=' max-w-[1920px] flex flex-col items-center justify-center gap-10 w-screen h-screen '
+        <div className=' max-w-[1920px] flex flex-col items-center justify-start gap-10 w-screen h-auto pb-20 '
         style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
         >
         <Navbar/>
