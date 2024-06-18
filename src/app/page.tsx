@@ -43,9 +43,9 @@ export default function Home() {
       style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
       
       >
-        <div className=" relative flex flex-col items-center w-[300px] h-[300px]">
-          <img src="/pd/Tab Character.png" alt="" width={150} />
-          <div className=" loader2 text-orange-300">
+        <div className=" relative flex flex-col items-center justify-center w-auto h-auto">
+          <img src="/pd/Tab Character.png" alt="" width={120} />
+          <div className=" loader2 text-orange-300 mt-2">
         
         </div>
         </div>

@@ -519,21 +519,22 @@ export default function login() {
             <p className=' text-center text-xs'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
             <div className=' flex items-center gap-4 lg:gap-10'>
-                    <Link href='https://web.facebook.com/'>
-                        <img src="/assets/fb.png" alt="" width={30} className=' lg:w-[20px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
+                     <Link href='https://web.facebook.com/'>
+                        <img src="/v2/header/assets/FB.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
 
                      <Link href='https://discord.com/'>
-                        <img src="/assets/discord.png" alt="" width={30} className=' lg:w-[20px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
+                        <img src="/v2/header/assets/Discord.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
 
                      <Link href='https://www.tiktok.com/'>
-                        <img src="/assets/tiktok.png" alt="" width={30} className=' lg:w-[20px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
+                        <img src="/v2/header/assets/Tiktok.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
 
                     <Link href='https://web.telegram.org/'>
-                        <img src="/assets/telegram.png" alt="" width={30} className=' lg:w-[20px] w-[20px] hover:scale-110 ease-in-out duration-300'/>
+                        <img src="/v2/header/assets/Telegram.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
+
 
             </div>
 

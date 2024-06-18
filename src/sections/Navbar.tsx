@@ -408,7 +408,6 @@ export default function Navbar() {
           </div>
         </SheetTrigger>
         <SheetContent className=' border-none p-0 m-0'
-         style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
 
         >
           <div className=' absolute flex flex-col items-center justify-start py-10 gap-5 top-0 w-full h-full bg-opacity-80'
@@ -424,8 +423,8 @@ export default function Navbar() {
                         <img src="/assets/logo 06 B.png" alt="" width={50} className=' hover:scale-110 ease-in-out duration-200' />
                     </div>
                     <div className=' flex flex-col items-start justify-start'>
-                        <p className=' text-sm font-semibold'>{name}</p>
-                        <p className=' text-xs'>Lorem Ipsum</p>
+                        <p className=' text-sm font-semibold text-orange-200'>{name}</p>
+                        <p className=' text-[.6em]'>Lorem Ipsum</p>
 
                     </div>
                   </PopoverTrigger>
@@ -438,12 +437,12 @@ export default function Navbar() {
               )}
 
             <div className=' flex flex-col items-center justify-center gap-4'>
-                <Link href='/' className=' lg:text-sm text-orange-100 font-bold '>HOME</Link>
+                <Link href='/' className=' text-xs md:text-sm text-orange-100 font-bold '>HOME</Link>
                
-                <Link href='/#news' className=' lg:text-sm text-orange-100 font-bold '>NEWS</Link>
-                <Link href='/#maps' className=' lg:text-sm text-orange-100 font-bold '>MAPS</Link>
-                <Link href='/#about' className=' lg:text-sm text-orange-100 font-bold '>ABOUT</Link>
-                <Link href='/#newsletter' className=' lg:text-sm text-orange-100 font-bold '>NEWSLETTER</Link>
+                <Link href='/#news' className=' text-xs md:text-sm text-orange-100 font-bold '>NEWS</Link>
+                <Link href='/#maps' className=' text-xs md:text-sm text-orange-100 font-bold '>MAPS</Link>
+                <Link href='/#about' className=' text-xs md:text-sm text-orange-100 font-bold '>ABOUT</Link>
+                <Link href='/#newsletter' className=' text-xs md:text-sm text-orange-100 font-bold '>NEWSLETTER</Link>
             </div>
 
 
@@ -461,21 +460,22 @@ export default function Navbar() {
 
             <p className=' text-xs text-zinc-300 mt-10'>Follow us :</p>
             <div className=' flex items-center gap-4'>
-                    <Link href=''>
-                        <img src="/assets/fb.png" alt="" width={25} />
+                   <Link href='https://web.facebook.com/'>
+                        <img src="/v2/header/assets/FB.png" alt="" width={30} className=' w-[40px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
 
-                     <Link href=''>
-                        <img src="/assets/discord.png" alt="" width={25} />
+                     <Link href='https://discord.com/'>
+                        <img src="/v2/header/assets/Discord.png" alt="" width={30} className=' w-[40px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
 
-                     <Link href=''>
-                        <img src="/assets/tiktok.png" alt="" width={25} />
+                     <Link href='https://www.tiktok.com/'>
+                        <img src="/v2/header/assets/Tiktok.png" alt="" width={30} className=' w-[40px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
 
-                    <Link href=''>
-                        <img src="/assets/telegram.png" alt="" width={25} />
+                    <Link href='https://web.telegram.org/'>
+                        <img src="/v2/header/assets/Telegram.png" alt="" width={30} className=' w-[40px] hover:scale-110 ease-in-out duration-300'/>
                     </Link>
+
 
             </div>
 
