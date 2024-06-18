@@ -368,7 +368,7 @@ export default function Section3() {
                     ):(
                         <>
                          { data.map((news, idx) =>(
-                         <div onClick={() => {setTitle(news.title); setDescription(news.description); setImg(news.banner); setId(news.newsid)}} key={idx} className={`w-full flex items-center py-3 px-8 h-auto gap-4 border-4 border-orange-300 rounded-md ${ news.newsid === id && ' bg-red-950 rounded-md'}`}
+                         <div onClick={() => {setTitle(news.title); setDescription(news.description); setImg(news.banner); setId(news.newsid)}} key={idx} className={`w-full flex items-center py-3 px-8 h-[120px] gap-4 border-4 border-orange-300 rounded-md ${ news.newsid === id && ' bg-red-950 rounded-md'}`}
                         style={{backgroundImage: "url('/v2/news/assets/Tab Small A.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                          
                          >
