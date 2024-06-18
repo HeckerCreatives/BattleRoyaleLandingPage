@@ -393,3 +393,24 @@ body {
     transform: translateY(-100%)
   }
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffe2a5;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffa93a;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ff9812;
+}
