@@ -16,7 +16,7 @@ export default function page() {
         >
         <Navbar/>
 
-        <div className=' w-[80%] md:w-[50%] h-[500px] flex flex-col gap-6 items-center justify-center mt-5'>
+        <div className=' w-[80%] md:w-[50%] h-[500px] flex flex-col gap-6 items-center justify-center mt-20 lg:mt-5'>
             <h2 className=' text-2xl 2xl:text-4xl font-bold text-orange-200 text-center'>Terms and Conditions for Rise of Fearless: A Battle Royale Game</h2>
 
             <div className=' w-full flex flex-col gap-4 h-[400px] overflow-y-auto'>
