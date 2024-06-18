@@ -109,41 +109,41 @@ export default function Maps() {
 
                 <div className=' flex items-center justify-center gap-4 w-full md:mt-6 mt-4'>
                     { current === 1 ? (
-                         <div className=' md:h-6 md:w-6 w-4 h-4 rounded-full bg-orange-400'>
+                         <div className=' w-4 h-4 rounded-full bg-orange-400'>
 
                         </div>
                     ): (
-                        <div className=' md:h-5 md:w-5 w-3 h-3 rounded-full bg-orange-200'>
+                        <div className=' w-3 h-3 rounded-full bg-orange-200'>
 
                         </div>
                     )}
 
                     { current === 2 ? (
-                          <div className=' md:h-6 md:w-6 w-4 h-4 rounded-full bg-orange-400'>
+                          <div className=' w-4 h-4 rounded-full bg-orange-400'>
 
                         </div>
                     ): (
-                       <div className=' md:h-5 md:w-5 w-3 h-3 rounded-full bg-orange-200'>
+                       <div className=' w-3 h-3 rounded-full bg-orange-200'>
 
                         </div>
                     )}
 
                     { current === 3 ? (
-                          <div className=' md:h-6 md:w-6 w-4 h-4 rounded-full bg-orange-400'>
+                          <div className=' w-4 h-4 rounded-full bg-orange-400'>
 
                         </div>
                     ): (
-                        <div className=' md:h-5 md:w-5 w-3 h-3 rounded-full bg-orange-200'>
+                        <div className=' w-3 h-3 rounded-full bg-orange-200'>
 
                         </div>
                     )}
 
                     { current === 4 ? (
-                          <div className=' md:h-6 md:w-6 w-4 h-4 rounded-full bg-orange-400'>
+                          <div className=' w-4 h-4 rounded-full bg-orange-400'>
 
                         </div>
                     ): (
-                          <div className=' md:h-5 md:w-5 w-3 h-3 rounded-full bg-orange-200'>
+                          <div className=' w-3 h-3 rounded-full bg-orange-200'>
 
                         </div>
                     )}
