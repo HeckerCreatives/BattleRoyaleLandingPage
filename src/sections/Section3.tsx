@@ -103,7 +103,9 @@ export default function Section3() {
                         <DialogTrigger className=' bg-gradient-to-r from-orange-300 to-orange-400 rounded-md w-[200px] py-2 flex items-center justify-center'>
                              <h2 className=' flex items-center gap-2 text-amber-950 text-lg font-bold italic'>READ MORE <RiArrowRightDoubleLine size={30} className=' text-amber-950'/></h2>
                         </DialogTrigger>
-                        <DialogContent className=' text-white p-10 bg-zinc-950 border-zinc-900 w-[80%] h-[80%] flex flex-col items-center gap-4'>
+                        <DialogContent className=' text-white p-10 bg-zinc-950 border-4 border-orange-300 rounded-md w-[80%] h-[80%] flex flex-col items-center gap-4'
+                        style={{backgroundImage: "url('/v2/news/Tab Big.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                        >
                             <div className=' w-full h-[40%] rounded-md' 
                              style={{
                                 backgroundImage: `url('${process.env.NEXT_PUBLIC_API_URL}/${img.replace(/\\/g, '/')}')`,
@@ -284,7 +286,10 @@ export default function Section3() {
                        <DialogTrigger className=' bg-gradient-to-r from-orange-300 to-orange-400 rounded-md w-[200px] py-2 flex items-center justify-center'>
                              <h2 className=' flex items-center gap-2 text-amber-950 text-lg font-bold italic'>READ MORE <RiArrowRightDoubleLine size={30} className=' text-amber-950'/></h2>
                         </DialogTrigger>
-                        <DialogContent className=' text-white p-8 bg-zinc-950 border-zinc-900 w-[90%] md:w-[400px] flex flex-col items-center gap-4'>
+                        <DialogContent className=' text-white p-8 bg-zinc-950 rounded-md w-[90%] md:w-[400px] flex flex-col items-center gap-4 border-4 border-orange-300'
+                        style={{backgroundImage: "url('/v2/news/Tab Big.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                        
+                        >
                            <img src={`${process.env.NEXT_PUBLIC_API_URL}/${img}`} alt="image" width={500} height={500} />
                            <div className=' w-full'>
                             <p className=' text-secondary text-lg font-semibold'>{title}</p>

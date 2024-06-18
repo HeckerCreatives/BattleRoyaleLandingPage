@@ -412,7 +412,7 @@ export default function Navbar() {
 
         >
           <div className=' absolute flex flex-col items-center justify-start py-10 gap-5 top-0 w-full h-full bg-opacity-80'
-         style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
+         style={{backgroundImage: "url('/Left Rectangular.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
           
           >
             <img src="/assets/logo 06 B.png" alt="" width={90} className=' hover:scale-110 ease-in-out duration-200' />

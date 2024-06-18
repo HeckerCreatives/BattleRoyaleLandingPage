@@ -30,7 +30,10 @@ export default function About() {
                 <img src="/v2/about/Play Button.png" alt="" className=' hover:scale-110 ease-in-out duration-300' />
               </button>
             </DialogTrigger>
-            <DialogContent className=' text-white aspect-video p-4 bg-zinc-950 border-zinc-900 flex flex-col items-center gap-4'>
+            <DialogContent className=' text-white aspect-video p-4 bg-zinc-950 border-zinc-900 flex flex-col items-center gap-4'
+            style={{backgroundImage: "url('/v2/news/Tab Big.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+            
+            >
               <iframe className=' z-50 w-full h-full' src="https://www.youtube.com/embed/He-jKBESg9I?si=hDspTGvkSUsfHzss" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </DialogContent>
             </Dialog>
