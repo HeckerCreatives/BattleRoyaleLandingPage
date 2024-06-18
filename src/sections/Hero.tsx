@@ -55,13 +55,13 @@ export default function Hero() {
 
         </div>
 
-        <div className='relative max-w-[1920px] w-[90%] lg:w-[78%] h-[80%] flex items-end justify-end py-20'>
+        <div className='relative max-w-[1920px] w-[90%] lg:w-[78%] h-full flex items-end justify-end py-20'>
           <img src="/v2/header/assets/Character.png" alt="" width={520} className=' lg:w-[280px] xl:w-[290px] 2xl:w-[380px] absolute right-0 bottom-0 z-20 lg:block hidden' />
 
           <div className=' relative h-[90%] grid grid-cols-1 lg:grid-cols-2 rounded-lg'
         style={{backgroundImage: "url('/v2/header/assets/BG A.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
         >
-          <div className=' flex flex-col justify-center md:p-14 p-4'>
+          <div className=' relative z-20 flex flex-col justify-center md:p-14 p-8'>
             <h2 className=' text-2xl 2xl:text-6xl font-bold'>LOREM IPSUM</h2>
             <p className=' text-sm 2xl:text-lg text-orange-100 font-semibold mt-4'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
@@ -89,8 +89,7 @@ export default function Hero() {
           </div>
         </div>
 
-        
-       
+        {/* <img src="/v2/header/assets/Character.png" alt="" width={200} className=' w-[220px] md:w-[300px] absolute bottom-0 right-4 lg:hidden block' /> */}
 
     </div>
   )
