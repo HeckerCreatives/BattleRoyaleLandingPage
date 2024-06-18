@@ -397,12 +397,13 @@ body {
 /* width */
 ::-webkit-scrollbar {
   width: 4px;
-  height: 20px;
+  height: 10px;
+  border-radius: 10rem;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #ffe2a5;
+  background: #ffe2a500;
 }
 
 /* Handle */
