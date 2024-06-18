@@ -77,7 +77,7 @@ export default function Section3() {
                     initial='hidden'
                     whileInView={'show'}
                     viewport={{once:false, amount: 0.2}}
-                    className=' flex flex-col items-start gap-2 lg:w-[60%] xl:w-[50%] h-full bg-red-500'>
+                    className=' flex flex-col items-start gap-2 lg:w-[60%] xl:w-[50%] h-full'>
                     <div className=' grid place-items-center grid-cols-2 rounded-lg  w-full p-6 border-4 h-full border-orange-300'
                     style={{backgroundImage: "url('/v2/news/assets/Tab Big.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                     >
@@ -200,7 +200,7 @@ export default function Section3() {
                                                 setId(news.newsid); 
                                             }} 
                                             key={idx} 
-                                            className={`w-full flex items-center gap-4 h-[150px] lg:h-[120px] xl:h-[140px] 2xl:h-[170px] px-6 border-4 border-orange-300 ${news.newsid === id ? ' rounded-md h-[160px] ' : ''}`}
+                                            className={`w-full flex items-center gap-4 h-[150px] lg:h-[120px] xl:h-[140px] 2xl:h-[170px] px-6 border-4 border-orange-300 rounded-md ${news.newsid === id ? ' rounded-md h-[160px] ' : ''}`}
 
                                             style={{backgroundImage: "url('/v2/news/assets/Tab Small A.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
 
