@@ -39,21 +39,17 @@ export default function Home() {
   return (
     <>
     { loading ? (
-      <div className=" w-screen h-screen flex items-center justify-center bg-zinc-950">
-       <div className="loader w-40 h-40">
-                              <div className="bar1"></div>
-                              <div className="bar2"></div>
-                              <div className="bar3"></div>
-                              <div className="bar4"></div>
-                              <div className="bar5"></div>
-                              <div className="bar6"></div>
-                              <div className="bar7"></div>
-                              <div className="bar8"></div>
-                              <div className="bar9"></div>
-                              <div className="bar10"></div>
-                              <div className="bar11"></div>
-                              <div className="bar12"></div>
-                          </div>
+      <div className=" w-screen h-screen flex items-center justify-center bg-zinc-950"
+      style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
+      
+      >
+        <div className=" relative flex flex-col items-center w-[300px] h-[300px]">
+          <img src="/pd/Tab Character.png" alt="" width={150} />
+          <div className=" loader2 text-orange-300">
+        
+        </div>
+        </div>
+       
       </div>
     ): (
        <div className=" flex flex-col items-center overflow-x-hidden">

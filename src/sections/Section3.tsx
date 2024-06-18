@@ -65,7 +65,7 @@ export default function Section3() {
     <div id='news' className=' relative z-30 w-screen flex items-start justify-center h-auto md:py-40 py-20'
      style={{backgroundImage: "url('/v2/news/assets/BG.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
     >
-        <div className=' hidden max-w-[1920px] w-full lg:flex flex-row items-start justify-center text-white'>
+        <div className=' hidden max-w-[1920px] w-full lg:flex flex-row gap-4 h-[500px] items-center justify-center text-white'>
             {data.length !== 0 && (
                 <h2 className=' text-3xl font-bold italic absolute top-14 left-24'>LATEST NEWS</h2>
 
@@ -77,9 +77,9 @@ export default function Section3() {
                     initial='hidden'
                     whileInView={'show'}
                     viewport={{once:false, amount: 0.2}}
-                    className=' flex flex-col gap-2 p-6 lg:w-[60%] xl:w-[50%] h-auto'>
-                    <div className=' grid place-items-center grid-cols-2 rounded-lg h-[550px] p-6'
-                    style={{backgroundImage: "url('/v2/news/assets/Tab Big.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                    className=' flex flex-col items-start gap-2 lg:w-[60%] xl:w-[50%] h-full bg-red-500'>
+                    <div className=' grid place-items-center grid-cols-2 rounded-lg  w-full p-6 border-4 h-full border-orange-300'
+                    style={{backgroundImage: "url('/v2/news/assets/Tab Big.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                     >
 
                     <div className=' w-[90%] h-[400px] lg:h-[280px] bg-red-900 flex items-center justify-center rounded-xl'
@@ -147,9 +147,9 @@ export default function Section3() {
                     initial='hidden'
                     whileInView={'show'}
                     viewport={{once:false, amount: 0.2}}
-                    className=' w-[30%] h-[500px] lg:mt-24 xl:mt-20 2xl:mt-8'>
+                    className=' flex flex-col gap-4 items-center w-[30%] h-full '>
 
-                        <div className=' w-full grid grid-cols-1 gap-6 h-[500px]'>
+                        <div className=' w-full grid grid-cols-1 gap-6 h-full'>
 
                             {loading ? (
                                 <>
@@ -187,7 +187,7 @@ export default function Section3() {
                                 </div>
                                 </>
                             ):(
-                                <div className=' flex flex-col items-start justify-start lg:h-[450px] xl:h-[480px] 2xl:h-[520px]'>
+                                <div className=' flex flex-col gap-4 items-start justify-start lg:h-[400px] xl:h-[450px] 2xl:h-[500px]'>
                                 { data.map((news, idx) => {
                                     const imageUrl = `${process.env.NEXT_PUBLIC_API_URL}/${news.banner.replace(/\\/g, '/')}`;
                                   
@@ -200,9 +200,9 @@ export default function Section3() {
                                                 setId(news.newsid); 
                                             }} 
                                             key={idx} 
-                                            className={`w-full flex items-center gap-4 h-[150px] lg:h-[120px] xl:h-[140px] 2xl:h-[170px] px-6 ${news.newsid === id ? ' rounded-md h-[160px] ' : ''}`}
+                                            className={`w-full flex items-center gap-4 h-[150px] lg:h-[120px] xl:h-[140px] 2xl:h-[170px] px-6 border-4 border-orange-300 ${news.newsid === id ? ' rounded-md h-[160px] ' : ''}`}
 
-                                            style={{backgroundImage: "url('/v2/news/assets/Tab Small A.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                                            style={{backgroundImage: "url('/v2/news/assets/Tab Small A.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
 
                                             >
                                             <div className='rounded-lg'>
@@ -231,7 +231,11 @@ export default function Section3() {
                                 </div>
                             )}
 
-                            <div className={` ${ totalpages === 1 ? 'hidden' : 'flex items-center justify-center gap-4 mt-4'}`}>
+                          
+                            
+                        </div>
+
+                          <div className={` ${ totalpages === 1 ? 'hidden' : 'flex items-center justify-center gap-4'}`}>
                                     <button 
                                     onClick={() => setCurrentpage( currentpage - 1)}
                                     disabled={loading ? true : currentpage === 0} 
@@ -243,8 +247,6 @@ export default function Section3() {
                                     className=' text-secondary'><MdOutlineKeyboardArrowRight size={40}/></button>
 
                             </div>
-                            
-                        </div>
                     </motion.div>
                 )}
 
@@ -262,12 +264,12 @@ export default function Section3() {
             viewport={{once:false, amount: 0.2}}
             className=' flex flex-col gap-2 w-full h-auto'>
                 <h2 className=' text-3xl font-bold italic'>LATEST NEWS</h2>
-                <div className=' grid place-items-center grid-cols-1 rounded-lg h-auto p-8 mt-6'
+                <div className=' grid place-items-center grid-cols-1 rounded-lg h-auto p-8 mt-6 border-4 border-orange-300'
                 style={{backgroundImage: "url('/v2/news/assets/Tab Big.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                 
                 >
 
-                   <div className=' w-full h-[280px] bg-red-900 flex items-center justify-center rounded-xl'
+                   <div className=' w-full h-[220px] bg-red-900 flex items-center justify-center rounded-xl'
                      style={{
                         backgroundImage: `url('${process.env.NEXT_PUBLIC_API_URL}/${img.replace(/\\/g, '/')}')`,
                         backgroundSize: "cover",
@@ -324,9 +326,9 @@ export default function Section3() {
             initial='hidden'
             whileInView={'show'}
             viewport={{once:false, amount: 0.2}}
-            className=' w-full h-[500px] mt-4'>
+            className=' w-full h-[450px] mt-4'>
 
-                <div className=' w-full grid grid-cols-1 gap-6  h-[500px]'>
+                <div className=' w-full grid grid-cols-1 gap-2  h-[450px]'>
 
                     {loading ? (
                         <div className=' w-full h-auto flex flex-col gap-4 items-center justify-center'>
@@ -366,7 +368,7 @@ export default function Section3() {
                     ):(
                         <>
                          { data.map((news, idx) =>(
-                         <div onClick={() => {setTitle(news.title); setDescription(news.description); setImg(news.banner); setId(news.newsid)}} key={idx} className={`w-full flex items-center py-3 px-8 gap-4 ${ news.newsid === id && ' bg-red-950 rounded-md'}`}
+                         <div onClick={() => {setTitle(news.title); setDescription(news.description); setImg(news.banner); setId(news.newsid)}} key={idx} className={`w-full flex items-center py-3 px-8 h-auto gap-4 border-4 border-orange-300 rounded-md ${ news.newsid === id && ' bg-red-950 rounded-md'}`}
                         style={{backgroundImage: "url('/v2/news/assets/Tab Small A.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                          
                          >
@@ -377,7 +379,7 @@ export default function Section3() {
                                 </div>
                                 <div className=' flex flex-col gap-1 w-[70%]'>
                                     <p className='text-lg font-semibold line-clamp-2'>{news.title}</p>
-                                    <p className=' text-sm text-zinc-100 line-clamp-3'>{news.description}</p>
+                                    <p className=' text-sm text-zinc-100 line-clamp-2'>{news.description}</p>
                                 </div>
                                 
 

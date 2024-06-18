@@ -14,27 +14,27 @@ export default function Footer() {
 
                 <div className=' flex md:flex-row flex-col items-center gap-4 lg:gap-6 text-white'>
 
-                    <a href='/' className=' text-xs md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
+                    <a href='/' className=' text-[.6em] md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
                     style={{backgroundImage: "url('/pd/Button A.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                     
                     >HOME</a>
 
-                     <a href='/#news' className=' text-xs md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
+                     <a href='/#news' className=' text-[.6em] md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
                     style={{backgroundImage: "url('/pd/Button B.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                     
                     >NEWS</a>
 
-                    <a href='/#maps' className=' text-xs md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
+                    <a href='/#maps' className=' text-[.6em] md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
                     style={{backgroundImage: "url('/pd/Button B.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                     
                     >MAPS</a>
 
-                     <a href='/#newsletter' className=' text-xs md:text-xs font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
+                     <a href='/#newsletter' className=' text-[.6em] md:text-xs font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
                     style={{backgroundImage: "url('/pd/Button B.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                     
                     >NEWSLETTER</a>
 
-                     <a href='/#about' className=' text-xs md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
+                     <a href='/#about' className=' text-[.6em] md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
                     style={{backgroundImage: "url('/pd/Button C.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                     
                     >ABOUT</a>

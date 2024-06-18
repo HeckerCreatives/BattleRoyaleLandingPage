@@ -232,7 +232,10 @@ export default function page() {
                                 
                             Edit</button>
                         </DialogTrigger>
-                        <DialogContent className=' w-[95%] md:w-[70%] lg:w-[50%] bg-zinc-950 border-none p-6'>
+                        <DialogContent className=' w-[95%] md:w-[70%] lg:w-[50%] bg-zinc-950 border-none p-6'
+                        style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
+                        
+                        >
                             <h2 className=' text-lg font-semibold text-secondary'>Change Email</h2>
                             <p className=' text-sm text-white'>New Email</p>
                            <Input placeholder='Enter your new email' value={newemail} onChange={(e) => setNewemail(e.target.value)} type='email' required className=' w-full bg-zinc-900 border-none text-white'/>
@@ -280,7 +283,10 @@ export default function page() {
                                 
                             Edit</button>
                         </DialogTrigger>
-                        <DialogContent className=' bg-zinc-950 border-none p-6 w-[95%] md:w-[70%] lg:w-[50%]'>
+                        <DialogContent className=' bg-zinc-950 border-none p-6 w-[95%] md:w-[70%] lg:w-[50%]'
+                        style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
+                        
+                        >
                             <h2 className=' text-lg font-semibold text-secondary'>Change Password</h2>
                             <p className=' text-sm text-white'>New Password</p>
                            <Input placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} type='password' className=' w-full bg-zinc-900 border-none text-white'/>
@@ -323,7 +329,9 @@ export default function page() {
                             className=' h-10 w-full py-2 text-sm bg-gradient-to-r from-orange-300 to-orange-400 rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
                             >Add</button>
                         </DialogTrigger>
-                        <DialogContent className=' flex items-center justify-center w-[90%] md:w-[400px] h-[300px] bg-zinc-950 border-zinc-900'>
+                        <DialogContent className=' flex items-center justify-center w-[90%] md:w-[400px] h-[300px] bg-zinc-950 border-zinc-900'
+                        style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
+                        >
                            <p className=' text-white'>Coming Soon!</p>
                         </DialogContent>
                         </Dialog>
@@ -332,19 +340,19 @@ export default function page() {
                     <div className=' w-full grid grid-cols-3 gap-4 mt-4'>
                         <div className=' bg-zinc-950 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
                             <h2 className=' text-xl font-bold text-orange-300'>0</h2>
-                            <p className=' text-sm text-zinc-400'>Total Kills</p>
+                            <p className=' text-sm text-zinc-400 h-10 text-center'>Total Kills</p>
 
                         </div>
 
                          <div className=' bg-zinc-950 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
                             <h2 className=' text-xl font-bold text-orange-300'>0</h2>
-                            <p className=' text-sm text-zinc-400'>Total Deaths</p>
+                            <p className=' text-sm text-zinc-400 h-10 text-center'>Total Deaths</p>
 
                         </div>
 
                          <div className=' bg-zinc-950 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
                             <h2 className=' text-xl font-bold text-orange-300'>0</h2>
-                            <p className=' text-sm text-zinc-400'>Current Rank</p>
+                            <p className=' text-sm text-zinc-400 h-10 text-center'>Current Rank</p>
 
                         </div>
                     </div>
