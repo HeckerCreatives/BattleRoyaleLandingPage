@@ -63,7 +63,7 @@ export default function Maps() {
              <div className=' w-full flex flex-col'>
                 <Carousel className=' w-full' setApi={setApi}>
                     <CarouselContent>
-                        <CarouselItem className=' w-full'>
+                        <CarouselItem className=' w-full cursor-pointer'>
                             <div className=' relative flex flex-col gap-5 w-full md:h-[400px] h-[250px] rounded-xl p-6 text-white'
                                 style={{backgroundImage: "url('/v2/stage/assets/Tab A.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                             >
@@ -72,7 +72,7 @@ export default function Maps() {
 
                         </CarouselItem>
 
-                        <CarouselItem>
+                        <CarouselItem className=' cursor-pointer'>
                             <div className=' relative flex flex-col gap-5 w-full last:md:h-[400px] h-[250px] rounded-xl p-6 text-white'
                                 style={{backgroundImage: "url('/v2/stage/assets/Tab B.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                             >
@@ -81,7 +81,7 @@ export default function Maps() {
                             
                         </CarouselItem>
 
-                        <CarouselItem>
+                        <CarouselItem className=' cursor-pointer'>
                             <div className=' relative flex flex-col gap-5 w-full md:h-[400px] h-[250px] rounded-xl p-6 text-white'
                                 style={{backgroundImage: "url('/v2/stage/assets/Tab C.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                             >
@@ -90,7 +90,7 @@ export default function Maps() {
                             
                         </CarouselItem>
 
-                        <CarouselItem>
+                        <CarouselItem className=' cursor-pointer'>
                             <div className=' relative flex flex-col gap-5 w-full md:h-[400px] h-[250px] rounded-xl p-6 text-white'
                                 style={{backgroundImage: "url('/v2/stage/assets/Tab D.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                             >

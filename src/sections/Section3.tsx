@@ -200,7 +200,7 @@ export default function Section3() {
                                                 setId(news.newsid); 
                                             }} 
                                             key={idx} 
-                                            className={`w-full flex items-center gap-4 h-[150px] lg:h-[120px] xl:h-[140px] 2xl:h-[170px] px-6 border-4 border-orange-300 rounded-md ${news.newsid === id ? ' rounded-md h-[160px] ' : ''}`}
+                                            className={`w-full flex items-center gap-4 h-[150px] lg:h-[120px] xl:h-[140px] 2xl:h-[170px] px-6 border-4 border-orange-300 rounded-md cursor-pointer ${news.newsid === id ? ' rounded-md h-[160px] ' : ''}`}
 
                                             style={{backgroundImage: "url('/v2/news/assets/Tab Small A.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
 
@@ -239,12 +239,12 @@ export default function Section3() {
                                     <button 
                                     onClick={() => setCurrentpage( currentpage - 1)}
                                     disabled={loading ? true : currentpage === 0} 
-                                    className=' text-secondary'><MdOutlineKeyboardArrowLeft size={40}/></button>
+                                    className=' text-secondary cursor-pointer'><MdOutlineKeyboardArrowLeft size={40}/></button>
                                     <p className=' text-lg font-bold bg-zinc-950 px-4 py-2 text-center  rounded-md'>{currentpage + 1}</p>
                                     <button
                                     onClick={() => setCurrentpage(currentpage + 1)}
                                     disabled={ loading ? true :  currentpage + 1 === totalpages}
-                                    className=' text-secondary'><MdOutlineKeyboardArrowRight size={40}/></button>
+                                    className=' text-secondary cursor-pointer'><MdOutlineKeyboardArrowRight size={40}/></button>
 
                             </div>
                     </motion.div>

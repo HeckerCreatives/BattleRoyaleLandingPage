@@ -110,10 +110,10 @@ export default function login() {
         
         >
 
-          <div onClick={back} className=' absolute top-8 left-8 bg-orange-300 rounded-md px-2 py-1 text-amber-950 flex items-center justify-center gap-2 hover:scale-110 ease-in-out duration-200'>
+          <button onClick={back} className=' absolute top-8 left-8 bg-orange-300 rounded-md px-2 py-1 text-amber-950 flex items-center justify-center gap-2 hover:scale-110 ease-in-out duration-200'>
             <IoMdArrowBack size={15}/>
             <p className=' text-xs cursor-default'>Back</p>
-          </div>
+          </button>
 
           <div className=' w-full flex flex-col items-start gap-4 mt-4 p-8'>
 
