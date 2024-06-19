@@ -482,7 +482,7 @@ export default function login() {
                               <div className="bar12 bg-zinc-950"></div>
                           </div>
                         )}
-                          Log In</button>
+                          Sign up</button>
 
                          {errors && errors.username && (
                             <span className=" text-red-400 text-xs">{errors.username}</span>
