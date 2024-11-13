@@ -21,6 +21,13 @@ interface Error {
  
 
 }
+interface PlayerDetails {
+    kill: number;
+    death: number;
+    level: number;
+    xp: number;
+  }
+
 
 
 export default function page() {
@@ -36,7 +43,13 @@ export default function page() {
   const [newemail, setNewemail] = useState('')
   const [isFormValid, setIsFormValid] = useState(false); 
     const [errors, setErrors] = useState<Error | null>( null);
-
+    const [rank, setRank] = useState(0); 
+    const [playerDetails, setPlayerDetails] = useState<PlayerDetails>({
+      kill: 0,
+      death: 0,
+      level: 0,
+      xp: 0,
+    })
 
     {/*Player Data*/}
     useEffect(() => {
@@ -52,7 +65,6 @@ export default function page() {
                 setEmail(response.data.data.email)
                 setCountry(response.data.data.country)
                 setFunds(response.data.data.funds)
-                console.log(response.data)
             } catch (error) {
                  if (axios.isAxiosError(error)) {
                     const axiosError = error as AxiosError;
@@ -71,6 +83,68 @@ export default function page() {
         playerData()
 
     },[])
+    
+    useEffect(() => {
+        const playerDetailsData = async () => {
+            try {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/usergamedetails/getusergamedetails`, {
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                setPlayerDetails({
+                    kill: response.data.data.kill as number,
+                    death: response.data.data.death as number,
+                    level: response.data.data.level as number,
+                    xp: response.data.data.xp as number,
+                });
+            } catch (error) {
+                if (axios.isAxiosError(error)) {
+                    const axiosError = error as AxiosError;
+                    if (axiosError.response && axiosError.response.status === 401) {
+                        localStorage.setItem('auth', 'false');
+                        router.push('/');
+                        toast({
+                            variant: "destructive",
+                            title: "Unauthorized",
+                        });
+                    }
+                } 
+            }
+        };
+
+         playerDetailsData();
+ 
+    }, []); 
+    useEffect(() => {
+        const rankData = async () => {
+            try {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/leaderboard/getleaderboard`, {
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                setRank(response.data.rank as number);
+            } catch (error) {
+                if (axios.isAxiosError(error)) {
+                    const axiosError = error as AxiosError;
+                    if (axiosError.response && axiosError.response.status === 401) {
+                        localStorage.setItem('auth', 'false');
+                        router.push('/');
+                        toast({
+                            variant: "destructive",
+                            title: "Unauthorized",
+                        });
+                    }
+                } 
+            }
+        };
+
+         rankData();
+ 
+    }, []); 
 
      {/*Change Password*/}
      const changePassword = async () => {
@@ -85,7 +159,7 @@ export default function page() {
         } else{
             try {
                 const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/changepassworduser`,{
-                    password: password
+                    newPassword: password
                 },{
                     withCredentials: true,
                     headers: {
@@ -100,7 +174,6 @@ export default function page() {
                     description: "Password changed successfully",
                 })
                 }
-                console.log(response.data)
             } catch (error) {
                 if (axios.isAxiosError(error)) {
                     const axiosError = error as AxiosError;
@@ -118,6 +191,7 @@ export default function page() {
             }
         }
      }
+
 
     {/*Change Email*/}
 
@@ -170,7 +244,6 @@ export default function page() {
                     description: "Email changed successfully",
                 })
                 }
-                console.log(response.data)
             } catch (error) {
                 if (axios.isAxiosError(error)) {
                     const axiosError = error as AxiosError;
@@ -219,6 +292,8 @@ export default function page() {
                 >
                     <p className=' text-sm text-orange-200'>Username</p>
                     <Input placeholder='Username' value={name} type='text' className=' w-[70%] md:w-[68%] bg-zinc-900 border-none text-white'/>
+                    <p className=' text-sm text-orange-200'>Country</p>
+                    <Input placeholder='Username' value={country} type='text' className=' w-[70%] md:w-[68%] bg-zinc-900 border-none text-white'/>
                     <p className=' text-sm text-orange-200'>Email</p>
                     <div className=' w-full flex items-center gap-4'>
                         <Input placeholder='Email' value={email} type='email' className=' w-[70%] bg-zinc-900 border-none text-white'/>
@@ -339,19 +414,19 @@ export default function page() {
 
                     <div className=' w-full grid grid-cols-3 gap-4 mt-4'>
                         <div className=' bg-zinc-950 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
-                            <h2 className=' text-xl font-bold text-orange-300'>0</h2>
+                            <h2 className=' text-xl font-bold text-orange-300'>{playerDetails.kill}</h2>
                             <p className=' text-sm text-zinc-400 h-10 text-center'>Total Kills</p>
 
                         </div>
 
                          <div className=' bg-zinc-950 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
-                            <h2 className=' text-xl font-bold text-orange-300'>0</h2>
+                            <h2 className=' text-xl font-bold text-orange-300'>{playerDetails.death}</h2>
                             <p className=' text-sm text-zinc-400 h-10 text-center'>Total Deaths</p>
 
                         </div>
 
                          <div className=' bg-zinc-950 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
-                            <h2 className=' text-xl font-bold text-orange-300'>0</h2>
+                            <h2 className=' text-xl font-bold text-orange-300'>{rank}</h2>
                             <p className=' text-sm text-zinc-400 h-10 text-center'>Current Rank</p>
 
                         </div>

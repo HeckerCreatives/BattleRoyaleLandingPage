@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import {
   Carousel,
@@ -8,33 +10,23 @@ import {
 } from "@/components/ui/carousel"
 import { RiArrowRightDoubleLine } from 'react-icons/ri'
 import { type CarouselApi } from "@/components/ui/carousel"
+import axios,{ AxiosError} from 'axios'
+import { useToast } from '@/components/ui/use-toast'
+import { useRouter } from 'next/navigation'
 
-const Description = [
-    {
-    id: 1,
-    name: 'MAP 1',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."'
-},
-{
-    id: 2,
-    name: 'MAP 2',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."'
-},
-{
-    id: 3,
-    name: 'MAP 3',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."'
-},
-{
-    id: 4,
-    name: 'MAP 4',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."'
+
+interface Maps {
+    id: string,
+    title: string,
+    description: string,
+    link: string,
 }
-]
 
 
 export default function Maps() {
-
+    const { toast } = useToast()
+    const router = useRouter()
+    const [data, setData] = React.useState<Maps[]>([])
     const [api, setApi] = React.useState<CarouselApi>()
     const [current, setCurrent] = React.useState(0)
     const [count, setCount] = React.useState(0)
@@ -52,6 +44,33 @@ export default function Maps() {
         })
     }, [api])
 
+    React.useEffect(() => {
+        const mapData = async () =>{
+            try {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/content/getcontent?type=map`, {
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                setData(response.data.data);
+            } catch (error) {
+                if (axios.isAxiosError(error)) {
+                    const axiosError = error as AxiosError;
+                    if (axiosError.response && axiosError.response.status === 401) {
+                        localStorage.setItem('auth', 'false');
+                        router.push('/');
+                        toast({
+                            variant: "destructive",
+                            title: "Unauthorized",
+                        });
+                    }
+                } 
+            }
+        }
+        mapData()
+    }, [])
+
 
   return (
    <div id='maps' className=' w-full lg:h-screen h-auto flex flex-col items-center justify-center py-20'
@@ -63,163 +82,86 @@ export default function Maps() {
              <div className=' w-full flex flex-col'>
                 <Carousel className=' w-full' setApi={setApi}>
                     <CarouselContent>
+                        {data.map((data, idx) => (
                         <CarouselItem className=' w-full cursor-pointer'>
-                            <div className=' relative flex flex-col gap-5 w-full md:h-[400px] h-[250px] rounded-xl p-6 text-white'
-                                style={{backgroundImage: "url('/v2/stage/assets/Tab A.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                            >
-                            
-                            </div>
-
-                        </CarouselItem>
-
-                        <CarouselItem className=' cursor-pointer'>
-                            <div className=' relative flex flex-col gap-5 w-full last:md:h-[400px] h-[250px] rounded-xl p-6 text-white'
-                                style={{backgroundImage: "url('/v2/stage/assets/Tab B.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                            >
-                            
-                            </div>
-                            
-                        </CarouselItem>
-
-                        <CarouselItem className=' cursor-pointer'>
-                            <div className=' relative flex flex-col gap-5 w-full md:h-[400px] h-[250px] rounded-xl p-6 text-white'
-                                style={{backgroundImage: "url('/v2/stage/assets/Tab C.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                            >
-                            
-                            </div>
-                            
-                        </CarouselItem>
-
-                        <CarouselItem className=' cursor-pointer'>
-                            <div className=' relative flex flex-col gap-5 w-full md:h-[400px] h-[250px] rounded-xl p-6 text-white'
-                                style={{backgroundImage: "url('/v2/stage/assets/Tab D.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                            >
-                            
-                            </div>
-                            
-                        </CarouselItem>
-
-                        
-
-                        
-                        
+                        <div className=' relative flex flex-col gap-5 w-full md:h-[400px] h-[250px] rounded-xl p-6 text-white'
+                            style={{backgroundImage:`url('${process.env.NEXT_PUBLIC_API_URL}/${data.link.replace(/\\/g, '/')}')`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                        >
+                        </div>
+                      </CarouselItem>                            
+                        ))}
                     </CarouselContent>
             
                 </Carousel>
 
-                <div className=' flex items-center justify-center gap-4 w-full md:mt-6 mt-4'>
-                    { current === 1 ? (
-                         <div className=' w-4 h-4 rounded-full bg-orange-400'>
+      {/* Carousel Navigation Dots */}
+      <div className='flex items-center justify-center gap-4 w-full md:mt-6 mt-4'>
+        {data.map((_, idx) => (
+          <div
+            key={idx}
+            className={`${
+              current === idx + 1 ? 'w-4 h-4' : 'w-3 h-3'
+            } rounded-full ${
+              current === idx + 1 ? 'bg-orange-400' : 'bg-orange-200'
+            }`}
+          ></div>
+        ))}
+      </div>
+    </div>
 
-                        </div>
-                    ): (
-                        <div className=' w-3 h-3 rounded-full bg-orange-200'>
+    {/* Description Tab for Desktop */}
+    <div
+      className='hidden lg:block 2xl:w-[500px] 2xl:h-[500px] xl:w-[400px] xl:h-[400px] lg:w-[350px] lg:h-[350px] md:w-[95%] md:h-[650px] h-[350px] lg:p-8 md:p-12 p-8'
+      style={{
+        backgroundImage: "url('/v2/stage/assets/Description Tab.png')",
+        backgroundSize: 'contain',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {data[current - 1] && (
+        <div className='flex flex-col gap-4 lg:w-full h-full overflow-y-auto'>
+          <p className='text-2xl md:text-4xl font-bold text-orange-300'>
+            {data[current - 1].title}
+          </p>
+          <p className='text-sm md:text-lg text-orange-100'>
+            {data[current - 1].description.split('\n').map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+          </p>
+        </div>
+      )}
+    </div>
 
-                        </div>
-                    )}
-
-                    { current === 2 ? (
-                          <div className=' w-4 h-4 rounded-full bg-orange-400'>
-
-                        </div>
-                    ): (
-                       <div className=' w-3 h-3 rounded-full bg-orange-200'>
-
-                        </div>
-                    )}
-
-                    { current === 3 ? (
-                          <div className=' w-4 h-4 rounded-full bg-orange-400'>
-
-                        </div>
-                    ): (
-                        <div className=' w-3 h-3 rounded-full bg-orange-200'>
-
-                        </div>
-                    )}
-
-                    { current === 4 ? (
-                          <div className=' w-4 h-4 rounded-full bg-orange-400'>
-
-                        </div>
-                    ): (
-                          <div className=' w-3 h-3 rounded-full bg-orange-200'>
-
-                        </div>
-                    )}
-
-
-                 
-
-                </div>
-             </div>
-             
-
-            <div className=' hidden lg:block 2xl:w-[500px] 2xl:h-[500px] xl:w-[400px] xl:h-[400px] lg:w-[350px] lg:h-[350px] md:w-[95%] md:h-[650px] h-[350px] lg:p-8 md:p-12 p-8 '
-            style={{backgroundImage: "url('/v2/stage/assets/Description Tab.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-            >
-                { current === 1 && (
-                    <div className=' flex flex-col gap-4 lg:w-full h-full overflow-y-auto'>
-                        <p className=' text-2xl md:text-4xl font-bold text-orange-300'>{Description[0].name}</p>
-                        <p className=' text-sm md:text-lg text-orange-100'>{Description[0].description}</p>
-                    </div>
-                )}
-
-                { current === 2 && (
-                    <div className=' flex flex-col gap-4  w-full h-full overflow-y-auto'>
-                        <p className=' text-2xl md:text-4xl font-bold text-orange-300'>{Description[1].name}</p>
-                        <p className=' text-sm md:text-lg text-orange-100'>{Description[1].description}</p>
-                    </div>
-                )}
-
-                 { current === 3 && (
-                    <div className=' flex flex-col gap-4  w-full h-full overflow-y-auto'>
-                        <p className=' text-2xl md:text-4xl font-bold text-orange-300'>{Description[2].name}</p>
-                        <p className=' text-sm md:text-lg text-orange-100'>{Description[2].description}</p>
-                    </div>
-                )}
-
-                 { current === 4 && (
-                    <div className=' flex flex-col gap-4  w-full h-full overflow-y-auto'>
-                        <p className=' text-2xl md:text-4xl font-bold text-orange-300'>{Description[3].name}</p>
-                        <p className=' text-sm md:text-lg text-orange-100'>{Description[3].description}</p>
-                    </div>
-                )}
-
-            </div>
-
-            <div className='lg:hidden block w-[90%] h-[300px] lg:p-8 md:p-12 p-8 '
-            style={{backgroundImage: "url('/v2/stage/assets/Description Tab.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-            >
-                { current === 1 && (
-                    <div className=' flex flex-col gap-4 lg:w-full h-full overflow-y-auto'>
-                        <p className=' text-2xl md:text-4xl font-bold text-orange-300'>{Description[0].name}</p>
-                        <p className=' text-sm md:text-lg text-orange-100'>{Description[0].description}</p>
-                    </div>
-                )}
-
-                { current === 2 && (
-                    <div className=' flex flex-col gap-4  w-full h-full overflow-y-auto'>
-                        <p className=' text-2xl md:text-4xl font-bold text-orange-300'>{Description[1].name}</p>
-                        <p className=' text-sm md:text-lg text-orange-100'>{Description[1].description}</p>
-                    </div>
-                )}
-
-                 { current === 3 && (
-                    <div className=' flex flex-col gap-4  w-full h-full overflow-y-auto'>
-                        <p className=' text-2xl md:text-4xl font-bold text-orange-300'>{Description[2].name}</p>
-                        <p className=' text-sm md:text-lg text-orange-100'>{Description[2].description}</p>
-                    </div>
-                )}
-
-                 { current === 4 && (
-                    <div className=' flex flex-col gap-4  w-full h-full overflow-y-auto'>
-                        <p className=' text-2xl md:text-4xl font-bold text-orange-300'>{Description[3].name}</p>
-                        <p className=' text-sm md:text-lg text-orange-100'>{Description[3].description}</p>
-                    </div>
-                )}
-
-            </div>
+    {/* Description Tab for Mobile */}
+    <div
+      className='lg:hidden block w-[90%] h-[300px] lg:p-8 md:p-12 p-8'
+      style={{
+        backgroundImage: "url('/v2/stage/assets/Description Tab.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {data[current - 1] && (
+        <div className='flex flex-col gap-4 lg:w-full h-full overflow-y-auto'>
+          <p className='text-2xl md:text-4xl font-bold text-orange-300'>
+            {data[current - 1].title}
+          </p>
+          <p className='text-sm md:text-lg text-orange-100'>
+          {data[current - 1].description.split('\n').map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+         </p>
+        </div>
+      )}
+    </div>
         </div>
 
     </div>

@@ -1,12 +1,51 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import {motion} from 'framer-motion'
 import { fadeIn } from '@/lib/variant'
 import { Link } from 'lucide-react'
 import Navbar from './Navbar'
+import axios, { AxiosError } from 'axios'
+import { useToast } from '@/components/ui/use-toast'
+import { useRouter } from 'next/navigation'
 
+interface Maps {
+  id: string,
+  title: string,
+  description: string,
+  link: string,
+}
 export default function Hero() {
+  const { toast } = useToast()
+  const router = useRouter()
+  const [data, setData] = React.useState<Maps[]>([])
+
+  useEffect(()=>{
+    const headerData = async () => {
+      try {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/content/getcontent?type=header&limit=1`, {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        setData(response.data.data);
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            const axiosError = error as AxiosError;
+            if (axiosError.response && axiosError.response.status === 401) {
+                localStorage.setItem('auth', 'false');
+                router.push('/');
+                toast({
+                    variant: "destructive",
+                    title: "Unauthorized",
+                });
+            }
+        } 
+    }
+    }
+    headerData()
+  }, [])
   return (
     <div className=' h-[100dvh] lg:h-[screen] w-screen flex flex-col items-center justify-end text-white'
     style={{backgroundImage: "url('/v2/header/assets/BG B.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
@@ -62,8 +101,19 @@ export default function Hero() {
         style={{backgroundImage: "url('/v2/header/assets/BG A.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
         >
           <div className=' relative z-20 flex flex-col justify-center md:p-14 p-8'>
-            <h2 className=' text-2xl 2xl:text-6xl font-bold'>LOREM IPSUM</h2>
-            <p className=' text-sm 2xl:text-lg text-orange-100 font-semibold mt-4'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            {data.map((data)=>(
+              <>
+              <h2 className=' text-2xl 2xl:text-6xl font-bold'>{data.title}</h2>
+              <p className=' text-sm 2xl:text-lg text-orange-100 font-semibold mt-4'>
+                {data.description.split('\n').map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </p>
+              </>
+            ))}
 
             {/* <div className=' w-full flex items-center justify-end mt-4'>
               <p className=' px-8 py-1 text-sm font-bold bg-gradient-to-r from-orange-300 to-orange-400 text-amber-950 rounded-md shadow-black drop-shadow-md'>READ MORE</p>
