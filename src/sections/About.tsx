@@ -130,6 +130,12 @@ export default function About() {
         
         >
             <div className=' w-full h-[500px] flex flex-col gap-4 p-6'>
+
+                  {data1.length === 0 && (
+                    <>
+                    <h2 className=' text-2xl lg:text-4xl font-bold text-orange-400'>ABOUT SECTION YET TO BE ADDED</h2>
+                    </>
+                  )}
                 {data1.map((data) => (
                   <>
                   <h2 className=' text-2xl lg:text-4xl font-bold text-orange-400'>{data.title}</h2>

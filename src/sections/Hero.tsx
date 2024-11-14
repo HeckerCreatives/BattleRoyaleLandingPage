@@ -101,6 +101,14 @@ export default function Hero() {
         style={{backgroundImage: "url('/v2/header/assets/BG A.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
         >
           <div className=' relative z-20 flex flex-col justify-center md:p-14 p-8'>
+            {data.length === 0 && (
+               <>
+              <h2 className=' text-2xl 2xl:text-6xl font-bold'>HERO HEADER - Rise of Fearless</h2>
+              <p className=' text-sm 2xl:text-lg text-orange-100 font-semibold mt-4'>
+                 banner data soon to be added
+              </p>
+               </>
+            )}
             {data.map((data)=>(
               <>
               <h2 className=' text-2xl 2xl:text-6xl font-bold'>{data.title}</h2>

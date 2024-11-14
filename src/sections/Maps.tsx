@@ -119,6 +119,13 @@ export default function Maps() {
         backgroundRepeat: 'no-repeat',
       }}
     >
+      {data.length === 0 && (
+        <>
+          <p className='text-2xl md:text-4xl font-bold text-orange-300'>
+              MAPS DATA YET TO BE ADDED
+          </p>      
+        </>
+      )}
       {data[current - 1] && (
         <div className='flex flex-col gap-4 lg:w-full h-full overflow-y-auto'>
           <p className='text-2xl md:text-4xl font-bold text-orange-300'>
