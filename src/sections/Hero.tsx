@@ -110,7 +110,7 @@ export default function Hero() {
                </>
             )}
             {data.map((data)=>(
-              <>
+              <div className="h-full max-h-[50vh] overflow-y-hidden p-4 rounded-lg">
               <h2 className=' text-2xl 2xl:text-6xl font-bold'>{data.title}</h2>
               <p className=' text-sm 2xl:text-lg text-orange-100 font-semibold mt-4'>
                 {data.description.split('\n').map((line, index) => (
@@ -120,7 +120,7 @@ export default function Hero() {
                   </React.Fragment>
                 ))}
               </p>
-              </>
+                </div>
             ))}
 
             {/* <div className=' w-full flex items-center justify-end mt-4'>
