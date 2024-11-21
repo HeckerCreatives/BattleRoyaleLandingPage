@@ -227,7 +227,6 @@ export default function Navbar() {
             })
             }
             setIsLoading(false)
-            console.log(response.data)
           } catch (error) {
           
           }
@@ -235,7 +234,6 @@ export default function Navbar() {
       }
       register()
     } else {
-        console.log("Form has errors");
 
     }
     };
@@ -269,7 +267,6 @@ export default function Navbar() {
                 'Content-Type': 'application/json',
                 }
           })
-          console.log(response)
           if ( response.data.message === 'success' && response.data){
             if (typeof window !== 'undefined') {
               setLoading(false)
@@ -293,7 +290,6 @@ export default function Navbar() {
             setLoading(false)
         } catch (error) {
             setLoading(false)
-          console.log(error)
           
         }
       }
@@ -323,7 +319,6 @@ export default function Navbar() {
                 setEmail2(response.data.data.email)
                 setCountry2(response.data.data.country)
                 setFunds(response.data.data.funds)
-                console.log(response.data)
             } catch (error) {
                 
             }

@@ -36,7 +36,6 @@ export default function Section3() {
     const [id,setId] = useState('')
     const [ imgurlleft, setImgurlleft] = useState(`${process.env.NEXT_PUBLIC_API_URL}/${img.replace(/\\/g, '/')}`)
 
-    console.log('right', imgurlleft)
 
     useEffect(() => {
         const news = async () => {
@@ -50,7 +49,6 @@ export default function Section3() {
                 setId(response.data.data.news[0].newsid)
                 setTotalpages(response.data.data.totalpages)
                 setData(response.data.data.news)
-                console.log(response.data)
             } catch (error) {
                 
             }
@@ -58,7 +56,6 @@ export default function Section3() {
         news()
     },[currentpage])
 
-    console.log(totalpages)
 
 
   return (
@@ -95,7 +92,7 @@ export default function Section3() {
                     </div>
 
                     <div className=' flex flex-col gap-5 w-full h-auto rounded-xl p-6 text-white'>
-                        <p className=' text-sm font-semibold'>11.11.18/ in <span className=' text-secondary'>GAMES</span></p>
+                        {/* <p className=' text-sm font-semibold'>11.11.18/ in <span className=' text-secondary'>GAMES</span></p> */}
                         <h2 className=' text-2xl font-bold'>{title}</h2>
                         <h2 className=' text-lg font-semibold text-zinc-200 line-clamp-4'>{description}</h2>
                        
@@ -280,7 +277,7 @@ export default function Section3() {
                     </div>
 
                     <div className=' flex flex-col gap-5 w-full h-auto rounded-xl p-6 text-white'>
-                        <p className=' text-sm font-semibold'>11.11.18/ in <span className=' text-secondary'>GAMES</span></p>
+                        {/* <p className=' text-sm font-semibold'>11.11.18/ in <span className=' text-secondary'>GAMES</span></p> */}
                         <h2 className=' text-2xl font-bold'>{title}</h2>
                         <h2 className=' text-lg font-semibold text-zinc-200 line-clamp-4'>{description}</h2>
                        

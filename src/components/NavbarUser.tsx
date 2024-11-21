@@ -45,7 +45,6 @@ export default function NavbarUser() {
                 setName(response.data.data.username)
                 setEmail(response.data.data.email)
                 setCountry(response.data.data.country)
-                console.log(response.data)
             } catch (error) {
                  if (axios.isAxiosError(error)) {
                     const axiosError = error as AxiosError;

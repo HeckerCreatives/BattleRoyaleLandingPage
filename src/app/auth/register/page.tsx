@@ -382,7 +382,6 @@ export default function login() {
             })
             }
             setLoading(false)
-            console.log(response.data)
           } catch (error) {
           
           }
@@ -390,7 +389,6 @@ export default function login() {
       }
       register()
     } else {
-        console.log("Form has errors");
 
     }
     };

@@ -48,7 +48,6 @@ export default function login() {
                 'Content-Type': 'application/json',
                 }
           })
-          console.log(response)
           if ( response.data.message === 'success' && response.data){
             if (typeof window !== 'undefined') {
               setLoading(false)
@@ -72,7 +71,6 @@ export default function login() {
             setLoading(false)
         } catch (error) {
             setLoading(false)
-          console.log(error)
           
         }
       }

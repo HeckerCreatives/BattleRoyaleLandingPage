@@ -264,7 +264,6 @@ export default function page() {
     changeEmail()
       
     } else {
-        console.log("Form has errors");
 
     }
     };
