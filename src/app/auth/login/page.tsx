@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios, { AxiosError} from 'axios';
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from 'next/navigation';
@@ -10,72 +10,72 @@ import { IoMdArrowBack } from "react-icons/io";
 import Link from 'next/link';
 
 
-
 export default function login() {
-    const [playerusername, setPlayerusername] = useState('')
-    const [playerpassword, setPlayerpassword] = useState('')
-    const [ loading, setLoading] = useState(false)
-    const router = useRouter()
-    const { toast } = useToast()
-
-    const [auth, setAuth] = useState<string | null>(null)
+  const [playerusername, setPlayerusername] = useState('')
+  const [playerpassword, setPlayerpassword] = useState('')
+  const [ loading, setLoading] = useState(false)
+  const router = useRouter()
+  const { toast } = useToast()
+  
+  const [auth, setAuth] = useState<string | null>(null)
+  
 
 
 
     {/*Log In*/}
     const loginPlayer = async () => {
-      if ( playerusername === ''){
+      if (playerusername === '') {
         toast({
           variant: "destructive",
           title: "Failed",
           description: 'Please enter your username'
-        })
+        });
       }
-      if ( playerpassword === ''){
+      if (playerpassword === '') {
         toast({
           variant: "destructive",
           title: "Failed",
           description: 'Please enter your password'
-        })
+        });
       }
-
-      if ( playerusername !== '' && playerpassword !== ''){
-        setLoading(true)
+    
+      if (playerusername !== '' && playerpassword !== '') {
+        setLoading(true);
         try {
-          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/login?username=${playerusername}&password=${playerpassword}`,{
+          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/login?username=${playerusername}&password=${playerpassword}`, {
             withCredentials: true,
             headers: {
-                'Content-Type': 'application/json',
-                }
-          })
-          if ( response.data.message === 'success' && response.data){
-            if (typeof window !== 'undefined') {
-              setLoading(false)
-                toast({
-                  title: "Success",
-                  description: "Successfully logged in",
-                })
-              localStorage.setItem('auth', 'true');
-              setAuth('true'); // Update state
-              router.push('/user');
+              'Content-Type': 'application/json',
             }
+          });
+    
+          if (response.data.message === 'success' && response.data) {
+            setLoading(false);
+            toast({
+              title: "Success",
+              description: "Successfully logged in",
+            });
+            localStorage.setItem('auth', 'true');
+            setAuth('true'); // Update state
+            router.push('/user');
+    
           }
-          if (response.data.message === 'failed'){
-              setLoading(false)
-                toast({
-                variant: "destructive",
-                title: "Failed",
-                description: `${response.data.data}`
-              })
+    
+          if (response.data.message === 'failed') {
+            setLoading(false);
+            toast({
+              variant: "destructive",
+              title: "Failed",
+              description: `${response.data.data}`
+            });
           }
-            setLoading(false)
         } catch (error) {
-            setLoading(false)
-          
+          setLoading(false);
         }
       }
-     
-    }
+    };
+    
+
 
     const back = () => {
       router.push('/')
@@ -149,7 +149,6 @@ export default function login() {
                           Log In</button>
 
                           <p className=' text-xs text-zinc-400 mt-16 flex items-center gap-6'>Do you have an account?<a href="/auth/register" className=' text-xs font-semibold px-4 py-1 border-2 border-orange-400 rounded-md text-orange-400'>Register</a></p>
-                     
           </div>
 
           <img src="/login/Login Tab Character.png" width={300} alt="" className=' absolute bottom-0 right-0 md:block hidden'/>
