@@ -43,7 +43,7 @@ const SocketListener = () => {
   useEffect(() => {
     if (name) {
       socket.emit('login', name); 
-      socket.on('dual', () => {        
+      socket.on('dual', (message) => {        
         const playerData = async () => {
             try {
                 const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/user/getuserdetails`, {
@@ -64,6 +64,7 @@ const SocketListener = () => {
                         toast({
                             variant: 'destructive',
                             title: 'Unauthorized',
+                            description: message,
                         });
                     }
                 }
