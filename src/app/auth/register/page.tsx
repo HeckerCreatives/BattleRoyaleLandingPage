@@ -360,10 +360,11 @@ export default function login() {
               }
             })
             setUsername('')
-              setPassword('')
-              setPasswordConfirm('')
-              setEmail('')
-              setCountry('')
+            setPassword('')
+            setPasswordConfirm('')
+            setEmail('')
+            setCountry('')
+            console.log(response.data)
             if (response.data.message === 'success') {
               router.push('/auth/login')
               setLoading(false)
@@ -382,8 +383,23 @@ export default function login() {
             })
             }
             setLoading(false)
-          } catch (error) {
-          
+          } catch (error: any) {
+            if (error.response.data.data != null){
+              setLoading(false)
+              toast({
+                variant: "destructive",
+                title: "Error",
+                description: error.response.data.data,
+              })
+            }
+            else{
+              setLoading(false)
+              toast({
+                variant: "destructive",
+                title: "Error",
+                description: "There's a problem with the server! Please contact customer support for more details",
+              })
+            }
           }
          setLoading(false)
       }
