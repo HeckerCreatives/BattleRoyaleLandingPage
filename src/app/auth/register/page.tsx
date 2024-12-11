@@ -421,7 +421,9 @@ export default function login() {
     
     >
 
+      <a href="/">
       <img src="/login/Rise of Fearless plain.png" width={100} alt="" className=' hidden xl:block absolute top-8 left-8 z-20'/>
+      </a>
 
 
       <div className=' hidden xl:block absolute top-0 w-screen h-32 bg-gradient-to-b from-zinc-950 to-[#00000000]'>
