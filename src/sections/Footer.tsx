@@ -68,6 +68,16 @@ export default function Footer() {
 
                 </div>
 
+                <div className=' w-full flex flex-col items-center justify-center gap-4 px-4'>
+                    <p className=' text-zinc-400 text-xs text-center'>All content in Rise of Fearless, including but not limited to game design, characters, artwork, maps, and narratives, is the intellectual property of Rise of Fearless (rof.game).</p>
+                    <p className=' text-zinc-400 text-xs text-center'>For intellectual property inquiries, please contact <span className=' text-orange-400'>support@rof.game.</span></p>
+
+                    
+                    <p className=' text-zinc-50 text-xs mt-6 text-center'>© 2024 Rise of Fearless (rof.game). All rights reserved. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
+                </div>
+
+               
+
 
             </div>
             {/* <img src="/assets/character B.png" alt="" height={200} width={200} className=' relative mb-40 lg:block hidden'/> */}

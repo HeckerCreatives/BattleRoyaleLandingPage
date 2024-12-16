@@ -12,6 +12,7 @@ import Socials from "@/sections/Socials";
 import Image from "next/image";
 import Maps from "@/sections/Maps";
 import About from "@/sections/About";
+import Faq from "@/sections/Faq";
 
 export default function Home() {
 
@@ -61,6 +62,7 @@ export default function Home() {
           <About/>
           {/* <Section4/>
           <Section5/> */}
+          <Faq/>
           <Newsletter/>
         </main>
         <Footer/>

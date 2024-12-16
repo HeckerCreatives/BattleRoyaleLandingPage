@@ -129,7 +129,7 @@ export default function About() {
         style={{backgroundImage: "url('/v2/about/tab.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
         
         >
-            <div className=' w-full h-[500px] flex flex-col gap-4 p-6'>
+            <div className=' w-full h-auto flex flex-col gap-4 p-6'>
 
                   {data1.length === 0 && (
                     <>
