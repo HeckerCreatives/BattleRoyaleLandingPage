@@ -68,7 +68,7 @@ export default function page() {
                 <p className=' text-zinc-300 text-sm text-start'>8.2 By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service.</p>
 
                 <p className=' text-lg font-semibold text-orange-200 text-start'>9. Contact Us</p>
-                <p className=' text-zinc-300 text-sm text-start'>9.1 If you have any questions about these Terms, please contact us at [Your Contact Information].</p>
+                <p className=' text-zinc-300 text-sm text-start'>9.1 If you have any questions about these Terms, please contact us at <strong>support@rof.game</strong>.</p>
                 <p className=' text-zinc-300 text-sm text-start'>By playing Rise of Fearless, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.</p>
             
 
