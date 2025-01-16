@@ -16,6 +16,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import SocketListener from '@/components/SocketListener'
+import { Eye, EyeOff } from 'lucide-react'
 
 interface Error {
   newemail: string;
@@ -42,6 +43,7 @@ export default function page() {
   const [country, setCountry] = useState('')
   const [funds, setFunds] = useState('')
   const [newemail, setNewemail] = useState('')
+  const [show, setShow] = useState('password')
   const [isFormValid, setIsFormValid] = useState(false); 
     const [errors, setErrors] = useState<Error | null>( null);
     const [rank, setRank] = useState(0); 
@@ -176,8 +178,9 @@ export default function page() {
                 })
                 }
             } catch (error) {
+                setPasswordload(false)
                 if (axios.isAxiosError(error)) {
-                    const axiosError = error as AxiosError;
+                    const axiosError = error as AxiosError<{ message: string, data: string }>;
                     if (axiosError.response && axiosError.response.status === 401) {
                         localStorage.setItem('auth', 'false');
                         router.push('/')
@@ -187,6 +190,35 @@ export default function page() {
                         })
                 
                     }
+
+                    
+                    if (axiosError.response && axiosError.response.status === 400) {
+                        toast({
+                            variant: "destructive",
+                            title: `${axiosError.response.data.data}`,
+                            })             
+                      }
+  
+                      if (axiosError.response && axiosError.response.status === 402) {
+                        toast({
+                            variant: "destructive",
+                            title: `${axiosError.response.data.data}`,
+                            })    
+                      }
+  
+                      if (axiosError.response && axiosError.response.status === 403) {
+                        toast({
+                            variant: "destructive",
+                            title: `${axiosError.response.data.data}`,
+                            })    
+                      }
+  
+                      if (axiosError.response && axiosError.response.status === 404) {
+                        toast({
+                            variant: "destructive",
+                            title: `${axiosError.response.data.data}`,
+                            })              
+                      }
                 } 
                 
             }
@@ -299,14 +331,11 @@ export default function page() {
                     <div className=' w-full flex items-center gap-4'>
                         <Input placeholder='Email' value={email} type='email' className=' w-[70%] bg-zinc-900 border-none text-white'/>
                         <Dialog>
-                        <DialogTrigger className='h-10 w-[30%]'
+                        <DialogTrigger className='h-10 w-[30%] text-sm py-2 bg-gradient-to-r from-orange-300 to-orange-400 rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
                         >
-                              <button
-                           
-                            className=' w-full text-sm py-2 bg-gradient-to-r from-orange-300 to-orange-400 rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
-                            >
+                          
                                 
-                            Edit</button>
+                            Edit
                         </DialogTrigger>
                         <DialogContent className=' w-[95%] md:w-[70%] lg:w-[50%] bg-zinc-950 border-none p-6'
                         style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
@@ -350,14 +379,10 @@ export default function page() {
                     <div className=' w-full flex items-center gap-4'>
                         <Input placeholder='Password' value='test12345' type='password' className=' w-[70%] bg-zinc-900 border-none text-white'/>
                         <Dialog>
-                        <DialogTrigger className='h-10 w-[30%]'
+                        <DialogTrigger className='h-10 w-[30%] text-sm font-bold py-2 rounded-lg text-amber-950 hover:scale-110 ease-in-out duration-200 bg-gradient-to-r from-orange-300 to-orange-400'
                         >
-                              <button
                            
-                            className=' h-10 w-full text-sm font-bold py-2 rounded-lg text-amber-950 hover:scale-110 ease-in-out duration-200 bg-gradient-to-r from-orange-300 to-orange-400'
-                            >
-                                
-                            Edit</button>
+                            Edit
                         </DialogTrigger>
                         <DialogContent className=' bg-zinc-950 border-none p-6 w-[95%] md:w-[70%] lg:w-[50%]'
                         style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
@@ -365,7 +390,16 @@ export default function page() {
                         >
                             <h2 className=' text-lg font-semibold text-secondary'>Change Password</h2>
                             <p className=' text-sm text-white'>New Password</p>
-                           <Input placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} type='password' className=' w-full bg-zinc-900 border-none text-white'/>
+
+                            <div className=' relative w-full'>
+                            <Input placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} type={show} className=' w-full bg-zinc-900 border-none text-white'/>
+                            {show === 'password' ? (
+                                <button onClick={() => setShow('text')} className=' text-white absolute top-3 right-2'><EyeOff size={20}/></button>
+                            ):(
+                                <button onClick={() => setShow('password')} className=' text-white absolute top-3 right-2'><Eye size={20}/></button>
+
+                            )}
+                            </div>
 
                            <button
                            onClick={changePassword}
@@ -400,10 +434,8 @@ export default function page() {
                         <Input placeholder='Funds' value={funds} type='text' className=' w-[70%] bg-zinc-900 border-none text-white'/>
                         
                         <Dialog>
-                        <DialogTrigger className=' w-[30%]'>
-                            <button
-                            className=' h-10 w-full py-2 text-sm bg-gradient-to-r from-orange-300 to-orange-400 rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
-                            >Add</button>
+                        <DialogTrigger className=' w-[30%] h-10 py-2 text-sm bg-gradient-to-r from-orange-300 to-orange-400 rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'>
+                           Add
                         </DialogTrigger>
                         <DialogContent className=' flex items-center justify-center w-[90%] md:w-[400px] h-[300px] bg-zinc-950 border-zinc-900'
                         style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}

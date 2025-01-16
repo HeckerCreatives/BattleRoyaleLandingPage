@@ -307,15 +307,15 @@ export default function login() {
     };
 
     // Validate Username
-    if (username.length < 8) {
+    if (username.length < 6) {
       formIsValid = false;
-      errors.email = "Username must be at least 8 characters";
+      errors.email = "Username must be at least 6 characters";
     }
 
     // Validate Password
-    if (password.length < 8) {
+    if (password.length < 6) {
       formIsValid = false;
-      errors.password = "Password must be at least 8 characters";
+      errors.password = "Password must be at least 6 characters";
     }
 
      // Validate Confirm Password
