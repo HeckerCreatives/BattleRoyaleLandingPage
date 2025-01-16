@@ -10,7 +10,7 @@ import {
 
 export default function Faq() {
   return (
-    <div className=' flex items-center justify-center w-screen h-auto bg-zinc-950 py-32 text-white'
+    <div className=' relative z-30 flex items-center justify-center w-screen h-auto bg-zinc-950 py-32 text-white'
     style={{backgroundImage: "url('/v2/about/BG.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
    
    >

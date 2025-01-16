@@ -42,7 +42,14 @@ export default function Maps() {
         api.on("select", () => {
         setCurrent(api.selectedScrollSnap() + 1)
         })
-    }, [api])
+    }, [api, count])
+
+    const handleDotClick = (index: number) => {
+      setCurrent(index + 1);
+      if (api) {
+        api.scrollTo(index);
+      }
+    };
 
     React.useEffect(() => {
         const mapData = async () =>{
@@ -99,9 +106,10 @@ export default function Maps() {
         {data.map((_, idx) => (
           <div
             key={idx}
+            onClick={() => handleDotClick(idx)}
             className={`${
               current === idx + 1 ? 'w-4 h-4' : 'w-3 h-3'
-            } rounded-full ${
+            } rounded-full cursor-pointer ${
               current === idx + 1 ? 'bg-orange-400' : 'bg-orange-200'
             }`}
           ></div>

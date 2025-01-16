@@ -448,7 +448,7 @@ export default function login() {
         
         >
 
-           <button onClick={back} className=' absolute top-8 left-6 bg-orange-300 rounded-md px-2 py-1 text-amber-950 flex items-center justify-center gap-2 hover:scale-110 ease-in-out duration-200 mb-2'>
+           <button onClick={back} className=' absolute top-4 left-6 bg-orange-300 rounded-md px-2 py-1 text-amber-950 flex items-center justify-center gap-2 hover:scale-110 ease-in-out duration-200 mb-2'>
             <IoMdArrowBack size={15}/>
             <p className=' text-xs'>Back</p>
           </button>
@@ -461,9 +461,9 @@ export default function login() {
                   <p className=' text-xs text-zinc-400 mb-2'>Enter your account details</p>
 
                 </div>
-                      <Input placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} type='text' className=' bg-zinc-950 border-orange-300 text-white'/>
-                      <Input placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} type='password' className=' bg-zinc-950 border-orange-300 text-white '/>
-                      <Input placeholder='Confirm password' value={passwordconfirm} onChange={(e) => setPasswordConfirm(e.target.value)} type='password' className=' bg-zinc-950 border-orange-300 text-white '/>
+                      <Input placeholder='Username' maxLength={20} value={username} onChange={(e) => setUsername(e.target.value)} type='text' className=' bg-zinc-950 border-orange-300 text-white'/>
+                      <Input placeholder='Password' maxLength={20} value={password} onChange={(e) => setPassword(e.target.value)} type='password' className=' bg-zinc-950 border-orange-300 text-white '/>
+                      <Input placeholder='Confirm password' maxLength={20} value={passwordconfirm} onChange={(e) => setPasswordConfirm(e.target.value)} type='password' className=' bg-zinc-950 border-orange-300 text-white '/>
                       <Input placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} type='email' className=' bg-zinc-950 text-white border-orange-300'/>
                       <Select onValueChange={setCountry} value={country}>
                       <SelectTrigger className="w-full bg-zinc-950 border-orange-300 text-white">

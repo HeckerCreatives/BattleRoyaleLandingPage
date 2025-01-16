@@ -159,7 +159,7 @@ export default function page() {
             })
         } else{
             try {
-                const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/changepassworduser`,{
+                const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/changeuserpassword`,{
                     newPassword: password
                 },{
                     withCredentials: true,
@@ -370,7 +370,7 @@ export default function page() {
                            <button
                            onClick={changePassword}
                            style={{backgroundImage: "url('/assets/button.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                            className=' mt-4 h-12 w-[200px] text-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200 flex items-center justify-center gap-1'
+                            className=' mt-4 h-12 w-[200px] text-sm font-bold text-amber-950 hover:scale-110 ease-in-out duration-200 flex items-center justify-center gap-1'
                             >
                             { passwordload === true && (
                                 <div className="loader">

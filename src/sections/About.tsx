@@ -139,7 +139,7 @@ export default function About() {
                 {data1.map((data) => (
                   <>
                   <h2 className=' text-2xl lg:text-4xl font-bold text-orange-400'>{data.title}</h2>
-                <div className=' h-[90%] overflow-y-auto'>
+                <div className=' h-auto overflow-y-auto'>
                     <p className=' text-sm md:text-lg text-orange-100'>
                     {data.description.split('\n').map((line, index) => (
                     <React.Fragment key={index}>
