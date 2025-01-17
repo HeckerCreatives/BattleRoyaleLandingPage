@@ -94,13 +94,13 @@ export default function Hero() {
 
         </div>
 
-        <div className='relative z-0 max-w-[1920px] w-[90%] lg:w-[78%] h-[90%] flex items-end justify-end py-20'>
+        <div className='relative z-0 max-w-[1920px] w-[90%] lg:w-[78%] h-full flex items-end justify-end py-20'>
           <img src="/v2/header/assets/Character.png" alt="" width={520} className=' lg:w-[280px] xl:w-[290px] 2xl:w-[380px] absolute right-0 bottom-0 z-20 lg:block hidden' />
 
           <div className=' relative h-full grid grid-cols-1 lg:grid-cols-[1fr_40%] rounded-lg'
         style={{backgroundImage: "url('/v2/header/assets/BG A.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
         >
-          <div className=' relative z-20 flex flex-col justify-center md:p-14 p-8'>
+          <div className=' relative z-20 flex flex-col justify-center md:p-14 p-4'>
             {data.length === 0 && (
                <>
               <h2 className=' text-2xl 2xl:text-6xl font-bold'>HERO HEADER - Rise of Fearless</h2>
@@ -110,9 +110,9 @@ export default function Hero() {
                </>
             )}
             {data.map((data)=>(
-              <div className="h-full max-h-[50vh] overflow-y-hidden p-4 rounded-lg">
+              <div className="h-auto overflow-y-hidden p-4 rounded-lg">
               <h2 className=' text-2xl 2xl:text-6xl font-bold'>{data.title}</h2>
-              <p className=' text-sm 2xl:text-sm text-orange-100 font-semibold mt-4 h-full overflow-y-auto '>
+              <p className=' text-xs md:text-sm 2xl:text-sm text-orange-100 font-semibold mt-4 h-full overflow-y-auto '>
                 {data.description.split('\n').map((line, index) => (
                   <React.Fragment key={index}>
                     {line}

@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dialog"
 import SocketListener from '@/components/SocketListener'
 import { Eye, EyeOff } from 'lucide-react'
+import { Country } from '@/lib/data'
 
 interface Error {
   newemail: string;
@@ -301,6 +302,8 @@ export default function page() {
     }
     };
 
+    const findCountry = Country.find((item) => item.code === country )
+
   return (
     <div className=' w-screen h-auto flex flex-col items-center justify-start overscroll-x-none '
     style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
@@ -326,7 +329,7 @@ export default function page() {
                     <p className=' text-sm text-orange-200'>Username</p>
                     <Input placeholder='Username' value={name} type='text' className=' w-[70%] md:w-[68%] bg-zinc-900 border-none text-white'/>
                     <p className=' text-sm text-orange-200'>Country</p>
-                    <Input placeholder='Username' value={country} type='text' className=' w-[70%] md:w-[68%] bg-zinc-900 border-none text-white'/>
+                    <Input placeholder='Username' value={findCountry?.name} type='text' className=' w-[70%] md:w-[68%] bg-zinc-900 border-none text-white'/>
                     <p className=' text-sm text-orange-200'>Email</p>
                     <div className=' w-full flex items-center gap-4'>
                         <Input placeholder='Email' value={email} type='email' className=' w-[70%] bg-zinc-900 border-none text-white'/>
@@ -431,7 +434,7 @@ export default function page() {
                     <p className=' text-sm text-orange-200'>Credits</p>
 
                     <div className=' w-full flex items-center gap-4'>
-                        <Input placeholder='Funds' value={funds} type='text' className=' w-[70%] bg-zinc-900 border-none text-white'/>
+                        <Input disabled={true} placeholder='Funds' value={funds} type='text' className=' w-[70%] bg-zinc-900 border-none text-white'/>
                         
                         <Dialog>
                         <DialogTrigger className=' w-[30%] h-10 py-2 text-sm bg-gradient-to-r from-orange-300 to-orange-400 rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'>

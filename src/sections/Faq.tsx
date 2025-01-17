@@ -23,7 +23,7 @@ export default function Faq() {
                 <AccordionItem value="item-1">
                     <AccordionTrigger className=' text-orange-600'>What is Rise of Fearless (ROF)?</AccordionTrigger>
                     <AccordionContent>
-                    Rise of Fearless is a strategy game where players build their kingdoms, compete against others, and embark on epic quests.
+                    Rise of Fearless is a strategy-survival game. Using your survival instincts, compete against others, and embark in an epic quests.
                     </AccordionContent>
                 </AccordionItem>
                 </Accordion>

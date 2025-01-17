@@ -419,7 +419,7 @@ export default function Navbar() {
                     </div>
                     <div className=' flex flex-col items-start justify-start'>
                         <p className=' text-sm font-semibold text-orange-200'>{name}</p>
-                        <p className=' text-[.6em]'>Lorem Ipsum</p>
+                        <p className=' text-[.6em]'>Player</p>
 
                     </div>
                   </PopoverTrigger>
@@ -445,7 +445,7 @@ export default function Navbar() {
                 <a href="/auth/login">
                   <button
                   style={{backgroundImage: "url('/assets/button.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                  className=' h-32 w-[200px] xl:w-[250px] lg:text-lg xl:text-xl font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
+                  className=' h-24 w-[200px] xl:w-[250px] lg:text-lg xl:text-xl font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
                   >Log In | Register</button>
                 </a>
 
@@ -453,7 +453,7 @@ export default function Navbar() {
 
               
 
-            <p className=' text-xs text-zinc-300 mt-10'>Follow us :</p>
+            <p className=' text-xs text-zinc-300 mt-6'>Follow us :</p>
             <div className=' flex items-center gap-4'>
                    <Link href='https://web.facebook.com/'>
                         <img src="/v2/header/assets/FB.png" alt="" width={30} className=' w-[40px] hover:scale-110 ease-in-out duration-300'/>
@@ -474,7 +474,7 @@ export default function Navbar() {
 
             </div>
 
-              <p className=' text-xs text-zinc-300 mt-10'>www.loremipsum.com</p>
+              <p className=' text-xs text-zinc-300 mt-6 w-[80%] text-center'>© 2024 Rise of Fearless (rof.game). All rights reserved. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
 
 
           </div>

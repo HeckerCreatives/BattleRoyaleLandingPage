@@ -14,6 +14,9 @@ import {
 import { MdArrowBackIos } from 'react-icons/md';
 import { IoMdArrowBack } from 'react-icons/io';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { registeruser, RegisterUser } from '@/validations/schema';
 
 interface Success {
   message: string;
@@ -296,118 +299,87 @@ export default function login() {
     const [ country, setCountry] = useState('')
     const [isFormValid, setIsFormValid] = useState(false); 
     const [ success, setSuccess] = useState<Success>()
-    const [errors, setErrors] = useState<Error | null>( null);
+    // const [errors, setErrors] = useState<Error | null>( null);
 
+      //form validation
+      const {
+        register,
+        handleSubmit,
+        setValue,
+        reset,
+        trigger,
+        formState: { errors },
+    } = useForm<RegisterUser>({
+        resolver: zodResolver(registeruser),
+        defaultValues: {
+           
+        },
+    })
 
-    {/*Register Form Validator*/}
-    const validateForm = () => {
-    let formIsValid = true;
-    const errors: Error = {
-      username: '', password: '', confirmPassword: '', email:'', country:''
-    };
-
-    // Validate Username
-    if (username.length < 6) {
-      formIsValid = false;
-      errors.email = "Username must be at least 6 characters";
-    }
-
-    // Validate Password
-    if (password.length < 6) {
-      formIsValid = false;
-      errors.password = "Password must be at least 6 characters";
-    }
-
-     // Validate Confirm Password
-    if (password !== passwordconfirm) {
-      formIsValid = false;
-      errors.confirmPassword = "Passwords do not match";
-    }
-
-     if (country === '') {
-      formIsValid = false;
-      errors.confirmPassword = "No country selected";
-    }
-
-    // Validate Email
-    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      formIsValid = false;
-      errors.email = "Invalid email address";
-    }
-
-    setErrors(errors);
-    setIsFormValid(formIsValid);
-
-    return formIsValid;
-    };
 
     {/*Register*/}
-    const handleRegister = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if (validateForm()) {
-       const register = async () => {
-        setLoading(true)
-           try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`,{
-                username: username,
-                password: password,
-                email: email,
-                country: country
-            },{
-            withCredentials: true,
-            headers: {
-              'Content-Type': 'application/json',
-              }
-            })
-            setUsername('')
-            setPassword('')
-            setPasswordConfirm('')
-            setEmail('')
-            setCountry('')
-            console.log(response.data)
-            if (response.data.message === 'success') {
-              router.push('/auth/login')
-              setLoading(false)
-               toast({
-                title: "Success",
-                description: "Successfully registered",
-              })
-            }
+    const handleRegisterUser = async (data: RegisterUser) => {
+      setLoading(true)
 
-            if (response.data.message === 'failed') {
-              setLoading(false)
-             toast({
-              variant: "destructive",
-              title: "Error",
-              description: "",
-            })
-            }
-            setLoading(false)
-          } catch (error: any) {
-            if (error.response.data.data != null){
-              setLoading(false)
-              toast({
-                variant: "destructive",
-                title: "Error",
-                description: error.response.data.data,
-              })
-            }
-            else{
-              setLoading(false)
-              toast({
-                variant: "destructive",
-                title: "Error",
-                description: "There's a problem with the server! Please contact customer support for more details",
-              })
-            }
+      try {
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`,{
+            username: data.username,
+            password: data.password,
+            email: data.email,
+            country: data.country
+        },{
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
           }
-         setLoading(false)
-      }
-      register()
-    } else {
+        })
+        setLoading(false)
 
+        setUsername('')
+        setPassword('')
+        setPasswordConfirm('')
+        setEmail('')
+        setCountry('')
+        console.log(response.data)
+        if (response.data.message === 'success') {
+          router.push('/auth/login')
+          setLoading(false)
+           toast({
+            title: "Success",
+            description: "Successfully registered",
+          })
+        }
+
+        if (response.data.message === 'failed') {
+          setLoading(false)
+         toast({
+          variant: "destructive",
+          title: "Error",
+          description: "",
+        })
+        }
+        setLoading(false)
+      } catch (error: any) {
+        if (error.response.data.data != null){
+          setLoading(false)
+          toast({
+            variant: "destructive",
+            title: "Error",
+            description: error.response.data.data,
+          })
+        }
+        else{
+          setLoading(false)
+          toast({
+            variant: "destructive",
+            title: "Error",
+            description: "There's a problem with the server! Please contact customer support for more details",
+          })
+        }
+      }
+    
     }
-    };
+
 
     const back = () => {
       router.push('/')
@@ -416,7 +388,7 @@ export default function login() {
 
 
   return (
-    <div className=' w-screen h-screen bg-zinc-950 flex items-center justify-center'
+    <div className=' w-screen h-auto bg-zinc-950 flex flex-col items-center justify-start'
       style={{backgroundImage: "url('/login/bgred.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
     
     >
@@ -426,7 +398,7 @@ export default function login() {
       </a>
 
 
-      <div className=' hidden xl:block absolute top-0 w-screen h-32 bg-gradient-to-b from-zinc-950 to-[#00000000]'>
+      {/* <div className=' hidden xl:block absolute top-0 w-screen h-32 bg-gradient-to-b from-zinc-950 to-[#00000000]'>
 
       </div>
 
@@ -441,9 +413,10 @@ export default function login() {
 
         </div>
 
-      </div>
+      </div> */}
 
-      <div className=' relative grid grid-cols-1 md:grid-cols-2 w-[95%] md:w-[700px] xl:w-[800px] bg-zinc-900 rounded-md'
+      <div className=' h-screen w-full flex items-center justify-center'>
+         <div className=' relative py-4 grid grid-cols-1 md:grid-cols-2 w-[95%] md:w-[700px] xl:w-[800px] bg-zinc-900 rounded-md'
      style={{backgroundImage: "url('/login/Sign Up Tab.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
         
         >
@@ -461,11 +434,24 @@ export default function login() {
                   <p className=' text-xs text-zinc-400 mb-2'>Enter your account details</p>
 
                 </div>
-                      <Input placeholder='Username' maxLength={20} value={username} onChange={(e) => setUsername(e.target.value)} type='text' className=' bg-zinc-950 border-orange-300 text-white'/>
-                      <Input placeholder='Password' maxLength={20} value={password} onChange={(e) => setPassword(e.target.value)} type='password' className=' bg-zinc-950 border-orange-300 text-white '/>
-                      <Input placeholder='Confirm password' maxLength={20} value={passwordconfirm} onChange={(e) => setPasswordConfirm(e.target.value)} type='password' className=' bg-zinc-950 border-orange-300 text-white '/>
-                      <Input placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} type='email' className=' bg-zinc-950 text-white border-orange-300'/>
-                      <Select onValueChange={setCountry} value={country}>
+
+                <form onSubmit={handleSubmit(handleRegisterUser)} className=' w-full flex flex-col gap-2'>
+                  <Input placeholder='Username' type='text' className=' bg-zinc-950 border-orange-300 text-white' {...register('username')}/>
+                  <p className=" text-[.6rem] text-red-500">{errors.username?.message}</p>
+
+                      <Input placeholder='Password' type='password' className=' bg-zinc-950 border-orange-300 text-white ' {...register('password')}/>
+                    <p className=" text-[.6rem] text-red-500">{errors.password?.message}</p>
+
+                      <Input placeholder='Confirm password' type='password' className=' bg-zinc-950 border-orange-300 text-white ' {...register('confirmPassword')}/>
+                    <p className=" text-[.6rem] text-red-500">{errors.confirmPassword?.message}</p>
+
+
+
+                      <Input placeholder='Email' type='email' className=' bg-zinc-950 text-white border-orange-300' {...register('email')}/>
+                    <p className=" text-[.6rem] text-red-500">{errors.email?.message}</p>
+
+
+                      <Select  onValueChange={(value) => setValue('country', value)} {...register('country')}>
                       <SelectTrigger className="w-full bg-zinc-950 border-orange-300 text-white">
                         <SelectValue placeholder="Select country" />
                       </SelectTrigger>
@@ -477,9 +463,13 @@ export default function login() {
                       </SelectContent>
                     </Select>
 
+                    <p className=" text-[.6rem] text-red-500">{errors.country?.message}</p>
+
+
+
                   
                       <button
-                       onClick={handleRegister}
+                       
                         className=' flex items-center justify-center gap-2 py-2 w-full lg:text-sm xl:text-lg font-bold text-amber-950  ease-in-out duration-200 bg-gradient-to-r from-orange-300 to-orange-400 rounded-md'
                         >
                            { loading === true && (
@@ -500,27 +490,11 @@ export default function login() {
                         )}
                           Sign up</button>
 
-                         {errors && errors.username && (
-                            <span className=" text-red-400 text-xs">{errors.username}</span>
-                          )}
+                </form>
+                      
 
-                           {errors && errors.password && (
-                            <span className=" text-red-400 text-xs">{errors.password}</span>
-                          )}
-
-                           {errors && errors.confirmPassword && (
-                            <span className=" text-red-400 text-xs">{errors.confirmPassword}</span>
-                          )}
-
-                          {errors && errors.country && (
-                            <span className=" text-red-400 text-xs">{errors.country}</span>
-                          )}
-
-                          {errors && errors.email && (
-                            <span className=" text-red-400 text-xs">{errors.email}</span>
-                          )}
-
-                          <p className=' text-xs text-zinc-400 mt-4 flex items-center gap-6'>Already have an account?<a href="/auth/login" className=' text-xs font-semibold px-4 py-1 border-2 border-orange-400 rounded-md text-orange-400'>Log In</a></p>
+                        
+                <p className=' text-xs text-zinc-400 mt-4 flex items-center gap-6'>Already have an account?<a href="/auth/login" className=' text-xs font-semibold px-4 py-1 border-2 border-orange-400 rounded-md text-orange-400'>Log In</a></p>
 
 
               </div>
@@ -530,36 +504,44 @@ export default function login() {
               </div>
 
           </div>
+      </div>
 
-          <div className=' hidden 2xl:flex flex-col items-center gap-4 text-xs text-white absolute bottom-3 w-[500px]'>
-            <p className=' text-center text-xs'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      
 
-            <div className=' flex items-center gap-4 lg:gap-10'>
-                     <Link href='https://web.facebook.com/'>
-                        <img src="/v2/header/assets/FB.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
-                    </Link>
-
-                     <Link href='https://discord.com/'>
-                        <img src="/v2/header/assets/Discord.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
-                    </Link>
-
-                     <Link href='https://www.tiktok.com/'>
-                        <img src="/v2/header/assets/Tiktok.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
-                    </Link>
-
-                    <Link href='https://web.telegram.org/'>
-                        <img src="/v2/header/assets/Telegram.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
-                    </Link>
+      <div className=' w-full bg-black flex items-center justify-center py-8'>
+        <div className=' flex flex-col items-center gap-4 text-xs text-white bg-black w-[500px] px-4'>
+              <p className=' text-zinc-400 text-xs text-center'>All content in Rise of Fearless, including but not limited to game design, characters, artwork, maps, and narratives, is the intellectual property of Rise of Fearless (rof.game).</p>
 
 
-            </div>
+              <div className=' flex items-center gap-4 lg:gap-4'>
+                    <Link href='https://web.facebook.com/'>
+                          <img src="/v2/header/assets/FB.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
+                      </Link>
 
-              
-             <div className=' flex items-center gap-4'>
-                <a href="/terms&conditions" className=' text-xs text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Terms & Conditions</a>
-                <a href="/privacy" className=' text-xs text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Privacy Policy</a>
+                      <Link href='https://discord.com/'>
+                          <img src="/v2/header/assets/Discord.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
+                      </Link>
+
+                      <Link href='https://www.tiktok.com/'>
+                          <img src="/v2/header/assets/Tiktok.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
+                      </Link>
+
+                      <Link href='https://web.telegram.org/'>
+                          <img src="/v2/header/assets/Telegram.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
+                      </Link>
+
               </div>
-          </div>
+
+                
+              <div className=' flex items-center gap-4'>
+                  <a href="/terms&conditions" className=' text-xs text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Terms & Conditions</a>
+                  <a href="/privacy" className=' text-xs text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Privacy Policy</a>
+                </div>
+
+                <p className=' text-zinc-50 text-xs mt-6 text-center'>© 2024 Rise of Fearless (rof.game). All rights reserved. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
+
+        </div>
+       </div>
     </div>
   )
 }
