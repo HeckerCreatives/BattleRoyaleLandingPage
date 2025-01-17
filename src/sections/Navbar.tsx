@@ -392,7 +392,7 @@ export default function Navbar() {
 
     </div>
 
-     <div className=' lg:hidden w-[90%] flex items-center justify-between px-2 h-12 absolute top-4 border-x-4 border-amber-700'
+     <div className=' lg:hidden w-[90%] z-50 flex items-center justify-between px-2 h-12 absolute top-4 border-x-4 border-amber-700'
      style={{backgroundImage: "url('/assets/navigator TAB.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
      >
       <img src="/assets/logo 06 B.png" alt="" width={90} className=' hover:scale-110 ease-in-out duration-200' />
