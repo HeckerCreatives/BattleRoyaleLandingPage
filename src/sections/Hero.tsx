@@ -1,6 +1,5 @@
 "use client"
-
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {motion} from 'framer-motion'
 import { fadeIn } from '@/lib/variant'
 import { Link } from 'lucide-react'
@@ -14,6 +13,14 @@ interface Maps {
   title: string,
   description: string,
   link: string,
+}
+
+interface Links {
+  _id: string
+  title: string
+  createdAt:string 
+  updatedAt: string
+  link: string
 }
 export default function Hero() {
   const { toast } = useToast()
@@ -46,6 +53,39 @@ export default function Hero() {
     }
     headerData()
   }, [])
+
+  const [list, setList] = useState<Links[]>([])
+
+
+  //get socials
+  useEffect(() => {
+    const fetchlinks = async () => {
+        try {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/sociallinks/getsociallinksa`);
+
+            setList(response.data.data)
+        
+        } catch (error) {
+          
+        }
+    };
+
+    fetchlinks();
+  }, []);
+
+  const getImage = (type: string) => {
+    if(type === 'facebook'){
+      return  <img src="/v2/header/assets/FB.png" alt=""  width={70} className=' 2xl:w-[60px] xl:w-[40px] lg:[40px] hover:scale-110 ease-in-out duration-300'/>
+
+    } else if(type === 'discord'){
+      return  <img src="/v2/header/assets/Discord.png" alt="" width={70} className=' 2xl:w-[60px] xl:w-[40px] lg:[40px] hover:scale-110 ease-in-out duration-300' />
+    } else if(type === 'tiktok'){
+      return   <img src="/v2/header/assets/Tiktok.png" alt="" width={70} className=' 2xl:w-[60px] xl:w-[40px] lg:[40px] hover:scale-110 ease-in-out duration-300' />
+    } else {
+      return <img src="/v2/header/assets/Telegram.png" alt="" width={70} className=' 2xl:w-[60px] xl:w-[40px] lg:[40px] hover:scale-110 ease-in-out duration-300' />
+    }
+
+  }
   return (
     <div className=' h-[100dvh] lg:h-[screen] w-screen flex flex-col items-center justify-end text-white'
     style={{backgroundImage: "url('/v2/header/assets/BG B.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
@@ -71,8 +111,14 @@ export default function Hero() {
         </div> */}
 
         <div className=' hidden fixed right-0 z-50  bottom-8 lg:flex flex-col items-center justify-center gap-2 rounded-l-lg bg-amber-900 2xl:w-20 xl:w-16 lg:w-14 py-6'>
+
+          {list.map((item, index) => (
+            <a key={item._id} href={item.link} target='_blank'>
+              {getImage(item.title)}
+            </a>
+          ))}
          
-          <a href='https://web.facebook.com/'>
+          {/* <a href='https://web.facebook.com/'>
             <img src="/v2/header/assets/FB.png" alt=""  width={70} className=' 2xl:w-[60px] xl:w-[40px] lg:[40px] hover:scale-110 ease-in-out duration-300'/>
 
         </a>
@@ -90,7 +136,7 @@ export default function Hero() {
         <a href='https://web.telegram.org/'>
           <img src="/v2/header/assets/Telegram.png" alt="" width={70} className=' 2xl:w-[60px] xl:w-[40px] lg:[40px] hover:scale-110 ease-in-out duration-300' />
 
-        </a>
+        </a> */}
 
         </div>
 

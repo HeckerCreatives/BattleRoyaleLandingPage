@@ -17,6 +17,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { registeruser, RegisterUser } from '@/validations/schema';
+import Footer from '@/sections/Footer';
 
 interface Success {
   message: string;
@@ -506,9 +507,11 @@ export default function login() {
           </div>
       </div>
 
+
+      <Footer/>
       
 
-      <div className=' w-full bg-black flex items-center justify-center py-8'>
+      {/* <div className=' w-full bg-black flex items-center justify-center py-8'>
         <div className=' flex flex-col items-center gap-4 text-xs text-white bg-black w-[500px] px-4'>
               <p className=' text-zinc-400 text-xs text-center'>All content in Rise of Fearless, including but not limited to game design, characters, artwork, maps, and narratives, is the intellectual property of Rise of Fearless (rof.game).</p>
 
@@ -541,7 +544,7 @@ export default function login() {
                 <p className=' text-zinc-50 text-xs mt-6 text-center'>© 2024 Rise of Fearless (rof.game). All rights reserved. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
 
         </div>
-       </div>
+       </div> */}
     </div>
   )
 }

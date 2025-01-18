@@ -29,6 +29,7 @@ interface PlayerDetails {
     death: number;
     level: number;
     xp: number;
+    userrank: number
   }
 
 
@@ -48,12 +49,7 @@ export default function page() {
   const [isFormValid, setIsFormValid] = useState(false); 
     const [errors, setErrors] = useState<Error | null>( null);
     const [rank, setRank] = useState(0); 
-    const [playerDetails, setPlayerDetails] = useState<PlayerDetails>({
-      kill: 0,
-      death: 0,
-      level: 0,
-      xp: 0,
-    })
+    const [playerDetails, setPlayerDetails] = useState<PlayerDetails>()
 
     {/*Player Data*/}
     useEffect(() => {
@@ -97,12 +93,7 @@ export default function page() {
                         'Content-Type': 'application/json',
                     }
                 });
-                setPlayerDetails({
-                    kill: response.data.data.kill as number,
-                    death: response.data.data.death as number,
-                    level: response.data.data.level as number,
-                    xp: response.data.data.xp as number,
-                });
+                setPlayerDetails(response.data.data);
             } catch (error) {
                 if (axios.isAxiosError(error)) {
                     const axiosError = error as AxiosError;
@@ -449,20 +440,20 @@ export default function page() {
                     </div>
 
                     <div className=' w-full grid grid-cols-3 gap-4 mt-4'>
-                        <div className=' bg-zinc-950 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
-                            <h2 className=' text-xl font-bold text-orange-300'>{playerDetails.kill}</h2>
+                        <div className=' bg-zinc-900 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
+                            <h2 className=' text-xl font-bold text-orange-300'>{playerDetails?.kill}</h2>
                             <p className=' text-sm text-zinc-400 h-10 text-center'>Total Kills</p>
 
                         </div>
 
-                         <div className=' bg-zinc-950 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
-                            <h2 className=' text-xl font-bold text-orange-300'>{playerDetails.death}</h2>
+                         <div className=' bg-zinc-900 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
+                            <h2 className=' text-xl font-bold text-orange-300'>{playerDetails?.death}</h2>
                             <p className=' text-sm text-zinc-400 h-10 text-center'>Total Deaths</p>
 
                         </div>
 
-                         <div className=' bg-zinc-950 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
-                            <h2 className=' text-xl font-bold text-orange-300'>{rank}</h2>
+                         <div className=' bg-zinc-900 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
+                            <h2 className=' text-xl font-bold text-orange-300'>{playerDetails?.userrank}</h2>
                             <p className=' text-sm text-zinc-400 h-10 text-center'>Current Rank</p>
 
                         </div>

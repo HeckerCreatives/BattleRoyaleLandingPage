@@ -6,18 +6,18 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div className=' download w-screen h-auto flex flex-col items-center justify-start'
+    <div className=' relative download w-screen h-screen flex flex-col items-center justify-start'
     style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
     
     >
-        <div className=' max-w-[1920px] flex flex-col items-center justify-center gap-10 w-screen h-[100dvh] '
+        <div className=' max-w-[1920px] flex flex-col items-center justify-center gap-10 w-screen '
         style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
         >
         <Navbar/>
 
         <div className=' w-[60%] h-[500px] flex flex-col gap-6 items-center justify-center'>
             <h2 className=' text-4xl font-bold text-orange-200'>Play Game</h2>
-            <p className=' text-sm text-orange-100 text-center'>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <p className=' text-sm text-orange-100 text-center'>"Rise of Fearless is now available for download. Discover a new world of adventure and challenges. Play anytime, anywhere, on your mobile device. Download it today on Google Play Store and iOS."</p>
 
             <div className=' flex justify-center items-center gap-2 mt-6 clear-start bg-orange-300 p-2 rounded-lg'>
               <a href="https://www.apple.com/ph/app-store/">
