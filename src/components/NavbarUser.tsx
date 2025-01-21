@@ -22,7 +22,13 @@ import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import axios,{ AxiosError} from 'axios'
 import { useToast } from "@/components/ui/use-toast"
 
-
+interface Links {
+  _id: string
+  title: string
+  createdAt:string 
+  updatedAt: string
+  link: string
+}
 export default function NavbarUser() {
   const pathname = usePathname()
  
@@ -32,6 +38,41 @@ export default function NavbarUser() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [country, setCountry] = useState('')
+
+  const [list, setList] = useState<Links[]>([])
+
+
+  //get socials
+  useEffect(() => {
+    const fetchlinks = async () => {
+        try {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/sociallinks/getsociallinksa`);
+
+            setList(response.data.data)
+        
+        } catch (error) {
+          
+        }
+    };
+
+    fetchlinks();
+  }, []);
+
+  
+  const getImage = (type: string) => {
+    if(type === 'facebook'){
+      return  <img src="/v2/header/assets/FB.png" alt="" width={30} className=' w-[40px] hover:scale-110 ease-in-out duration-300'/>
+
+    } else if(type === 'discord'){
+      return  <img src="/v2/header/assets/Discord.png" alt="" width={30} className=' w-[40px] hover:scale-110 ease-in-out duration-300'/>
+    } else if(type === 'tiktok'){
+      return  <img src="/v2/header/assets/Tiktok.png" alt="" width={30} className=' w-[40px] hover:scale-110 ease-in-out duration-300'/>
+    } else {
+      return <img src="/v2/header/assets/Telegram.png" alt="" width={30} className=' w-[40px] hover:scale-110 ease-in-out duration-300'/>
+    }
+
+  }
+
 
    useEffect(() => {
         const playerData = async () => {
@@ -165,25 +206,16 @@ export default function NavbarUser() {
 
             <p className=' text-xs text-zinc-300 mt-10'>Follow us :</p>
             <div className=' flex items-center gap-4'>
-                    <Link href='https://web.facebook.com/'>
-                        <img src="/v2/header/assets/FB.png" alt="" width={30} className=' w-[40px] hover:scale-110 ease-in-out duration-300'/>
-                    </Link>
-
-                     <Link href='https://discord.com/'>
-                        <img src="/v2/header/assets/Discord.png" alt="" width={30} className=' w-[40px] hover:scale-110 ease-in-out duration-300'/>
-                    </Link>
-
-                     <Link href='https://www.tiktok.com/'>
-                        <img src="/v2/header/assets/Tiktok.png" alt="" width={30} className=' w-[40px] hover:scale-110 ease-in-out duration-300'/>
-                    </Link>
-
-                    <Link href='https://web.telegram.org/'>
-                        <img src="/v2/header/assets/Telegram.png" alt="" width={30} className=' w-[40px] hover:scale-110 ease-in-out duration-300'/>
-                    </Link>
+            {list.map((item, index) => (
+                <a key={item._id} href={item.link} target='_blank'>
+                  {getImage(item.title)}
+                </a>
+              ))}
 
             </div>
 
-              <p className=' text-xs text-zinc-300 mt-10'>www.loremipsum.com</p>
+            <p className=' text-xs text-zinc-300 mt-6 w-[80%] text-center'>© 2024 Rise of Fearless (rof.game). All rights reserved. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
+
 
 
           </div>
