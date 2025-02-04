@@ -79,7 +79,7 @@ export default function Section3() {
                     style={{backgroundImage: "url('/v2/news/assets/Tab Big.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                     >
 
-                    <div className=' w-[90%] h-[400px] lg:h-[280px] bg-red-900 flex items-center justify-center rounded-xl'
+                    <div className=' w-[90%] aspect-video bg-red-900 flex items-center justify-center rounded-xl'
                      style={{
                         backgroundImage: `url('${process.env.NEXT_PUBLIC_API_URL}/${img.replace(/\\/g, '/')}')`,
                         backgroundSize: "cover",
@@ -100,10 +100,10 @@ export default function Section3() {
                         <DialogTrigger className=' bg-gradient-to-r from-orange-300 to-orange-400 rounded-md w-[200px] py-2 flex items-center justify-center'>
                              <h2 className=' flex items-center gap-2 text-amber-950 text-lg font-bold italic'>READ MORE <RiArrowRightDoubleLine size={30} className=' text-amber-950'/></h2>
                         </DialogTrigger>
-                        <DialogContent className=' text-white p-10 bg-zinc-950 border-4 border-orange-300 rounded-md w-[80%] h-[80%] flex flex-col items-center gap-4'
+                        <DialogContent className=' text-white p-10 bg-zinc-950 border-4 border-orange-300 rounded-md w-[50%] max-h-[80%] overflow-y-auto flex flex-col items-center gap-4'
                         style={{backgroundImage: "url('/v2/news/Tab Big.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                         >
-                            <div className=' w-full h-[40%] rounded-md' 
+                            <div className=' w-full aspect-video rounded-md' 
                              style={{
                                 backgroundImage: `url('${process.env.NEXT_PUBLIC_API_URL}/${img.replace(/\\/g, '/')}')`,
                                 backgroundSize: "cover",
@@ -118,7 +118,7 @@ export default function Section3() {
                             <p className=' text-secondary text-2xl font-bold'>{title}</p>
                            </div>
 
-                           <div className=' w-full h-[50%] overflow-y-auto'>
+                           <div className=' w-full'>
                             <p className=' text-lg text- start text-zinc-300 whitespace-pre-line'>{description}</p>
                            </div>
                         </DialogContent>
@@ -266,7 +266,7 @@ export default function Section3() {
                 
                 >
 
-                   <div className=' w-full h-[220px] bg-red-900 flex items-center justify-center rounded-xl'
+                   <div className=' w-full aspect-video bg-red-900 flex items-center justify-center rounded-xl'
                      style={{
                         backgroundImage: `url('${process.env.NEXT_PUBLIC_API_URL}/${img.replace(/\\/g, '/')}')`,
                         backgroundSize: "cover",
