@@ -54,11 +54,6 @@ interface Error {
 
 }
 
-interface ResError {
-  message: string;
-  data: string
-}
-
 interface Links {
   _id: string
   title: string
@@ -110,8 +105,6 @@ export default function Navbar() {
 
   }
 
-
-
   const resetForm = () => {
     setUsername('');
     setPassword('');
@@ -121,13 +114,6 @@ export default function Navbar() {
     setPlayerusername('');
     setPlayerpassword('');
     setTab('login');
-  };
-
-  const handleDialogChange = (isOpen: boolean | ((prevState: boolean) => boolean)) => {
-    setIsOpen(isOpen);
-    if (!isOpen) {
-      resetForm();
-    }
   };
 
   useEffect(() => {
@@ -143,17 +129,11 @@ export default function Navbar() {
     }
   }, []);
 
-  //   if (typeof window !== 'undefined') {
-  //     localStorage.setItem('auth', 'true');
-  //     setAuth('true'); // Update state
-  //     router.push('/user');
-  //   }
-  // };
 
   const logoutUser = () => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('auth', 'false');
-      setAuth('false'); // Update state
+      setAuth('false'); 
       router.push('/');
       window.location.reload();
     }
@@ -187,156 +167,9 @@ export default function Navbar() {
     const [ success, setSuccess] = useState<Success>()
     const [errors, setErrors] = useState<Error | null>( null);
 
-    {/*Register Form Validator*/}
-    const validateForm = () => {
-    let formIsValid = true;
-    const errors: Error = {
-      username: '', password: '', confirmPassword: '', email:'', country:''
-    };
-
-    // Validate Username
-    if (username.length < 8) {
-      formIsValid = false;
-      errors.email = "Username must be at least 8 characters";
-    }
-
-    // Validate Password
-    if (password.length < 8) {
-      formIsValid = false;
-      errors.password = "Password must be at least 8 characters";
-    }
-
-     // Validate Confirm Password
-    if (password !== passwordconfirm) {
-      formIsValid = false;
-      errors.confirmPassword = "Passwords do not match";
-    }
-
-     if (country === '') {
-      formIsValid = false;
-      errors.confirmPassword = "No country selected";
-    }
-
-    // Validate Email
-    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      formIsValid = false;
-      errors.email = "Invalid email address";
-    }
-
-    setErrors(errors);
-    setIsFormValid(formIsValid);
-
-    return formIsValid;
-    };
-
-    {/*Register*/}
-    const handleRegister = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if (validateForm()) {
-       const register = async () => {
-        setLoading(true)
-           try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`,{
-                username: username,
-                password: password,
-                email: email,
-                country: country
-            },{
-            withCredentials: true,
-            headers: {
-              'Content-Type': 'application/json',
-              }
-            })
-            setUsername('')
-              setPassword('')
-              setPasswordConfirm('')
-              setEmail('')
-              setCountry('')
-            if (response.data.message === 'success') {
-              setLoading(false)
-               toast({
-                title: "Success",
-                description: "Successfully registered",
-              })
-            }
-
-            if (response.data.message === 'failed') {
-              setLoading(false)
-             toast({
-              variant: "destructive",
-              title: "Error",
-              description: "",
-            })
-            }
-            setIsLoading(false)
-          } catch (error) {
-          
-          }
-         setLoading(false)
-      }
-      register()
-    } else {
-
-    }
-    };
-
+ 
     const [playerusername, setPlayerusername] = useState('')
     const [playerpassword, setPlayerpassword] = useState('')
-
-    {/*Log In*/}
-    const loginPlayer = async () => {
-      if ( playerusername === ''){
-        toast({
-          variant: "destructive",
-          title: "Failed",
-          description: 'Please enter your username'
-        })
-      }
-      if ( playerpassword === ''){
-        toast({
-          variant: "destructive",
-          title: "Failed",
-          description: 'Please enter your password'
-        })
-      }
-
-      if ( playerusername !== '' && playerpassword !== ''){
-        setLoading(true)
-        try {
-          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/login?username=${playerusername}&password=${playerpassword}`,{
-            withCredentials: true,
-            headers: {
-                'Content-Type': 'application/json',
-                }
-          })
-          if ( response.data.message === 'success' && response.data){
-            if (typeof window !== 'undefined') {
-              setLoading(false)
-                toast({
-                  title: "Success",
-                  description: "Successfully logged in",
-                })
-              localStorage.setItem('auth', 'true');
-              setAuth('true'); // Update state
-              router.push('/user');
-            }
-          }
-          if (response.data.message === 'failed'){
-              setLoading(false)
-                toast({
-                variant: "destructive",
-                title: "Failed",
-                description: `${response.data.data}`
-              })
-          }
-            setLoading(false)
-        } catch (error) {
-            setLoading(false)
-          
-        }
-      }
-     
-    }
 
     useEffect(() =>{
 
@@ -347,7 +180,6 @@ export default function Navbar() {
     const [country2, setCountry2] = useState('')
     const [funds, setFunds] = useState('')
   
-    {/*Player Data*/}
     useEffect(() => {
         const playerData = async () => {
             try {

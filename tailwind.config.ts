@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import fluid, { extract, fontSize, screens } from 'fluid-tailwind'
 
 const config = {
   darkMode: ["class"],
@@ -8,8 +9,11 @@ const config = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
 	],
+	extract,
   prefix: "",
   theme: {
+	screens,
+    fontSize,
   	container: {
   		center: true,
   		padding: '2rem',
@@ -18,7 +22,13 @@ const config = {
   			'2xl': '1400px'
   		}
   	},
+	
   	extend: {
+		
+		fontFamily: {
+			gilgond: ['Gilgond', 'sans-serif'], // Add custom font here
+			dihjauti: ['Dihjauti', 'sans-serif'], // Add custom font here
+		},
   		textColor: {
   			secondary: '#FF7A2C'
   		},
@@ -92,7 +102,7 @@ const config = {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), fluid],
 } satisfies Config
 
 export default config

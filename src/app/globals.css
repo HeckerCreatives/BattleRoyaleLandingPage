@@ -2,6 +2,20 @@
   @tailwind components;
   @tailwind utilities;
 
+  @font-face {
+    font-family: 'Gilgond';
+    src: url('/investor/fonts/GILGOND.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Dihjauti';
+    src: url('/investor/fonts/Dihjauti.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   @layer base {
     :root {
       --background: 0 0% 100%;

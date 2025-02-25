@@ -1,8 +1,7 @@
 "use client"
 
-import NavbarUser from '@/components/NavbarUser'
-import Footer from '@/sections/Footer'
-import Navbar from '@/sections/Navbar'
+import Footer from '@/components/common/Footer'
+import Navigation from '@/components/landingpage/Navigation'
 import React from 'react'
 
 export default function page() {
@@ -14,7 +13,7 @@ export default function page() {
         <div className=' max-w-[1920px] flex flex-col items-center justify-start gap-10 w-screen h-auto pb-20'
         style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
         >
-        <Navbar/>
+        <Navigation/>
 
         <div className=' w-[80%] md:w-[50%] h-[700px] flex flex-col gap-6 items-center justify-center mt-20 lg:mt-5'>
             <h2 className=' text-2xl 2xl:text-4xl font-bold text-orange-200'>Privacy Policy</h2>

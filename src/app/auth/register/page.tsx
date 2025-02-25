@@ -11,13 +11,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { MdArrowBackIos } from 'react-icons/md';
 import { IoMdArrowBack } from 'react-icons/io';
-import Link from 'next/link';
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { registeruser, RegisterUser } from '@/validations/schema';
-import Footer from '@/sections/Footer';
+import Footer from '@/components/common/Footer';
 
 interface Success {
   message: string;
@@ -390,7 +388,7 @@ export default function login() {
 
   return (
     <div className=' w-screen h-auto bg-zinc-950 flex flex-col items-center justify-start'
-      style={{backgroundImage: "url('/login/bgred.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+      style={{backgroundImage: "url('/investor/assets/BG Pattern Solid.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
     
     >
 
@@ -399,22 +397,7 @@ export default function login() {
       </a>
 
 
-      {/* <div className=' hidden xl:block absolute top-0 w-screen h-32 bg-gradient-to-b from-zinc-950 to-[#00000000]'>
-
-      </div>
-
-      <div className=' hidden 2xl:block absolute bottom-0 w-screen h-32 bg-gradient-to-t from-zinc-950 to-[#00000000]'>
-
-      </div><div className=' hidden 2xl:block absolute bottom-0 w-screen h-32 bg-gradient-to-t from-zinc-950 to-[#00000088]'
-      style={{backgroundImage: "url('/assets/header BG.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-      
-      >
-
-        <div className=' bg-zinc-950 w-full h-full bg-opacity-[0.96]'>
-
-        </div>
-
-      </div> */}
+ 
 
       <div className=' h-screen w-full flex items-center justify-center'>
          <div className=' relative py-4 grid grid-cols-1 md:grid-cols-2 w-[95%] md:w-[700px] xl:w-[800px] bg-zinc-900 rounded-md'
@@ -511,40 +494,6 @@ export default function login() {
       <Footer/>
       
 
-      {/* <div className=' w-full bg-black flex items-center justify-center py-8'>
-        <div className=' flex flex-col items-center gap-4 text-xs text-white bg-black w-[500px] px-4'>
-              <p className=' text-zinc-400 text-xs text-center'>All content in Rise of Fearless, including but not limited to game design, characters, artwork, maps, and narratives, is the intellectual property of Rise of Fearless (rof.game).</p>
-
-
-              <div className=' flex items-center gap-4 lg:gap-4'>
-                    <Link href='https://web.facebook.com/'>
-                          <img src="/v2/header/assets/FB.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
-                      </Link>
-
-                      <Link href='https://discord.com/'>
-                          <img src="/v2/header/assets/Discord.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
-                      </Link>
-
-                      <Link href='https://www.tiktok.com/'>
-                          <img src="/v2/header/assets/Tiktok.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
-                      </Link>
-
-                      <Link href='https://web.telegram.org/'>
-                          <img src="/v2/header/assets/Telegram.png" alt="" width={30} className=' w-[30px] hover:scale-110 ease-in-out duration-300'/>
-                      </Link>
-
-              </div>
-
-                
-              <div className=' flex items-center gap-4'>
-                  <a href="/terms&conditions" className=' text-xs text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Terms & Conditions</a>
-                  <a href="/privacy" className=' text-xs text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Privacy Policy</a>
-                </div>
-
-                <p className=' text-zinc-50 text-xs mt-6 text-center'>© 2024 Rise of Fearless (rof.game). All rights reserved. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
-
-        </div>
-       </div> */}
     </div>
   )
 }

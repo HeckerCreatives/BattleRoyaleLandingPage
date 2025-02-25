@@ -1,7 +1,4 @@
 "use client"
-import NavbarUser from '@/components/NavbarUser'
-import Footer from '@/sections/Footer'
-import Navbar from '@/sections/Navbar'
 import React, { useEffect, useState } from 'react'
 import { Input } from "@/components/ui/input"
 import axios,{ AxiosError} from 'axios'
@@ -18,6 +15,8 @@ import {
 import SocketListener from '@/components/SocketListener'
 import { Eye, EyeOff } from 'lucide-react'
 import { Country } from '@/lib/data'
+import Navigation from '@/components/landingpage/Navigation'
+import Footer from '@/components/common/Footer'
 
 interface Error {
   newemail: string;
@@ -304,7 +303,7 @@ export default function page() {
         <div className=' max-w-[1920px] flex flex-col items-center justify-start gap-10 w-screen h-auto pb-40 '
         style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
         >
-        <NavbarUser/>
+        <Navigation/>
             
 
             <div className=' relative w-[90%] md:w-[60%] grid-cols-1 grid xl:grid-cols-2 gap-10 h-auto mt-10 border-[1px] border-orange-300 rounded-lg'
