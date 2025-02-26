@@ -126,7 +126,7 @@ export default function Navigation() {
 
       <div className=' mr-4 relative z-10 hidden lg:flex items-center gap-4 text-amber-950 font-bold text-sm font-dihjauti p-2'>
         {navigation.map((item, index) => (
-          <a key={index} href={item.path}>{item.name}</a>
+          <a key={index} href={item.path} className=' hover:text-orange-500 transition-all duration-300'>{item.name}</a>
         ))}
 
         <div className=' flex items-center justify-end'>
@@ -142,17 +142,17 @@ export default function Navigation() {
 
         { auth === 'true' && (
           <Popover>
-            <PopoverTrigger className=' flex items-center gap-2 justify-end bg-zinc-800 p-2 rounded-md text-amber-50'>
+            <PopoverTrigger className=' flex items-center gap-2 justify-end bg-amber-950 p-2 rounded-md text-amber-50'>
               <div className=' w-auto h-auto rounded-md flex items-center justify-center'>
                   <img src="/assets/logo 06 B.png" alt="" width={50} className=' hover:scale-110 ease-in-out duration-200' />
               </div>
               <div className=' flex flex-col items-start justify-start text-amber-50 '>
                   <p className=' text-xs font-semibold'>{name}</p>
-                  <p className=' text-[.6rem] text-zinc-400'>Player</p>
+                  <p className=' text-[.6rem] text-amber-500'>Player</p>
 
               </div>
             </PopoverTrigger>
-            <PopoverContent className=' flex flex-col gap-4 w-auto h-auto bg-zinc-950 border-none mt-4 p-6 '>
+            <PopoverContent className=' flex flex-col gap-4 w-auto h-auto bg-amber-950 border-none mt-4 p-6 '>
               <a href='/user' className={`flex items-center gap-2 text-xs text-zinc-300 hover:text-secondary ease-in-out duration-500 `}><RiAccountBoxFill size={20}/>Account Management</a>
               <a href='/download' className=' flex items-center gap-2 text-xs text-zinc-300 hover:text-secondary ease-in-out duration-500'><IoDownload size={20}/>Download Game</a>
               <p onClick={logoutUser} className=' flex items-center gap-2 text-xs text-zinc-300 hover:text-secondary ease-in-out duration-500 cursor-default'><IoLogOut size={20}/>Log Out</p>
@@ -184,22 +184,22 @@ export default function Navigation() {
         
         { auth === 'true' && (
           <Popover>
-            <PopoverTrigger className=' flex items-center gap-2 justify-end bg-zinc-800 p-2 rounded-md text-amber-50'>
-              <div className=' w-auto h-auto rounded-md flex items-center justify-center'>
-                  <img src="/assets/logo 06 B.png" alt="" width={50} className=' hover:scale-110 ease-in-out duration-200' />
-              </div>
-              <div className=' flex flex-col items-start justify-start text-amber-50 '>
-                  <p className=' text-xs font-semibold'>{name}</p>
-                  <p className=' text-[.6rem] text-zinc-400'>Player</p>
+          <PopoverTrigger className=' flex items-center gap-2 justify-end bg-amber-950 p-2 rounded-md text-amber-50'>
+            <div className=' w-auto h-auto rounded-md flex items-center justify-center'>
+                <img src="/assets/logo 06 B.png" alt="" width={50} className=' hover:scale-110 ease-in-out duration-200' />
+            </div>
+            <div className=' flex flex-col items-start justify-start text-amber-50 '>
+                <p className=' text-xs font-semibold'>{name}</p>
+                <p className=' text-[.6rem] text-amber-500'>Player</p>
 
-              </div>
-            </PopoverTrigger>
-            <PopoverContent className=' flex flex-col gap-4 w-auto h-auto bg-zinc-950 border-none mt-4 p-6 '>
-              <a href='/user' className={`flex items-center gap-2 text-xs text-zinc-300 hover:text-secondary ease-in-out duration-500 `}><RiAccountBoxFill size={20}/>Account Management</a>
-              <a href='/download' className=' flex items-center gap-2 text-xs text-zinc-300 hover:text-secondary ease-in-out duration-500'><IoDownload size={20}/>Download Game</a>
-              <p onClick={logoutUser} className=' flex items-center gap-2 text-xs text-zinc-300 hover:text-secondary ease-in-out duration-500 cursor-default'><IoLogOut size={20}/>Log Out</p>
-            </PopoverContent>
-          </Popover>
+            </div>
+          </PopoverTrigger>
+          <PopoverContent className=' flex flex-col gap-4 w-auto h-auto bg-amber-950 border-none mt-4 p-6 '>
+            <a href='/user' className={`flex items-center gap-2 text-xs text-zinc-300 hover:text-secondary ease-in-out duration-500 `}><RiAccountBoxFill size={20}/>Account Management</a>
+            <a href='/download' className=' flex items-center gap-2 text-xs text-zinc-300 hover:text-secondary ease-in-out duration-500'><IoDownload size={20}/>Download Game</a>
+            <p onClick={logoutUser} className=' flex items-center gap-2 text-xs text-zinc-300 hover:text-secondary ease-in-out duration-500 cursor-default'><IoLogOut size={20}/>Log Out</p>
+          </PopoverContent>
+        </Popover>
         )}
         </div>
       </SheetContent>

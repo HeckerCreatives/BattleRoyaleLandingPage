@@ -108,7 +108,7 @@ export default function HeroSection() {
   
   return (
     <div className=' relative z-10 flex flex-col items-center w-full h-[100dvh] max-h-[1080px] px-4'
-    style={{ backgroundImage: "url('/investor/assets/bg/hero.png')" , backgroundSize:'cover', backgroundRepeat:'no-repeat', backgroundPosition:'bottom'}}>
+    style={{ backgroundImage: "url('/investor/assets/bg/hero.png')" , backgroundSize:'cover', backgroundRepeat:'no-repeat', backgroundPosition:'center',}}>
       <div className=' w-full h-full bg-gradient-to-b from-zinc-950 to-zinc-950/0 absolute'>
 
       </div>

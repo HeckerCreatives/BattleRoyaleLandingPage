@@ -127,11 +127,11 @@ export default function About() {
         </div>
             ))} */}
 
-        <div className='relative max-w-[1920px] w-[90%] lg:w-[85%] h-[500px] grid grid-cols-1 md:grid-cols-2 rounded-lg ~mt-8/8'
+        <div className='relative max-w-[1920px] w-[90%] lg:w-[85%] h-[400px] grid grid-cols-1 md:grid-cols-2 rounded-lg ~mt-8/8'
         style={{backgroundImage: "url('/v2/about/tab.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
         
         >
-            <div className=' w-full h-[500px] flex flex-col gap-4 p-6'>
+            <div className=' w-full h-[400px] flex flex-col gap-4 p-6'>
 
                   {data1.length === 0 && (
                     <>
@@ -157,8 +157,12 @@ export default function About() {
                 )}       
             </div>
 
-            <div className=' relative w-full h-[500px] flex items-end justify-end'>
-            <img src="/pd/Tab Character.png" alt="" width={600} className=' relative left-20 bottom-0 md:block hidden'/>
+            <div className=' relative w-full h-[400px] flex items-end justify-end'>
+            {/* <img src="/pd/Tab Character.png" alt="" width={600} className=' relative left-20 bottom-0 md:block hidden'/> */}
+
+            <img src="/investor/assets/IMAGE - Opportunity.png" alt="image" className=' lg:block hidden' />
+
+
 
             </div>
 
@@ -168,7 +172,7 @@ export default function About() {
 
         <h2 className=' text-3xl  font-bold text-amber-50 font-gilgond mt-20'>Invest Early Now</h2>
 
-        <div className=' flex items-center gap-8'>
+        <div className=' flex md:flex-row flex-col items-center gap-8'>
           <img src="/investor/logo.png" alt="logo" width={500} height={500} className=' ~w-52/92'/>
 
           <div className=' flex flex-col gap-6'>

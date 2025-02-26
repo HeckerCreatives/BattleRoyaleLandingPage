@@ -81,13 +81,13 @@ export default function Mapssection() {
 
 
   return (
-   <div id='maps' className=' relative w-full h-auto flex flex-col items-center justify-center py-40 px-4'
+   <div  className=' relative w-full h-auto flex flex-col items-center justify-center py-40 px-4'
     >
       <img src="/investor/assets/Plate for GAME section.png" alt="bg" className=' absolute h-full w-full' />
 
 
       <div className=' relative z-10 w-full flex flex-col gap-4 max-w-[1440px]'>
-        {data.length !== 0 ? (
+        {/* {data.length !== 0 ? (
           <>
           <h2 className=' text-3xl  font-bold text-amber-50 font-gilgond mt-8'>THE MAP</h2>
 
@@ -107,7 +107,6 @@ export default function Mapssection() {
                 
                     </Carousel>
 
-            {/* Carousel Navigation Dots */}
             <div className='flex items-center justify-center gap-2 w-full md:mt-6 mt-4'>
               {data.map((_, idx) => (
                 <div
@@ -123,7 +122,6 @@ export default function Mapssection() {
             </div>
             </div>
 
-            {/* Description Tab for Desktop */}
             <div
             className='hidden lg:block 2xl:w-[500px] 2xl:h-[500px] xl:w-[400px] xl:h-[400px] lg:w-[350px] lg:h-[350px] md:w-[95%] md:h-[650px] h-[350px] lg:p-8 md:p-12 p-8'
             style={{
@@ -151,7 +149,6 @@ export default function Mapssection() {
             )}
             </div>
 
-            {/* Description Tab for Mobile */}
             <div
             className='lg:hidden block w-[90%] h-[300px] lg:p-8 md:p-12 p-8'
             style={{
@@ -183,7 +180,7 @@ export default function Mapssection() {
           <div className=' w-full h-[400px] flex items-center justify-center mt-10 text-white'>
              <h2 className=' text-3xl font-bold italic'>NO MAPS YET!</h2>
           </div>
-        )}
+        )} */}
         
         <About/>
       </div>

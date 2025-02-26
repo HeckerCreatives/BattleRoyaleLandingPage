@@ -6,6 +6,7 @@ import Mapssection from "@/components/landingpage/Maps";
 import Faq from "@/components/landingpage/Faq";
 import Newsletter from "@/components/landingpage/Newsletter";
 import Footer from "@/components/common/Footer";
+import MapsSections from "@/components/landingpage/MapsSection";
 
 export default function Home() {
 
@@ -53,8 +54,9 @@ export default function Home() {
         <main className=" w-full flex flex-col items-center justify-center">
           <HeroSection/>
           <Latestnews/>
-          <Mapssection/>
+          <MapsSections/>
           <Faq/>
+          <Mapssection/>
           <Newsletter/>
         </main>
         <Footer/>
