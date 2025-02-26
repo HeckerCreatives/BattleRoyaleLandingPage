@@ -23,9 +23,7 @@ export default function Rof() {
 
                     <p className=' text-center lg:text-end'>Against the odds, Ethiopia delivered a decisive victory, shattering Italy's colonial ambitions and securing its place as the only African nation to successfully resist European colonization. This triumph sent shockwaves across the world, igniting movements for independence across Africa and inspiring generations to fight for sovereignty.</p>
                 </div>
-
             </div>
-
         </div>
 
         <div className=' relative z-20 w-full h-full mt-12 flex items-center justify-center'>

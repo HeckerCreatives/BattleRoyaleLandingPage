@@ -166,6 +166,20 @@ export default function About() {
 
         </div>
 
+        <h2 className=' text-3xl  font-bold text-amber-50 font-gilgond mt-20'>Invest Early Now</h2>
+
+        <div className=' flex items-center gap-8'>
+          <img src="/investor/logo.png" alt="logo" width={500} height={500} className=' ~w-52/92'/>
+
+          <div className=' flex flex-col gap-6'>
+            <p className=' ~text-xs/lg max-w-[700px] text-amber-50 text-start'>Collaborate with leading gaming and media platforms to maximize visibility and growth. We aim to partner with major gaming networks and media outlets to expand the game’s reach and visibility, both within Africa and internationally. These partnerships will fuel our growth, ensuring Rise of Fearless reaches the right audience and establishes itself as a global force in gaming, while also paving the way for foreign investors to easily tap into the African market.</p>
+            <a href={`${process.env.NEXT_PUBLIC_INVESTOR_URL}`} target='_blank' className=' w-fit bg-orange-600 px-4 py-2 rounded-md text-white font-semibold'>Invest now</a>
+          </div>
+          
+        </div>
+        
+
+
 
     </div>
   )

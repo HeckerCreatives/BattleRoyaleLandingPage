@@ -117,8 +117,8 @@ export default function HeroSection() {
 
       <div className=' relative z-10 w-full h-full flex flex-col items-start justify-start '>
         <div className=' w-full flex flex-col gap-8 items-center justify-center mt-32'>
-          <h1 className=' ~text-2xl/4xl font-bold text-center max-w-[700px] text-amber-50'>{data[0]?.title}</h1>
-          <p className=' ~text-xs/sm text-center max-w-[700px] text-amber-50/90'>{data[0]?.description}</p>
+          <h1 className=' ~text-3xl/5xl font-bold text-center max-w-[800px] text-white'>{data[0]?.title}</h1>
+          <p className=' ~text-sm/lg text-center max-w-[800px] text-amber-50'>{data[0]?.description}</p>
 
         </div>
         <div className=' w-full flex justify-center items-center gap-2 absolute bottom-16 '>
