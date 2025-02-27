@@ -81,7 +81,7 @@ export default function Mapssection() {
 
 
   return (
-   <div  className=' relative w-full h-auto flex flex-col items-center justify-center py-40 px-4'
+   <div  className=' relative w-full h-auto flex flex-col items-center justify-center ~py-24/40 px-4'
     >
       <img src="/investor/assets/Plate for GAME section.png" alt="bg" className=' absolute h-full w-full' />
 

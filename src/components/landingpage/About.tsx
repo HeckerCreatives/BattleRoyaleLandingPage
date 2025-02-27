@@ -94,7 +94,7 @@ export default function About() {
             mass: 1,
             delay: 0
         }}
-        className=' text-3xl  font-bold text-amber-50 font-gilgond'>About the Game</motion.h2>
+        className=' text-3xl  font-bold text-amber-50 font-gilgond mb-4'>About the Game</motion.h2>
 
 
         {/* {data.map((data)=>(
@@ -205,7 +205,7 @@ export default function About() {
                     mass: 1,
                     delay: 0
                 }}
-                className=' text-3xl  font-bold text-amber-50 font-gilgond mt-20'>Invest Early Now</motion.h2>
+                className=' text-3xl  font-bold text-amber-50 font-gilgond mt-20 mb-4'>Invest Early Now</motion.h2>
 
         <motion.div 
         initial={{ opacity: 0, y: 50 }}

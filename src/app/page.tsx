@@ -7,6 +7,7 @@ import Faq from "@/components/landingpage/Faq";
 import Newsletter from "@/components/landingpage/Newsletter";
 import Footer from "@/components/common/Footer";
 import MapsSections from "@/components/landingpage/MapsSection";
+import About from "@/components/landingpage/About";
 
 export default function Home() {
 
@@ -55,8 +56,10 @@ export default function Home() {
           <HeroSection/>
           <Latestnews/>
           <MapsSections/>
+
           <Faq/>
           <Mapssection/>
+
           <Newsletter/>
         </main>
         <Footer/>
