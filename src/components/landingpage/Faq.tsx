@@ -6,6 +6,7 @@ import {
     AccordionItem,
     AccordionTrigger,
   } from "@/components/ui/accordion"
+import { motion } from 'framer-motion'
   
 
 export default function Faq() {
@@ -16,9 +17,32 @@ export default function Faq() {
        <div className=' max-w-[1920px] w-full lg:w-[70%] h-auto flex items-center justify-center gap-10'>
           
            <div className=' w-full flex flex-col gap-4 items-center justify-start px-4'>
-              <h2 className=' text-4xl font-bold font-gilgond'>FAQ</h2>
+              <motion.h2 
+              initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px 0px" }}
+                transition={{
+                    type: "spring",
+                    stiffness: 30,
+                    damping: 10,
+                    mass: 1,
+                    delay: 0
+                }}
+          className=' text-4xl font-bold font-gilgond'>FAQ</motion.h2>
 
-              <Accordion type="single" collapsible className=' w-full max-w-[700px] bg-zinc-800 px-4 rounded-md mt-10'>
+          <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px 0px" }}
+          transition={{
+              type: "spring",
+              stiffness: 30,
+              damping: 10,
+              mass: 1,
+              delay: .2
+          }}
+          className=' w-full flex flex-col gap-4 items-center justify-center'>
+          <Accordion type="single" collapsible className=' w-full max-w-[700px] bg-zinc-800 px-4 rounded-md mt-10'>
                 <AccordionItem value="item-1">
                     <AccordionTrigger className=' text-orange-600'>What is Rise of Fearless (ROF)?</AccordionTrigger>
                     <AccordionContent>
@@ -66,6 +90,9 @@ export default function Faq() {
                     </AccordionContent>
                 </AccordionItem>
                 </Accordion>
+          </motion.div>
+
+             
 
 
            </div>

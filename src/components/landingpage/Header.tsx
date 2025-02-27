@@ -21,6 +21,7 @@ import { RiAccountBoxFill } from 'react-icons/ri';
 import { IoDownload, IoLogOut } from 'react-icons/io5';
 import { toast } from '../ui/use-toast';
 import Navigation from './Navigation';
+import { motion } from 'framer-motion';
 
 interface Success {
   message: string;
@@ -117,11 +118,44 @@ export default function HeroSection() {
 
       <div className=' relative z-10 w-full h-full flex flex-col items-start justify-start '>
         <div className=' w-full flex flex-col gap-8 items-center justify-center mt-32'>
-          <h1 className=' ~text-3xl/5xl font-bold text-center max-w-[800px] text-white'>{data[0]?.title}</h1>
-          <p className=' ~text-sm/lg text-center max-w-[800px] text-amber-50'>{data[0]?.description}</p>
+          <motion.h1 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px 0px" }}
+          transition={{
+              type: "spring",
+              stiffness: 30,
+              damping: 10,
+              mass: 1,
+              delay: 0
+          }}className=' ~text-3xl/5xl font-bold text-center max-w-[800px] text-white'>{data[0]?.title}</motion.h1>
+          <motion.p 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px 0px" }}
+          transition={{
+              type: "spring",
+              stiffness: 30,
+              damping: 10,
+              mass: 1,
+              delay: .2
+          }}
+          className=' ~text-xs/lg text-center max-w-[800px] text-amber-50'>{data[0]?.description}</motion.p>
 
         </div>
-        <div className=' w-full flex justify-center items-center gap-2 absolute bottom-16 '>
+        <motion.div 
+        
+        initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px 0px" }}
+          transition={{
+              type: "spring",
+              stiffness: 30,
+              damping: 10,
+              mass: 1,
+              delay: .4
+          }}
+          className=' w-full flex justify-center items-center gap-2 absolute bottom-16 '>
               <a href="/download" className=' hover:scale-110 transition-all duration-300'>
               <img src="/astore.png" alt="" width={150} className='~w-32/40 ' />
               </a>
@@ -131,7 +165,7 @@ export default function HeroSection() {
 
               </a>
 
-            </div>
+        </motion.div>
         </div>
     </div>
   )

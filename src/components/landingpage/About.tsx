@@ -11,6 +11,7 @@ import {
 import axios, { AxiosError } from 'axios'
 import { useRouter } from 'next/navigation'
 import { useToast } from '@/components/ui/use-toast'
+import { motion } from 'framer-motion'
 
 interface Maps {
   id: string,
@@ -82,7 +83,18 @@ export default function About() {
     
     >
 
-        <h2 className=' text-3xl  font-bold text-amber-50 font-gilgond'>About the Game</h2>
+        <motion.h2 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px 0px" }}
+        transition={{
+            type: "spring",
+            stiffness: 30,
+            damping: 10,
+            mass: 1,
+            delay: 0
+        }}
+        className=' text-3xl  font-bold text-amber-50 font-gilgond'>About the Game</motion.h2>
 
 
         {/* {data.map((data)=>(
@@ -127,7 +139,18 @@ export default function About() {
         </div>
             ))} */}
 
-        <div className='relative max-w-[1920px] w-[90%] lg:w-[85%] h-[400px] grid grid-cols-1 md:grid-cols-2 rounded-lg ~mt-8/8'
+        <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px 0px" }}
+        transition={{
+            type: "spring",
+            stiffness: 30,
+            damping: 10,
+            mass: 1,
+            delay: .2
+        }}
+        className='relative max-w-[1920px] w-[90%] lg:w-[85%] h-[400px] grid grid-cols-1 md:grid-cols-2 rounded-lg ~mt-8/8'
         style={{backgroundImage: "url('/v2/about/tab.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
         
         >
@@ -142,7 +165,7 @@ export default function About() {
                   <>
                   <h2 className=' ~text-lg/2xl font-bold text-orange-400'>{data.title}</h2>
                 <div className=' h-auto overflow-y-auto'>
-                    <p className=' ~text-xs/sm text-orange-100'>
+                    <p className=' ~text-xs/lg text-orange-100'>
                     {data.description.split('\n').map((line, index) => (
                     <React.Fragment key={index}>
                       {line}
@@ -168,11 +191,34 @@ export default function About() {
 
 
 
-        </div>
+        </motion.div>
 
-        <h2 className=' text-3xl  font-bold text-amber-50 font-gilgond mt-20'>Invest Early Now</h2>
+        <motion.h2 
+        
+        initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px 0px" }}
+                transition={{
+                    type: "spring",
+                    stiffness: 30,
+                    damping: 10,
+                    mass: 1,
+                    delay: 0
+                }}
+                className=' text-3xl  font-bold text-amber-50 font-gilgond mt-20'>Invest Early Now</motion.h2>
 
-        <div className=' flex md:flex-row flex-col items-center gap-8'>
+        <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px 0px" }}
+        transition={{
+            type: "spring",
+            stiffness: 30,
+            damping: 10,
+            mass: 1,
+            delay: .2
+        }}
+        className=' flex md:flex-row flex-col items-center gap-8'>
           <img src="/investor/logo.png" alt="logo" width={500} height={500} className=' ~w-52/92'/>
 
           <div className=' flex flex-col gap-6'>
@@ -180,7 +226,7 @@ export default function About() {
             <a href={`${process.env.NEXT_PUBLIC_INVESTOR_URL}`} target='_blank' className=' w-fit bg-orange-600 px-4 py-2 rounded-md text-white font-semibold'>Invest now</a>
           </div>
           
-        </div>
+        </motion.div>
         
 
 

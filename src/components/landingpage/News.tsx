@@ -63,11 +63,33 @@ export default function Latestnews() {
     >
         <div className=' max-w-[1440px] w-full flex flex-col gap-4 h-auto text-white px-4'>
             {data.length !== 0 && (
-                <h2 className=' ~text-xl/3xl font-bold italic mb-6 font-gilgond mt-8'>LATEST NEWS</h2>
+                <motion.h2 
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px 0px" }}
+                transition={{
+                    type: "spring",
+                    stiffness: 30,
+                    damping: 10,
+                    mass: 1,
+                    delay: 0
+                }}
+                className=' ~text-xl/3xl font-bold italic mb-6 font-gilgond mt-8'>LATEST NEWS</motion.h2>
 
             )}
 
-            <div className='group grid grid-cols-1 lg:grid-cols-[1fr_500px] h-auto  gap-6'>
+            <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px 0px" }}
+            transition={{
+                type: "spring",
+                stiffness: 30,
+                damping: 10,
+                mass: 1,
+                delay: .2
+            }}
+            className='group grid grid-cols-1 lg:grid-cols-[1fr_500px] h-auto  gap-6'>
                 <div className='  w-full group-hover:scale-[103%] transition-all duration-300'>
                    
                     <div className=' grid place-items-center grid-cols-1 rounded-lg  w-full p-6 border-2 h-fit border-orange-300/70'
@@ -87,7 +109,7 @@ export default function Latestnews() {
 
                     <div className=' flex flex-col ~gap-2/5 w-full h-auto rounded-xl p-6 text-white'>
                         <h2 className=' ~text-lg/2xl font-bold'>{title}</h2>
-                        <h2 className=' ~text-xs/sm font-semibold text-zinc-300 line-clamp-4'>{description}</h2>
+                        <h2 className=' ~text-sm/lg font-semibold text-zinc-300 line-clamp-4'>{description}</h2>
                        
                         <Dialog>
                         <DialogTrigger className=' bg-gradient-to-r from-orange-300 to-orange-400 rounded-md max-w-[200px] py-2 flex items-center justify-center'>
@@ -179,7 +201,7 @@ export default function Latestnews() {
                     </div>
                 </div>
 
-            </div>
+            </motion.div>
 
             {/* {data.length !== 0 ? (
                 <div className=' group grid grid-cols-1 lg:grid-cols-[1fr_500px] h-full gap-6'>
