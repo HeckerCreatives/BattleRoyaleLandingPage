@@ -131,7 +131,7 @@ export default function Navigation() {
 
         <div className=' flex items-center justify-end'>
         {auth === 'false' && (
-          <a href="/auth/login" className=' relative flex items-center justify-center'>
+          <a href="/auth/login" className=' relative flex items-center justify-center hover:scale-105 transition-all duration-300'>
             <img src="/assets/button.png" alt="button" width={200}/>
             <p className=' absolute '>Log In | Register</p>
             

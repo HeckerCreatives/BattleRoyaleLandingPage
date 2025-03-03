@@ -19,7 +19,7 @@ export default function Footer() {
     useEffect(() => {
       const fetchlinks = async () => {
           try {
-              const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/sociallinks/getsociallinksa`);
+              const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/sociallinks/getsociallinksa?filter=user`);
   
               setList(response.data.data)
           

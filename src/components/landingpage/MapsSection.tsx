@@ -14,6 +14,7 @@ import axios,{ AxiosError} from 'axios'
 import { useToast } from '@/components/ui/use-toast'
 import { useRouter } from 'next/navigation'
 import About from './About'
+import { motion } from 'framer-motion'
 
 
 interface Maps {
@@ -89,9 +90,30 @@ export default function MapsSections() {
       <div className=' relative z-10 w-full py-40 flex flex-col gap-4 max-w-[1440px]'>
         {data.length !== 0 ? (
           <>
-          <h2 className=' text-3xl  font-bold text-amber-50 font-gilgond mt-8'>THE MAP</h2>
+          <motion.h2 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px 0px" }}
+          transition={{
+              type: "spring",
+              stiffness: 30,
+              damping: 10,
+              mass: 1,
+              delay: 0
+          }}className=' text-3xl  font-bold text-amber-50 font-gilgond mt-8'>THE MAP</motion.h2>
 
-          <div className='relative w-full h-auto grid grid-cols-1 lg:grid-cols-2 place-items-center gap-5'>
+          <motion.div 
+          
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px 0px" }}
+          transition={{
+              type: "spring",
+              stiffness: 30,
+              damping: 10,
+              mass: 1,
+              delay: .2
+          }}className='relative w-full h-auto grid grid-cols-1 lg:grid-cols-2 place-items-center gap-5'>
             <div className=' w-full flex flex-col'>
                     <Carousel className=' w-full' setApi={setApi}>
                         <CarouselContent>
@@ -174,7 +196,7 @@ export default function MapsSections() {
             </div>
             )}
             </div>
-          </div>
+          </motion.div>
           </>
         ):(
           <div className=' w-full h-[400px] flex items-center justify-center mt-10 text-white'>
