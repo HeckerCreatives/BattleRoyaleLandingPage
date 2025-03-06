@@ -20,7 +20,7 @@ export default function page() {
             <p className=' text-sm text-orange-100 text-center'>"Rise of Fearless is now available for download. Discover a new world of adventure and challenges. Play anytime, anywhere, on your mobile device. Download it today on Google Play Store and iOS."</p>
 
             <div className=' flex justify-center items-center gap-2 mt-6 clear-start bg-orange-300 p-2 rounded-lg'>
-              <a href="https://www.apple.com/ph/app-store/">
+              <a href="https://apps.apple.com/us/app/rise-of-fearless/id6739428806">
                 <img src="/astore.png" alt="" width={200} className=' 2xl:w-[200px] w-[120px] drop-shadow-md shadow-white' />
               </a>
               <a href="https://play.google.com/store/games?hl=en&fbclid=IwZXh0bgNhZW0CMTAAAR3ly3HMKLmI37Cmp0M9GC_5BWBtQUhpmYCU7yAnNCivWihGVzxuzcRe1Ik_aem_AT5s9sJFhCA_hWjYwNGU503hjbYLrkq8ihii4GCibOKImBOF_B4rG42Swv8x6xcrcQ7rg5GffIbUYPGF43_j0t15">
