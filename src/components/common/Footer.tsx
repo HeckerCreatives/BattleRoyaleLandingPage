@@ -14,36 +14,6 @@ interface Links {
 export default function Footer() {
     const [list, setList] = useState<Links[]>([])
 
-
-    //get socials
-    useEffect(() => {
-      const fetchlinks = async () => {
-          try {
-              const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/sociallinks/getsociallinksa?filter=user`);
-  
-              setList(response.data.data)
-          
-          } catch (error) {
-            
-          }
-      };
-  
-      fetchlinks();
-    }, []);
-  
-    const getImage = (type: string) => {
-      if(type === 'facebook'){
-        return <img src="/v2/header/assets/FB.png" alt="" width={30} className=' lg:w-[50px] w-[40px] hover:scale-110 ease-in-out duration-300'/>
-  
-      } else if(type === 'discord'){
-        return <img src="/v2/header/assets/Discord.png" alt="" width={30} className=' lg:w-[50px] w-[40px] hover:scale-110 ease-in-out duration-300'/>
-      } else if(type === 'tiktok'){
-        return <img src="/v2/header/assets/Tiktok.png" alt="" width={30} className=' lg:w-[50px] w-[40px] hover:scale-110 ease-in-out duration-300'/>
-      } else {
-        return <img src="/v2/header/assets/Telegram.png" alt="" width={30} className=' lg:w-[50px] w-[40px] hover:scale-110 ease-in-out duration-300'/>
-      }
-  
-    }
   return (
     <div className=' flex items-center justify-center w-screen h-auto bg-zinc-950 py-20'
      style={{backgroundImage: "url('/assets/Plate - Footer.png')", backgroundSize: "cover", backgroundPosition: "top", backgroundRepeat:"no-repeat"}}
@@ -76,15 +46,22 @@ export default function Footer() {
                     >NEWSLETTER</a>
 
                      <a href='/#about' className=' text-[.6em] md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
-                    style={{backgroundImage: "url('/pd/Button C.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                    style={{backgroundImage: "url('/pd/Button b.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                     
                     >ABOUT</a>
+
+                    <a href={process.env.NEXT_PUBLIC_INVESTOR_URL} className=' text-[.6em] md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
+                    style={{backgroundImage: "url('/pd/Button C.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                    
+                    >INVESTOR</a>
+
+
 
 
 
                 </div>
 
-                <div className=' flex items-center gap-4 lg:gap-10'>
+                {/* <div className=' flex items-center gap-4 lg:gap-10'>
                     {list.map((item, index) => (
                         <a key={item._id} href={item.link} target='_blank'>
                         {getImage(item.title)}
@@ -92,9 +69,19 @@ export default function Footer() {
                     ))}
                  
 
-                </div>
+                </div> */}
+                <a href={process.env.NEXT_PUBLIC_INVESTOR_URL}>
+                  <button  className=' relative flex items-center justify-center hover:scale-105 transition-all duration-200 mt-8'
+                  // style={{backgroundImage: "url('/assets/button.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                  >
+                    <img src="/assets/button.png" alt="btn" width={220} className=' '/>
+                    <p className=' absolute font-bold text-amber-950'>Invest Now</p>
+                  </button>
+                </a>
 
-                <div className=' flex items-center gap-4'>
+             
+
+                <div className=' flex items-center gap-4 mt-8'>
                     <a href="/terms&conditions" className=' text-sm text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Terms & Conditions</a>
                     <a href="/privacy" className=' text-sm text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Privacy Policy</a>
 

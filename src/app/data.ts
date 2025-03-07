@@ -5,6 +5,7 @@ export const navigation = [
     {name:'Maps', path: '/#maps'},
     {name:'About', path: '/#about'},
     {name:'Newsletter', path: '/#newsletter'},
+    {name:'Investor', path: process.env.NEXT_PUBLIC_INVESTOR_URL},
 ]
 
 export const roadmap = [

@@ -15,35 +15,6 @@ export default function Footer() {
     const [list, setList] = useState<Links[]>([])
 
 
-    //get socials
-    useEffect(() => {
-      const fetchlinks = async () => {
-          try {
-              const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/sociallinks/getsociallinksa?filter=user`);
-  
-              setList(response.data.data)
-          
-          } catch (error) {
-            
-          }
-      };
-  
-      fetchlinks();
-    }, []);
-  
-    const getImage = (type: string) => {
-      if(type === 'facebook'){
-        return <img src="/v2/header/assets/FB.png" alt="" width={30} className=' lg:w-[50px] w-[40px] hover:scale-110 ease-in-out duration-300'/>
-  
-      } else if(type === 'discord'){
-        return <img src="/v2/header/assets/Discord.png" alt="" width={30} className=' lg:w-[50px] w-[40px] hover:scale-110 ease-in-out duration-300'/>
-      } else if(type === 'tiktok'){
-        return <img src="/v2/header/assets/Tiktok.png" alt="" width={30} className=' lg:w-[50px] w-[40px] hover:scale-110 ease-in-out duration-300'/>
-      } else {
-        return <img src="/v2/header/assets/Telegram.png" alt="" width={30} className=' lg:w-[50px] w-[40px] hover:scale-110 ease-in-out duration-300'/>
-      }
-  
-    }
   return (
     <div className=' flex items-center justify-center w-screen h-auto bg-zinc-950 py-20'
      style={{backgroundImage: "url('/assets/Plate - Footer.png')", backgroundSize: "cover", backgroundPosition: "top", backgroundRepeat:"no-repeat"}}
@@ -84,7 +55,7 @@ export default function Footer() {
 
                 </div>
 
-                <div className=' flex items-center gap-4 lg:gap-10'>
+                {/* <div className=' flex items-center gap-4 lg:gap-10'>
                     {list.map((item, index) => (
                         <a key={item._id} href={item.link} target='_blank'>
                         {getImage(item.title)}
@@ -92,7 +63,7 @@ export default function Footer() {
                     ))}
                  
 
-                </div>
+                </div> */}
 
                 <div className=' flex items-center gap-4'>
                     <a href="/terms&conditions" className=' text-sm text-orange-100 hover:text-orange-300 ease-in-out duration-300'>Terms & Conditions</a>

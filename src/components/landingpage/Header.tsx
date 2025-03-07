@@ -1,24 +1,6 @@
-import { nav, navigation } from '@/app/data';
 import React, { useEffect, useState } from 'react'
-import { FaInstagram, FaXTwitter } from "react-icons/fa6";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
-import { Menu } from 'lucide-react';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
 import { useRouter } from 'next/navigation';
 import axios, { AxiosError } from 'axios';
-import { RiAccountBoxFill } from 'react-icons/ri';
-import { IoDownload, IoLogOut } from 'react-icons/io5';
 import { toast } from '../ui/use-toast';
 import Navigation from './Navigation';
 import { motion } from 'framer-motion';
@@ -106,15 +88,18 @@ export default function HeroSection() {
   
   }, []);
 
-  
+
+
   return (
-    <div className=' relative z-10 flex flex-col items-center w-full h-[100dvh] max-h-[1080px] px-4'
+    <div className=' relative z-0 flex flex-col items-center w-full h-[100dvh] max-h-[1080px] px-4'
     style={{ backgroundImage: "url('/investor/assets/bg/hero.png')" , backgroundSize:'cover', backgroundRepeat:'no-repeat', backgroundPosition:'center',}}>
       <div className=' w-full h-full bg-gradient-to-b from-zinc-950 to-zinc-950/0 absolute'>
 
       </div>
 
      <Navigation/>
+
+     
 
       <div className=' relative z-10 w-full h-full flex flex-col items-start justify-start '>
         <div className=' w-full flex flex-col gap-8 items-center justify-center mt-32'>

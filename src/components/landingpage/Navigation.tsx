@@ -18,23 +18,8 @@ import axios, { AxiosError } from 'axios';
 import { toast } from '../ui/use-toast';
 import { useRouter } from 'next/navigation';
 import { IoDownload, IoLogOut } from 'react-icons/io5';
-import { RiAccountBoxFill } from 'react-icons/ri';
-
-interface Success {
-    message: string;
-    data:{
-      token: string;
-     }
-  }
-  
-  interface Error {
-      country: string;
-      username: string,
-    email: string;
-    password: string;
-    confirmPassword: string;
-  
-  }
+import { RiAccountBoxFill, RiTwitterXLine } from 'react-icons/ri';
+import { FaInstagram, FaTelegram } from 'react-icons/fa6';
   
   interface Links {
     _id: string
@@ -44,17 +29,22 @@ interface Success {
     link: string
   }
   
-  interface Content {
-    id: string,
-    title: string,
-    description: string,
-    link: string,
+
+
+  interface Links {
+    _id: string
+    title: string
+    createdAt:string 
+    updatedAt: string
+    link: string
   }
 
 export default function Navigation() {
   const router = useRouter()
   const [auth, setAuth] = useState<string | null>(null);
   const [name, setName] = useState('')
+    const [list, setList] = useState<Links[]>([])
+  
 
 
 
@@ -116,6 +106,34 @@ export default function Navigation() {
         playerData()
 
     },[])
+
+      //get socials
+       useEffect(() => {
+        const fetchlinks = async () => {
+            try {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/sociallinks/getsociallinksa?filter=user`);
+    
+                setList(response.data.data)
+            
+            } catch (error) {
+              
+            }
+        };
+    
+        fetchlinks();
+      }, []);
+    
+    
+      const getImage = (type: string) => {
+        if(type === 'instagram'){
+          return  <FaInstagram size={32} className=' bg-orange-300 p-1 rounded-full text-amber-950 hover:scale-110 ease-in-out duration-300'/>
+        }  else if(type === 'x'){
+          return  <RiTwitterXLine size={32} className=' bg-orange-300 p-1 rounded-full text-amber-950 hover:scale-110 ease-in-out duration-300'/>
+        } else {
+          return <FaTelegram size={32} className=' bg-orange-300 p-1 rounded-full text-amber-950 hover:scale-110 ease-in-out duration-300'/>
+        }
+    
+      }
 
   return (
     <nav className=' relative z-10 w-full max-w-[1240px] h-auto flex items-center justify-between mt-4'>
@@ -201,6 +219,15 @@ export default function Navigation() {
           </PopoverContent>
         </Popover>
         )}
+
+          <div className=' w-full flex items-center justify-center gap-4 mt-6'>
+            {list.map((item, index) => (
+                          <a key={item._id} href={item.link} target='_blank'>
+                            {getImage(item.title)}
+                          </a>
+                        ))}
+
+          </div>
         </div>
       </SheetContent>
       </Sheet>
