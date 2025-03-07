@@ -7,6 +7,7 @@ import {
     AccordionTrigger,
   } from "@/components/ui/accordion"
 import { motion } from 'framer-motion'
+import { faqs } from '@/app/data'
   
 
 export default function Faq() {
@@ -42,54 +43,19 @@ export default function Faq() {
               delay: .2
           }}
           className=' w-full flex flex-col gap-4 items-center justify-center'>
-          <Accordion type="single" collapsible className=' w-full max-w-[700px] bg-zinc-800 px-4 rounded-md mt-10'>
-                <AccordionItem value="item-1">
-                    <AccordionTrigger className=' text-orange-600'>What is Rise of Fearless (ROF)?</AccordionTrigger>
-                    <AccordionContent>
-                    Rise of Fearless is a strategy-survival game. Using your survival instincts, compete against others, and embark in an epic quests.
-                    </AccordionContent>
-                </AccordionItem>
-                </Accordion>
 
-                <Accordion type="single" collapsible className='w-full max-w-[700px]  bg-zinc-800 px-4 rounded-md'>
+            {faqs.map((item, index) => (
+                <Accordion key={index} type="single" collapsible className='w-full max-w-[700px]  bg-zinc-800 px-4 rounded-md'>
                 <AccordionItem value="item-2">
-                    <AccordionTrigger className=' text-orange-600'>How can I download the game?
+                    <AccordionTrigger className=' text-orange-600'>{item.question}
                     </AccordionTrigger>
                     <AccordionContent>
-                    You can download Rise of Fearless on the Apple App Store or Google Play Store. Search for "Rise of Fearless" and click download.
+                    {item.answer}
                     </AccordionContent>
                 </AccordionItem>
                 </Accordion>
-
-                <Accordion type="single" collapsible className='w-full max-w-[700px] bg-zinc-800 px-4 rounded-md'>
-                <AccordionItem value="item-3">
-                    <AccordionTrigger className=' text-orange-600'>Are there in-app purchases?
-                    </AccordionTrigger>
-                    <AccordionContent>
-                    Yes, Rise of Fearless offers in-app purchases to enhance your gaming experience, but purchases are optional.
-                    </AccordionContent>
-                </AccordionItem>
-                </Accordion>
-
-                <Accordion type="single" collapsible className=' w-full max-w-[700px] bg-zinc-800 px-4 rounded-md'>
-                <AccordionItem value="item-4">
-                    <AccordionTrigger className=' text-orange-600'>How do I report a bug or issue?
-                    </AccordionTrigger>
-                    <AccordionContent>
-                    You can report bugs by contacting our support team at support@rof.game. Please include details about your device and the issue you experienced.
-                    </AccordionContent>
-                </AccordionItem>
-                </Accordion>
-
-                <Accordion type="single" collapsible className='w-full max-w-[700px] bg-zinc-800 px-4 rounded-md'>
-                <AccordionItem value="item-5">
-                    <AccordionTrigger className=' text-orange-600'> How is my data handled?
-                    </AccordionTrigger>
-                    <AccordionContent>
-                    Your data is securely stored and used only to enhance gameplay. Refer to our Privacy Policy for more details.
-                    </AccordionContent>
-                </AccordionItem>
-                </Accordion>
+            ))}
+         
           </motion.div>
 
              
