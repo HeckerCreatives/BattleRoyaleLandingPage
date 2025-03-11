@@ -46,7 +46,7 @@ export default function Footer() {
                     >NEWSLETTER</a>
 
                      <a href='/#about' className=' text-[.6em] md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
-                    style={{backgroundImage: "url('/pd/Button b.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                    style={{backgroundImage: "url('/pd/Button B.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                     
                     >ABOUT</a>
 
