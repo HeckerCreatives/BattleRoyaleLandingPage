@@ -82,7 +82,7 @@ export default function MapsSections() {
 
 
   return (
-   <div  className=' relative w-full h-auto flex flex-col items-center justify-center py-40 px-4'
+   <div id="maps" className=' relative w-full h-auto flex flex-col items-center justify-center py-40 px-4'
     >
       <img src="/investor/assets/Tri Plate.png" alt="bg" className=' absolute h-full w-full' />
 
