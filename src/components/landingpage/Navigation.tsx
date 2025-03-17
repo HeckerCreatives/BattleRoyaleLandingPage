@@ -66,7 +66,6 @@ export default function Navigation() {
       localStorage.setItem('auth', 'false');
       setAuth('false'); 
       router.push('/');
-      window.location.reload();
     }
   };
 
