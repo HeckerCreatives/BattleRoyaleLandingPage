@@ -292,7 +292,12 @@ export default function page() {
     }
     };
 
-    const findCountry = Country.find((item) => item.code === country )
+    // const findCountry = Country.find((item) => item.code === country )
+
+    const findCountry = Country.find(
+        (item) => item.code === country || item.name.toLowerCase() === country.toLowerCase()
+      );
+      
 
   return (
     <div className=' w-screen h-auto flex flex-col items-center justify-start overscroll-x-none '
