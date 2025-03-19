@@ -70,6 +70,48 @@ export default function login() {
           }
         } catch (error) {
           setLoading(false);
+          if (axios.isAxiosError(error)) {
+            const axiosError = error as AxiosError<{ message: string, data: string }>
+            if (axiosError.response && axiosError.response.status === 401) {
+              toast({
+                variant: "destructive",
+                title: "Failed",
+                description: `${axiosError.response.data.data}`
+              });
+            }
+    
+            if (axiosError.response && axiosError.response.status === 400) {
+              toast({
+                variant: "destructive",
+                title: "Failed",
+                description: `${axiosError.response.data.data}`
+              });
+            }
+    
+            if (axiosError.response && axiosError.response.status === 402) {
+              toast({
+                variant: "destructive",
+                title: "Failed",
+                description: `${axiosError.response.data.data}`
+              });
+            }
+    
+            if (axiosError.response && axiosError.response.status === 403) {
+              toast({
+                variant: "destructive",
+                title: "Failed",
+                description: `${axiosError.response.data.data}`
+              });
+            }
+    
+            if (axiosError.response && axiosError.response.status === 404) {
+              toast({
+                variant: "destructive",
+                title: "Failed",
+                description: `${axiosError.response.data.data}`
+              });
+            }
+          }
         }
       }
     };
