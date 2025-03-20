@@ -198,6 +198,16 @@ export default function Navigation() {
           {navigation.map((item, index) => (
             <a key={index} href={item.path}>{item.name}</a>
           ))}
+
+      {auth === 'false' && (
+          <a href="/auth/login" className=' relative flex items-center justify-center hover:scale-105 transition-all duration-300 text-amber-950'>
+            <img src="/assets/button.png" alt="button" width={200}/>
+            <p className=' absolute '>Log In | Register</p>
+            
+          </a>
+        
+
+        )}
         
         { auth === 'true' && (
           <Popover>
