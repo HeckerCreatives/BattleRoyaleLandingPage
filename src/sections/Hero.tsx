@@ -95,6 +95,7 @@ export default function Hero() {
     }
 
   }
+
   return (
     <div className=' h-[100dvh] lg:h-[screen] w-screen flex flex-col items-center justify-end text-white'
     style={{backgroundImage: "url('/v2/header/assets/BG B.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
@@ -145,14 +146,14 @@ export default function Hero() {
            
 
             <div className=' flex justify-center items-center gap-2 mt-6'>
-              <a href="/download">
-              <img src="/astore.png" alt="" width={200} className=' 2xl:w-[200px] w-[120px]' />
-              </a>
 
-              <a href="/download">
-              <img src="/gp.png" alt="" width={200} className=' 2xl:w-[200px] w-[120px]' />
-
-              </a>
+                <a href="/download">
+                  <button
+                  style={{backgroundImage: "url('/assets/button.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                  className=' h-24 w-[200px] xl:w-[250px] lg:text-lg xl:text-xl font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
+                  >Download now</button>
+                </a>
+            
 
             </div>
           </div>
