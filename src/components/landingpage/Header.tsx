@@ -143,8 +143,8 @@ export default function HeroSection() {
           className=' w-full flex justify-center items-center gap-2 absolute ~bottom-24/32 '>
               <a href="/download">
                   <button
-                  className=' bg-gradient-to-r from-orange-500 to-orange-700 px-8 py-2 ~text-sm/lg rounded-md font-bold text-amber-50 hover:scale-110 ease-in-out duration-200'
-                  >Download now</button>
+                  className=' uppercase bg-gradient-to-r from-orange-500 to-orange-700 px-8 py-2 ~text-sm/lg rounded-md font-bold text-amber-50 hover:scale-110 ease-in-out duration-200'
+                  >Download Now</button>
                 </a>
               {/* <a href="/download" className=' hover:scale-110 transition-all duration-300'>
               <img src="/astore.png" alt="" width={150} className='~w-32/40 ' />
