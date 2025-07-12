@@ -16,8 +16,8 @@ export const registeruser = z.object({
     .min(6, { message: "Confirm Password must be at least 6 characters long" })
     .max(20, { message: "Confirm Password must be at most 20 characters long" }),
 
-  country: z.string()
-    .min(1, { message: "Country is required" }),
+  // country: z.string()
+  //   .min(1, { message: "Country is required" }),
 
   email: z.string()
     .email({ message: "Invalid email address" })

@@ -62,7 +62,7 @@ export default function page() {
                 })
                 setName(response.data.data.username)
                 setEmail(response.data.data.email)
-                setCountry(response.data.data.country)
+                // setCountry(response.data.data.country)
                 setFunds(response.data.data.funds)
             } catch (error) {
                  if (axios.isAxiosError(error)) {
@@ -323,8 +323,8 @@ export default function page() {
                 >
                     <p className=' text-sm text-orange-200'>Username</p>
                     <Input placeholder='Username' value={name} type='text' className=' w-[70%] md:w-[68%] bg-zinc-900 border-none text-white'/>
-                    <p className=' text-sm text-orange-200'>Country</p>
-                    <Input placeholder='Username' value={findCountry?.name} type='text' className=' w-[70%] md:w-[68%] bg-zinc-900 border-none text-white'/>
+                    {/* <p className=' text-sm text-orange-200'>Country</p>
+                    <Input placeholder='Username' value={findCountry?.name} type='text' className=' w-[70%] md:w-[68%] bg-zinc-900 border-none text-white'/> */}
                     <p className=' text-sm text-orange-200'>Email</p>
                     <div className=' w-full flex items-center gap-4'>
                         <Input placeholder='Email' value={email} type='email' className=' w-[70%] bg-zinc-900 border-none text-white'/>

@@ -170,11 +170,6 @@ export default function Navbar() {
  
     const [playerusername, setPlayerusername] = useState('')
     const [playerpassword, setPlayerpassword] = useState('')
-
-    useEffect(() =>{
-
-    },[username,password,passwordconfirm,email,country])
-
     const [name, setName] = useState('')
     const [email2, setEmail2] = useState('')
     const [country2, setCountry2] = useState('')

@@ -325,7 +325,7 @@ export default function login() {
             username: data.username,
             password: data.password,
             email: data.email,
-            country: data.country
+            // country: data.country
         },{
         withCredentials: true,
         headers: {
@@ -435,7 +435,7 @@ export default function login() {
                     <p className=" text-[.6rem] text-red-500">{errors.email?.message}</p>
 
 
-                      <Select  onValueChange={(value) => setValue('country', value)} {...register('country')}>
+                      {/* <Select  onValueChange={(value) => setValue('country', value)} {...register('country')}>
                       <SelectTrigger className="w-full bg-zinc-950 border-orange-300 text-white">
                         <SelectValue placeholder="Select country" />
                       </SelectTrigger>
@@ -447,7 +447,7 @@ export default function login() {
                       </SelectContent>
                     </Select>
 
-                    <p className=" text-[.6rem] text-red-500">{errors.country?.message}</p>
+                    <p className=" text-[.6rem] text-red-500">{errors.country?.message}</p> */}
 
 
 
