@@ -13,10 +13,18 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import SocketListener from '@/components/SocketListener'
-import { Eye, EyeOff } from 'lucide-react'
+import { Eye, EyeOff, Menu } from 'lucide-react'
 import { Country } from '@/lib/data'
 import Navigation from '@/components/landingpage/Navigation'
 import Footer from '@/components/common/Footer'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import Inventory from './Inventory'
+import Transaction from './Transaction'
+import { MatchHistory } from './MatchHsitory'
 
 interface Error {
   newemail: string;
@@ -48,7 +56,10 @@ export default function page() {
   const [isFormValid, setIsFormValid] = useState(false); 
     const [errors, setErrors] = useState<Error | null>( null);
     const [rank, setRank] = useState(0); 
-    const [playerDetails, setPlayerDetails] = useState<PlayerDetails>()
+    const [stats, setStats] = useState<PlayerDetails>()
+  const [tab, setTab] = useState('dashboard')
+  const [title, setTitle] = useState<any>()
+
 
     {/*Player Data*/}
     useEffect(() => {
@@ -82,6 +93,38 @@ export default function page() {
         playerData()
 
     },[])
+
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/marketplace/getequippedtitle`,{
+                    withCredentials: true,
+                    headers: {
+                    'Content-Type': 'application/json',
+                }
+                })
+
+                setTitle(response.data.data.itemname)
+            
+            } catch (error) {
+                 if (axios.isAxiosError(error)) {
+                    const axiosError = error as AxiosError;
+                    if (axiosError.response && axiosError.response.status === 401) {
+                        localStorage.setItem('auth', 'false');
+                        router.push('/')
+                        toast({
+                        variant: "destructive",
+                        title: "Unauthorized",
+                        })
+                
+                    }
+                } 
+            }
+        }
+        getData()
+
+    },[])
     
     useEffect(() => {
         const playerDetailsData = async () => {
@@ -92,7 +135,7 @@ export default function page() {
                         'Content-Type': 'application/json',
                     }
                 });
-                setPlayerDetails(response.data.data);
+                setStats(response.data.data);
             } catch (error) {
                 if (axios.isAxiosError(error)) {
                     const axiosError = error as AxiosError;
@@ -111,6 +154,7 @@ export default function page() {
          playerDetailsData();
  
     }, []); 
+
     useEffect(() => {
         const rankData = async () => {
             try {
@@ -311,7 +355,7 @@ export default function page() {
         <Navigation/>
             
 
-            <div className=' relative w-[90%] md:w-[60%] grid-cols-1 grid xl:grid-cols-2 gap-10 h-auto mt-10 border-[1px] border-orange-300 rounded-lg'
+            {/* <div className=' relative w-[90%] md:w-[60%] grid-cols-1 grid xl:grid-cols-2 gap-10 h-auto mt-10 border-[1px] border-orange-300 rounded-lg'
             style={{backgroundImage: "url('/pd/Tab.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
             
             >
@@ -323,8 +367,6 @@ export default function page() {
                 >
                     <p className=' text-sm text-orange-200'>Username</p>
                     <Input placeholder='Username' value={name} type='text' className=' w-[70%] md:w-[68%] bg-zinc-900 border-none text-white'/>
-                    {/* <p className=' text-sm text-orange-200'>Country</p>
-                    <Input placeholder='Username' value={findCountry?.name} type='text' className=' w-[70%] md:w-[68%] bg-zinc-900 border-none text-white'/> */}
                     <p className=' text-sm text-orange-200'>Email</p>
                     <div className=' w-full flex items-center gap-4'>
                         <Input placeholder='Email' value={email} type='email' className=' w-[70%] bg-zinc-900 border-none text-white'/>
@@ -443,32 +485,310 @@ export default function page() {
                         </Dialog>
                     </div>
 
-                    <div className=' w-full grid grid-cols-3 gap-4 mt-4'>
-                        <div className=' bg-zinc-900 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
-                            <h2 className=' text-xl font-bold text-orange-300'>{playerDetails?.kill}</h2>
-                            <p className=' text-sm text-zinc-400 h-10 text-center'>Total Kills</p>
-
-                        </div>
-
-                         <div className=' bg-zinc-900 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
-                            <h2 className=' text-xl font-bold text-orange-300'>{playerDetails?.death}</h2>
-                            <p className=' text-sm text-zinc-400 h-10 text-center'>Total Deaths</p>
-
-                        </div>
-
-                         <div className=' bg-zinc-900 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
-                            <h2 className=' text-xl font-bold text-orange-300'>{playerDetails?.userrank}</h2>
-                            <p className=' text-sm text-zinc-400 h-10 text-center'>Current Rank</p>
-
-                        </div>
-                    </div>
+                   
                 </div>
+
+                
 
                 <div className=' relative w-full h-full xl:flex items-end justify-end hidden'>
                     <img src="/pd/Tab Character.png" alt="" width={500} className=' relative left-20 bottom-0 md:block hidden'/>
 
                 </div>
 
+            </div> */}
+
+            <div className=' flex flex-col items-start border-[1px] border-orange-300 rounded-lg relative max-w-5xl w-[95%] md:w-full p-6 bg-amber-950 '
+            style={{backgroundImage: "url('/pd/Tab.png')", backgroundSize: "cover", backgroundPosition: "right", backgroundRepeat:"no-repeat"}}
+            >
+                <Popover>
+                <PopoverTrigger className=' md:hidden text-white bg-zinc-800 p-2 rounded-md text-xs flex items-center gap-1'><Menu size={15}/>Menu</PopoverTrigger>
+                <PopoverContent className=' ml-10 bg-zinc-950 border-zinc-900 text-white w-[180px]'>
+                    <p onClick={()=> setTab('dashboard')} className={`text-xs px-4 py-1 cursor-default ${tab === 'dashboard' && ' bg-secondary rounded-md'}`}>Dashboard</p>
+                    <p onClick={()=> setTab('inventory')} className={`text-xs px-4 py-1 cursor-default ${tab === 'inventory' && ' bg-secondary rounded-md'}`}> Inventory</p>
+                    <p onClick={()=> setTab('transaction')} className={`text-xs px-4 py-1 cursor-default ${tab === 'transaction' && ' bg-secondary rounded-md'}`}>Transaction</p>
+                    <p onClick={()=> setTab('match')} className={`text-xs px-4 py-1 cursor-default ${tab === 'match' && ' bg-secondary rounded-md'}`}>Match</p>
+                    <p onClick={()=> setTab('profile')} className={`text-xs px-4 py-1 cursor-default ${tab === 'profile' && ' bg-secondary rounded-md'}`}>Profile</p>
+                </PopoverContent>
+                </Popover>
+
+                <div className=' hidden md:flex items-center gap-2 justify-center text-white'>
+                    <p onClick={()=> setTab('dashboard')} className={`text-sm font-semibold border-[1px] border-opacity-30 border-orange-300 rounded-md px-4 py-1 cursor-pointer ${tab === 'dashboard' && ' text-amber-950 bg-gradient-to-r from-orange-200 to-orange-400 rounded-md'}`}>DASHBOARD</p>
+                    <p onClick={()=> setTab('inventory')} className={`text-sm font-semibold border-[1px] border-opacity-30 border-orange-300 rounded-md px-4 py-1 cursor-pointer ${tab === 'inventory' && ' text-amber-950 bg-gradient-to-r from-orange-200 to-orange-400 rounded-md'}`}>INVENTORY</p>
+                    <p onClick={()=> setTab('transaction')} className={`text-sm font-semibold border-[1px] border-opacity-30 border-orange-300 rounded-md px-4 py-1 cursor-pointer ${tab === 'transaction' && ' text-amber-950 bg-gradient-to-r from-orange-200 to-orange-400 rounded-md'}`}>TRANSACTION</p>
+                    <p onClick={()=> setTab('match')} className={`text-sm font-semibold border-[1px] border-opacity-30 border-orange-300 rounded-md px-4 py-1 cursor-pointer ${tab === 'match' && ' text-amber-950 bg-gradient-to-r from-orange-200 to-orange-400 rounded-md'}`}>MATCH</p>
+                    <p onClick={()=> setTab('profile')} className={`text-sm font-semibold border-[1px] border-opacity-30 border-orange-300 rounded-md px-4 py-1 cursor-pointer ${tab === 'profile' && 'text-amber-950 bg-gradient-to-r from-orange-200 to-orange-400 rounded-md'}`}>PROFILE</p>
+                </div>
+                                    {tab === 'dashboard' && (
+                                        <div className=' relative w-full h-full rounded-lg flex  py-6'
+                                        // style={{backgroundImage: "url('/userdashboard/Assets/TAB HOLDER small.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                                        >
+
+                                        <div className=' w-fit flex flex-col gap-4'>
+                                            <div className=' flex items-center justify-between  p-4 bg-amber-950 rounded-md w-fit'>
+                                                <div className=' flex flex-col '>
+                                                    <p className=' text-xl font-semibold text-white'>
+                                                        {name} <span className=' text-sm text-orange-500 animate-pulse'>({title})</span>
+                                                    </p>
+                                                    <p className=' text-sm text-zinc-400'>{email}</p>
+                                                </div>
+
+                                             
+                                            </div>
+
+                                            
+                                          
+                                            <div className=' relative z-30 grid grid-cols-1 md:grid-cols-2 w-fit gap-2'>
+
+                                            <div className=' flex items-end justify-end h-fit w-fit  relative'
+                                            >
+                                                <img src="/userdashboard/Assets/TAB A.png" alt="tab" width={250} height={300} />
+
+                                                <div className=' absolute flex flex-col items-center justify-center gap-2 h-full w-[65%]'>
+                                                    <h2 className=' text-amber-950 text-xl font-semibold'>{stats?.kill.toLocaleString()}</h2>
+                                                    <p className=' text-sm text-amber-950'>Total Kills</p>
+                                                </div>
+
+                                            </div>
+
+                                            <div className=' flex items-end justify-end w-fit h-fit relative'
+                                            >
+                                                <img src="/userdashboard/Assets/TAB B.png" alt="tab" width={250} height={300} />
+
+                                                <div className=' absolute flex flex-col items-center justify-center gap-2 h-full w-[65%]'>
+                                                    <h2 className=' text-amber-950 text-xl font-semibold'>{stats?.death.toLocaleString()}</h2>
+                                                    <p className=' text-sm text-amber-950'>Total Deaths</p>
+
+                                                </div>
+
+                                            </div>
+
+
+                                              <div className=' flex items-end justify-end w-fit h-fit relative'
+                                            >
+                                                <img src="/userdashboard/Assets/TAB C.png" alt="tab" width={250} height={300} />
+
+                                                <div className=' absolute flex flex-col items-center justify-center gap-2 h-full w-[65%]'>
+                                                    <h2 className=' text-amber-950 text-xl font-semibold'>{stats?.userrank.toLocaleString()}</h2>
+                                                    <p className=' text-sm text-amber-950'>Current Rank</p>
+
+                                                </div>
+
+                                            </div>
+
+                                         
+
+                                            <div className=' flex items-end justify-end w-fit h-fit relative'
+                                            >
+                                                <img src="/userdashboard/Assets/TAB C.png" alt="tab" width={250} height={300} />
+
+                                                <div className=' absolute flex flex-col items-center justify-center gap-2 h-full w-[65%]'>
+                                                    <h2 className=' text-amber-950 text-xl font-semibold'>{stats?.level.toLocaleString()}</h2>
+                                                    <p className=' text-sm text-amber-950'>Level</p>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div className=' flex items-end justify-end w-fit h-fit relative'
+                                            >
+                                                <img src="/userdashboard/Assets/TAB C.png" alt="tab" width={250} height={300} />
+
+                                                <div className=' absolute flex flex-col items-center justify-center gap-2 h-full w-[65%]'>
+                                                    <h2 className=' text-amber-950 text-xl font-semibold'>{stats?.xp.toLocaleString()}</h2>
+                                                    <p className=' text-sm text-amber-950'>EXP</p>
+
+                                                </div>
+
+                                            </div>
+
+
+                                             </div>
+                                        </div>
+
+                                      
+                                        
+
+                                        <div className=' md:flex absolute bottom-0 right-0  translate-y-6 translate-x-24'>
+                                            <img src="/pd/Tab Character.png" alt="" width={400} className=' h-full relative'/>
+
+                                        </div>
+                                        </div>
+                                    )}
+
+                                     {tab === 'inventory' && (
+                                        <Inventory/>
+                                    )}
+
+                                    {tab === 'transaction' && (
+                                        <Transaction />
+                                    )}
+
+                                    {tab === 'match' && (
+                                        <MatchHistory/>
+                                    )}
+
+                                    {tab === 'profile' && (
+                                        <div className=' relative w-full grid grid-cols-1 lg:grid-cols-2'
+                                            
+                                            >
+                                                <div className=' absolute top-4 left-4 bg-gradient-to-r from-amber-950 to-[#643c0000] w-full py-2 px-4'>
+                                                    <h2 className=' text-white text-xl font-bold'>Account Management</h2>
+                                                </div>
+                                                <div className=' flex flex-col gap-2 rounded-lg h-auto p-4 md:p-10 mt-12 w-full'
+                                                
+                                                >
+                                                    <p className=' text-sm text-orange-200'>Username</p>
+                                                    <Input placeholder='Username' value={name} type='text' className=' w-[70%] md:w-[68%] bg-zinc-800 border-none text-white'/>
+                                                    {/* <p className=' text-sm text-orange-200'>Country</p>
+                                                    <Input placeholder='Username' value={findCountry?.name} type='text' className=' w-[70%] md:w-[68%] bg-zinc-900 border-none text-white'/> */}
+                                                    <p className=' text-sm text-orange-200'>Email</p>
+                                                    <div className=' w-full flex items-center gap-4'>
+                                                        <Input placeholder='Email' value={email} type='email' className=' w-[70%] bg-zinc-800 border-none text-white'/>
+                                                        <Dialog>
+                                                        <DialogTrigger className='h-10 w-[30%] text-sm py-2 bg-gradient-to-r from-orange-300 to-orange-400 rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'
+                                                        >
+                                                        
+                                                                
+                                                            Edit
+                                                        </DialogTrigger>
+                                                        <DialogContent className=' w-[95%] max-w-lg bg-zinc-950 border-none p-6'
+                                                        style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
+                                                        
+                                                        >
+                                                            <h2 className=' text-lg font-semibold text-secondary'>Change Email</h2>
+                                                            <p className=' text-sm text-white'>New Email</p>
+                                                        <Input placeholder='Enter your new email' value={newemail} onChange={(e) => setNewemail(e.target.value)} type='email' required className=' w-full bg-zinc-900 border-none text-white'/>
+
+                                                        <button
+                                                        onClick={handleEmail}
+                                                        style={{backgroundImage: "url('/assets/button.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                                                            className=' mt-4 h-12 w-[200px] text-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200 flex items-center justify-center gap-1'
+                                                            >
+                                                            { passwordload === true && (
+                                                                <div className="loader">
+                                                                    <div className="bar1"></div>
+                                                                    <div className="bar2"></div>
+                                                                    <div className="bar3"></div>
+                                                                    <div className="bar4"></div>
+                                                                    <div className="bar5"></div>
+                                                                    <div className="bar6"></div>
+                                                                    <div className="bar7"></div>
+                                                                    <div className="bar8"></div>
+                                                                    <div className="bar9"></div>
+                                                                    <div className="bar10"></div>
+                                                                    <div className="bar11"></div>
+                                                                    <div className="bar12"></div>
+                                                                </div>
+                                                            )}
+                                                            Change Email</button>
+
+                                                            {errors && errors.newemail && (
+                                                            <span className=" text-red-400 text-xs">{errors.newemail}</span>
+                                                        )}
+                                                        </DialogContent>
+                                                        </Dialog>
+                                                    
+                                                    </div>
+                                                    <p className=' text-sm text-orange-200'>Password</p>
+                                                    <div className=' w-full flex items-center gap-4 mb-8'>
+                                                        <Input placeholder='Password' value='test12345' type='password' className=' w-[70%] bg-zinc-800 border-none text-white'/>
+                                                        <Dialog>
+                                                        <DialogTrigger className='h-10 w-[30%] text-sm font-bold py-2 rounded-lg text-amber-950 hover:scale-110 ease-in-out duration-200 bg-gradient-to-r from-orange-300 to-orange-400'
+                                                        >
+                                                        
+                                                            Edit
+                                                        </DialogTrigger>
+                                                        <DialogContent className=' bg-zinc-950 border-none p-6 max-w-lg'
+                                                        style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
+                                                        
+                                                        >
+                                                            <h2 className=' text-lg font-semibold text-secondary'>Change Password</h2>
+                                                            <p className=' text-sm text-white'>New Password</p>
+
+                                                            <div className=' relative w-full'>
+                                                            <Input placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} type={show} className=' w-full bg-zinc-900 border-none text-white'/>
+                                                            {show === 'password' ? (
+                                                                <button onClick={() => setShow('text')} className=' text-white absolute top-3 right-2'><EyeOff size={20}/></button>
+                                                            ):(
+                                                                <button onClick={() => setShow('password')} className=' text-white absolute top-3 right-2'><Eye size={20}/></button>
+
+                                                            )}
+                                                            </div>
+
+                                                        <button
+                                                        onClick={changePassword}
+                                                        style={{backgroundImage: "url('/assets/button.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
+                                                            className=' mt-4 h-12 w-[200px] text-sm font-bold text-amber-950 hover:scale-110 ease-in-out duration-200 flex items-center justify-center gap-1'
+                                                            >
+                                                            { passwordload === true && (
+                                                                <div className="loader">
+                                                                    <div className="bar1"></div>
+                                                                    <div className="bar2"></div>
+                                                                    <div className="bar3"></div>
+                                                                    <div className="bar4"></div>
+                                                                    <div className="bar5"></div>
+                                                                    <div className="bar6"></div>
+                                                                    <div className="bar7"></div>
+                                                                    <div className="bar8"></div>
+                                                                    <div className="bar9"></div>
+                                                                    <div className="bar10"></div>
+                                                                    <div className="bar11"></div>
+                                                                    <div className="bar12"></div>
+                                                                </div>
+                                                            )}
+                                                            Change Password</button>
+                                                        </DialogContent>
+                                                        </Dialog>
+
+                                                    
+                                                    </div>
+                                                    {/* <p className=' text-sm text-orange-200'>Credits</p>
+
+                                                    <div className=' w-full flex items-center gap-4'>
+                                                        <Input disabled={true} placeholder='Funds' value={funds} type='text' className=' w-[70%] bg-zinc-800 border-none text-white'/>
+                                                        
+                                                        <Dialog>
+                                                        <DialogTrigger className=' w-[30%] h-10 py-2 text-sm bg-gradient-to-r from-orange-300 to-orange-400 rounded-lg font-bold text-amber-950 hover:scale-110 ease-in-out duration-200'>
+                                                        Add
+                                                        </DialogTrigger>
+                                                        <DialogContent className=' flex items-center justify-center w-[90%] md:w-[400px] h-[300px] bg-zinc-950 border-zinc-900'
+                                                        style={{backgroundImage: "url('/pd/BG.png')", backgroundSize: "cover", backgroundPosition: "bottom", backgroundRepeat:"no-repeat"}}
+                                                        >
+                                                        <p className=' text-white'>Coming Soon!</p>
+                                                        </DialogContent>
+                                                        </Dialog>
+                                                    </div> */}
+
+                                                    {/* <div className=' w-full grid grid-cols-3 gap-4 mt-4'>
+                                                        <div className=' bg-zinc-900 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
+                                                            <h2 className=' text-xl font-bold text-orange-300'>{playerDetails?.kill}</h2>
+                                                            <p className=' text-sm text-zinc-400 h-10 text-center'>Total Kills</p>
+
+                                                        </div>
+
+                                                        <div className=' bg-zinc-900 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
+                                                            <h2 className=' text-xl font-bold text-orange-300'>{playerDetails?.death}</h2>
+                                                            <p className=' text-sm text-zinc-400 h-10 text-center'>Total Deaths</p>
+
+                                                        </div>
+
+                                                        <div className=' bg-zinc-900 rounded-md flex flex-col items-center justify-center gap-4 p-4'>
+                                                            <h2 className=' text-xl font-bold text-orange-300'>{playerDetails?.userrank}</h2>
+                                                            <p className=' text-sm text-zinc-400 h-10 text-center'>Current Rank</p>
+
+                                                        </div>
+                                                    </div> */}
+                                                </div>
+
+                                                <div className=' absolute xl:flex  hidden right-0 bottom-0 translate-y-6 translate-x-24'>
+                                                    <img src="/pd/Tab Character.png" alt="" width={400} className=' relative h-full md:block hidden'/>
+
+                                                </div>
+
+                                                
+
+                                            </div>
+                                    )}
             </div>
 
         </div>
