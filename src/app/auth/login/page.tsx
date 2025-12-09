@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { Input } from "@/components/ui/input"
 import { IoMdArrowBack } from "react-icons/io";
 import Footer from '@/components/common/Footer';
+import { WalletLogin } from '@/components/auth/WalletLogin';
 
 
 export default function login() {
@@ -15,108 +16,6 @@ export default function login() {
   const [ loading, setLoading] = useState(false)
   const router = useRouter()
   const { toast } = useToast()
-  
-  const [auth, setAuth] = useState<string | null>(null)
-  
-
-
-
-    {/*Log In*/}
-    const loginPlayer = async () => {
-      if (playerusername === '') {
-        toast({
-          variant: "destructive",
-          title: "Failed",
-          description: 'Please enter your username'
-        });
-      }
-      if (playerpassword === '') {
-        toast({
-          variant: "destructive",
-          title: "Failed",
-          description: 'Please enter your password'
-        });
-      }
-    
-      if (playerusername !== '' && playerpassword !== '') {
-        setLoading(true);
-        try {
-          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/login?username=${playerusername}&password=${playerpassword}`, {
-            withCredentials: true,
-            headers: {
-              'Content-Type': 'application/json',
-            }
-          });
-    
-          if (response.data.message === 'success' && response.data) {
-            setLoading(false);
-            toast({
-              title: "Success",
-              description: "Successfully logged in",
-            });
-            localStorage.setItem('auth', 'true');
-            setAuth('true'); // Update state
-            router.push('/user');
-    
-          }
-    
-          if (response.data.message === 'failed') {
-            setLoading(false);
-            toast({
-              variant: "destructive",
-              title: "Failed",
-              description: `${response.data.data}`
-            });
-          }
-        } catch (error) {
-          setLoading(false);
-          if (axios.isAxiosError(error)) {
-            const axiosError = error as AxiosError<{ message: string, data: string }>
-            if (axiosError.response && axiosError.response.status === 401) {
-              toast({
-                variant: "destructive",
-                title: "Failed",
-                description: `${axiosError.response.data.data}`
-              });
-            }
-    
-            if (axiosError.response && axiosError.response.status === 400) {
-              toast({
-                variant: "destructive",
-                title: "Failed",
-                description: `${axiosError.response.data.data}`
-              });
-            }
-    
-            if (axiosError.response && axiosError.response.status === 402) {
-              toast({
-                variant: "destructive",
-                title: "Failed",
-                description: `${axiosError.response.data.data}`
-              });
-            }
-    
-            if (axiosError.response && axiosError.response.status === 403) {
-              toast({
-                variant: "destructive",
-                title: "Failed",
-                description: `${axiosError.response.data.data}`
-              });
-            }
-    
-            if (axiosError.response && axiosError.response.status === 404) {
-              toast({
-                variant: "destructive",
-                title: "Failed",
-                description: `${axiosError.response.data.data}`
-              });
-            }
-          }
-        }
-      }
-    };
-    
-
 
     const back = () => {
       router.push('/')
@@ -150,35 +49,38 @@ export default function login() {
           <div className=' flex flex-col mt-8'>
             <img src="/login/Rise of Fearless plain.png" width={100} alt="" className=' xl:hidden block'/>
 
-            <p className=' text-lg font-semibold text-orange-300 w-full'>Log in with username & password</p>
+            <p className=' text-lg font-semibold text-orange-300 w-full'>Log in with username or Metamask Wallet</p>
             <p className=' text-xs text-zinc-400 mb-6'>Enter your account details</p>
 
           </div>
-          
 
-                      <Input placeholder='Username' onChange={(e) => setPlayerusername(e.target.value)} type='text' className=' bg-zinc-950 text-white border-orange-400 '/>
-                      <Input placeholder='Password' onChange={(e) => setPlayerpassword(e.target.value)} type='password' className=' bg-zinc-950 text-white border-orange-400 '/>
-                       <button
-                       onClick={loginPlayer}
-                        className=' flex items-center justify-center gap-2 py-2 w-full lg:text-sm xl:text-lg font-bold text-amber-950 ease-in-out duration-200 bg-gradient-to-r from-orange-300 to-orange-400 rounded-md'
-                        >
-                           { loading === true && (
-                          <div className="loader">
-                              <div className="bar1 bg-zinc-950"></div>
-                              <div className="bar2 bg-zinc-950"></div>
-                              <div className="bar3 bg-zinc-950"></div>
-                              <div className="bar4 bg-zinc-950"></div>
-                              <div className="bar5 bg-zinc-950"></div>
-                              <div className="bar6 bg-zinc-950"></div>
-                              <div className="bar7 bg-zinc-950"></div>
-                              <div className="bar8 bg-zinc-950"></div>
-                              <div className="bar9 bg-zinc-950"></div>
-                              <div className="bar10 bg-zinc-950"></div>
-                              <div className="bar11 bg-zinc-950"></div>
-                              <div className="bar12 bg-zinc-950"></div>
-                          </div>
-                        )}
-                          Log In</button>
+        <WalletLogin/>
+
+
+        <button
+            onClick={() => router.push('/auth/login/username')}
+            className=' flex items-center justify-center gap-2 py-2 w-full lg:text-sm xl:text-sm font-bold text-amber-950 ease-in-out duration-200 bg-gradient-to-r from-orange-300 to-orange-400 rounded-md'
+            >
+                { loading === true && (
+                <div className="loader">
+                    <div className="bar1 bg-zinc-950"></div>
+                    <div className="bar2 bg-zinc-950"></div>
+                    <div className="bar3 bg-zinc-950"></div>
+                    <div className="bar4 bg-zinc-950"></div>
+                    <div className="bar5 bg-zinc-950"></div>
+                    <div className="bar6 bg-zinc-950"></div>
+                    <div className="bar7 bg-zinc-950"></div>
+                    <div className="bar8 bg-zinc-950"></div>
+                    <div className="bar9 bg-zinc-950"></div>
+                    <div className="bar10 bg-zinc-950"></div>
+                    <div className="bar11 bg-zinc-950"></div>
+                    <div className="bar12 bg-zinc-950"></div>
+                </div>
+            )}
+                Log In With Username</button>
+                
+
+
 
                           <p className=' text-xs text-zinc-400 mt-16 flex items-center gap-6'>Do you have an account?<a href="/auth/register" className=' text-xs font-semibold px-4 py-1 border-2 border-orange-400 rounded-md text-orange-400'>Register</a></p>
           </div>

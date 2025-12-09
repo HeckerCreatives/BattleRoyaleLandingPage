@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster"
 import { Suspense } from "react";
+import ClientProviders from "@/utils/ClientProviders";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,12 +23,14 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={inter.className}>
-        <div className=" overscroll-x-none">
-        <Suspense>
-        {children}
-        </Suspense>
-        <Toaster/>
-        </div>
+        <ClientProviders>
+          <div className=" overscroll-x-none">
+              <Suspense>
+                {children}
+              </Suspense>
+            <Toaster/>
+          </div>
+        </ClientProviders>
         </body>
     </html>
   );
