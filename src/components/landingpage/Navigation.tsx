@@ -244,7 +244,7 @@ export default function Navigation() {
                 <div className='w-full h-px bg-gradient-to-r from-transparent via-orange-500/60 to-transparent mt-2' />
 
                 {auth === 'false' && (
-                  <a href="/auth/login"
+                  <a href="https://strongwarrior.rof.game/"
                     className='w-full text-center mt-2 py-3 text-[11px] font-bold tracking-[0.2em] uppercase font-dihjauti text-amber-950 bg-gradient-to-r from-orange-400 to-amber-500 hover:from-orange-300 hover:to-amber-400 transition-all duration-200'
                     style={{ clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)' }}
                   >
