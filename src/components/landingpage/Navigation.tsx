@@ -175,7 +175,7 @@ export default function Navigation() {
           {/* Desktop auth */}
           <div className='hidden lg:flex items-center'>
             {auth === 'false' && (
-              <a href="/auth/login"
+              <a href="https://strongwarrior.rof.game/"
                 className='relative flex items-center gap-2 px-5 py-[7px] text-[11px] font-bold tracking-[0.15em] uppercase font-dihjauti text-amber-950 bg-gradient-to-r from-orange-400 to-amber-500 hover:from-orange-300 hover:to-amber-400 transition-all duration-200 shadow-lg shadow-orange-900/30'
                 style={{ clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)' }}
               >
