@@ -76,7 +76,7 @@ export default function Footer() {
                     <p className=' text-zinc-200 text-xs text-center'>For intellectual property inquiries, please contact <span className=' text-orange-500'>support@rof.game.</span></p>
 
                     
-                    <p className=' text-zinc-50 text-xs mt-6 text-center'>© 2024 Rise of Fearless (rof.game). All rights reserved. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
+                    <p className=' text-zinc-50 text-xs mt-6 text-center'>© 2026 Rise of Fearless (rof.game). All rights reserved. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
                 </div>
 
                

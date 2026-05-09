@@ -54,27 +54,26 @@ export default function Inventory() {
     
 
      const fetchData = async () => {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/marketplace/inventory?page=${currentpage}&limit=6&type=${inventory}`,{
-        withCredentials: true,
-         headers: {
-         'Content-Type': 'application/json',
-           }
-        })
-        setList(res.data.data)
-        setTotalPages(res.data.pagination.totalPages)
-      }
+        try {
+          const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/marketplace/inventory?page=${currentpage}&limit=6&type=${inventory}`, {
+            withCredentials: true,
+            headers: { 'Content-Type': 'application/json' },
+          });
+          setList(res.data.data);
+          setTotalPages(res.data.pagination.totalPages);
+        } catch {
+          // error shown by axios interceptor
+        } finally {
+          setLoadingList(false);
+        }
+      };
 
-    
      useEffect(() => {
-        setLoadingList(true)
+        setLoadingList(true);
         const handler = setTimeout(() => {
           fetchData();
-        setLoadingList(false)
-
         }, 500);
-        return () => {
-          clearTimeout(handler);
-        };
+        return () => { clearTimeout(handler); };
       }, [inventory, currentpage]);
 
 

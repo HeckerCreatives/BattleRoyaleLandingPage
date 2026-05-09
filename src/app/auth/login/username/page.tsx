@@ -9,7 +9,7 @@ import { IoMdArrowBack } from "react-icons/io";
 import Footer from '@/components/common/Footer';
 
 
-export default function login() {
+export default function LoginUsername() {
   const [playerusername, setPlayerusername] = useState('')
   const [playerpassword, setPlayerpassword] = useState('')
   const [ loading, setLoading] = useState(false)
@@ -41,7 +41,10 @@ export default function login() {
       if (playerusername !== '' && playerpassword !== '') {
         setLoading(true);
         try {
-          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/login?username=${playerusername}&password=${playerpassword}`, {
+          const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+            username: playerusername,
+            password: playerpassword,
+          }, {
             withCredentials: true,
             headers: {
               'Content-Type': 'application/json',

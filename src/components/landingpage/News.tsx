@@ -14,7 +14,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { list } from 'postcss'
 
 interface News {
     banner:string
@@ -59,7 +58,8 @@ export default function Latestnews() {
 
 
   return (
-    <div id='news' className=' relative z-30 w-screen flex items-start justify-center h-auto md:py-40 pb-20'
+    <div id='news' className=' relative z-30 w-screen flex items-start justify-center h-auto pt-8 pb-16 md:pb-40'
+      style={{ backgroundImage: "url('/investor/assets/BG Pattern Solid.png')", backgroundSize: 'auto', backgroundRepeat: 'repeat', clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 64px), 0 100%)' }}
     >
         <div className=' max-w-[1440px] w-full flex flex-col gap-4 h-auto text-white px-4'>
             {data.length !== 0 && (
@@ -170,9 +170,9 @@ export default function Latestnews() {
                                             style={{backgroundImage: "url('/v2/news/assets/Tab Small A.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
 
                                             >
-                                                <img src={`${imageUrl}`} alt="img" className=' aspect-video' height={200} width={200} />
-                                           
-                                            <div className='flex flex-col gap-1 w-[500px]'>
+                                                <img src={`${imageUrl}`} alt="img" className='aspect-video shrink-0 rounded-md object-cover' style={{width: 120, height: 80}} />
+
+                                            <div className='flex flex-col gap-1 min-w-0 flex-1'>
                                                 <p className='~text-xs/sm font-semibold line-clamp-2'>{news.title}</p>
                                                 <p className='text-xs text-wrap text-zinc-300 line-clamp-3'                                                
                                                 >{news.description}</p>
@@ -291,9 +291,9 @@ export default function Latestnews() {
                                             style={{backgroundImage: "url('/v2/news/assets/Tab Small A.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
 
                                             >
-                                                <img src={`${imageUrl}`} alt="img" className=' aspect-video' height={200} width={200} />
-                                           
-                                            <div className='flex flex-col gap-1 w-[500px]'>
+                                                <img src={`${imageUrl}`} alt="img" className='aspect-video shrink-0 rounded-md object-cover' style={{width: 120, height: 80}} />
+
+                                            <div className='flex flex-col gap-1 min-w-0 flex-1'>
                                                 <p className='~text-xs/sm font-semibold line-clamp-2'>{news.title}</p>
                                                 <p className='text-xs text-wrap text-zinc-300 line-clamp-3'                                                
                                                 >{news.description}</p>

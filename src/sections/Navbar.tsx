@@ -349,7 +349,7 @@ export default function Navbar() {
 
             </div>
 
-              <p className=' text-xs text-zinc-300 mt-6 w-[80%] text-center'>© 2024 Rise of Fearless (rof.game). All rights reserved. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
+              <p className=' text-xs text-zinc-300 mt-6 w-[80%] text-center'>© 2026 Rise of Fearless (rof.game). All rights reserved. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
 
 
           </div>

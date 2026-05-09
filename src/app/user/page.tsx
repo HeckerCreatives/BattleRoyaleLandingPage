@@ -41,7 +41,7 @@ interface PlayerDetails {
 
 
 
-export default function page() {
+export default function UserDashboard() {
    const { toast } = useToast()
   const router = useRouter()
   const [data, setData] = useState()
@@ -61,128 +61,47 @@ export default function page() {
   const [title, setTitle] = useState<any>()
 
 
-    {/*Player Data*/}
     useEffect(() => {
-        const playerData = async () => {
-            try {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/user/getuserdetails`,{
-                    withCredentials: true,
-                    headers: {
-                    'Content-Type': 'application/json',
-                }
-                })
-                setName(response.data.data.username)
-                setEmail(response.data.data.email)
-                // setCountry(response.data.data.country)
-                setFunds(response.data.data.funds)
-            } catch (error) {
-                 if (axios.isAxiosError(error)) {
-                    const axiosError = error as AxiosError;
-                    if (axiosError.response && axiosError.response.status === 401) {
-                        localStorage.setItem('auth', 'false');
-                        router.push('/')
-                        toast({
-                        variant: "destructive",
-                        title: "Unauthorized",
-                        })
-                
-                    }
-                } 
-            }
-        }
-        playerData()
+        const headers = { 'Content-Type': 'application/json' };
+        const opts = { withCredentials: true, headers };
 
-    },[])
-
-
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/marketplace/getequippedtitle`,{
-                    withCredentials: true,
-                    headers: {
-                    'Content-Type': 'application/json',
-                }
-                })
-
-                setTitle(response.data.data.itemname)
-            
-            } catch (error) {
-                 if (axios.isAxiosError(error)) {
-                    const axiosError = error as AxiosError;
-                    if (axiosError.response && axiosError.response.status === 401) {
-                        localStorage.setItem('auth', 'false');
-                        router.push('/')
-                        toast({
-                        variant: "destructive",
-                        title: "Unauthorized",
-                        })
-                
-                    }
-                } 
-            }
-        }
-        getData()
-
-    },[])
-    
-    useEffect(() => {
-        const playerDetailsData = async () => {
-            try {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/usergamedetails/getusergamedetails`, {
-                    withCredentials: true,
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                });
-                setStats(response.data.data);
-            } catch (error) {
-                if (axios.isAxiosError(error)) {
-                    const axiosError = error as AxiosError;
-                    if (axiosError.response && axiosError.response.status === 401) {
-                        localStorage.setItem('auth', 'false');
-                        router.push('/');
-                        toast({
-                            variant: "destructive",
-                            title: "Unauthorized",
-                        });
-                    }
-                } 
+        const handle401 = (error: unknown) => {
+            if (axios.isAxiosError(error) && error.response?.status === 401) {
+                localStorage.setItem('auth', 'false');
+                router.push('/');
+                toast({ variant: "destructive", title: "Unauthorized" });
             }
         };
 
-         playerDetailsData();
- 
-    }, []); 
+        const loadAll = async () => {
+            const [userRes, titleRes, statsRes, rankRes] = await Promise.allSettled([
+                axios.get(`${process.env.NEXT_PUBLIC_API_URL}/user/getuserdetails`, opts),
+                axios.get(`${process.env.NEXT_PUBLIC_API_URL}/marketplace/getequippedtitle`, opts),
+                axios.get(`${process.env.NEXT_PUBLIC_API_URL}/usergamedetails/getusergamedetails`, opts),
+                axios.get(`${process.env.NEXT_PUBLIC_API_URL}/leaderboard/getleaderboard`, opts),
+            ]);
 
-    useEffect(() => {
-        const rankData = async () => {
-            try {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/leaderboard/getleaderboard`, {
-                    withCredentials: true,
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                });
-                setRank(response.data.rank as number);
-            } catch (error) {
-                if (axios.isAxiosError(error)) {
-                    const axiosError = error as AxiosError;
-                    if (axiosError.response && axiosError.response.status === 401) {
-                        localStorage.setItem('auth', 'false');
-                        router.push('/');
-                        toast({
-                            variant: "destructive",
-                            title: "Unauthorized",
-                        });
-                    }
-                } 
-            }
+            if (userRes.status === 'fulfilled') {
+                setName(userRes.value.data.data.username);
+                setEmail(userRes.value.data.data.email);
+                setFunds(userRes.value.data.data.funds);
+            } else { handle401(userRes.reason); }
+
+            if (titleRes.status === 'fulfilled') {
+                setTitle(titleRes.value.data.data.itemname);
+            } else { handle401(titleRes.reason); }
+
+            if (statsRes.status === 'fulfilled') {
+                setStats(statsRes.value.data.data);
+            } else { handle401(statsRes.reason); }
+
+            if (rankRes.status === 'fulfilled') {
+                setRank(rankRes.value.data.rank as number);
+            } else { handle401(rankRes.reason); }
         };
 
-         rankData();
- 
-    }, []); 
+        loadAll();
+    }, []);
 
      {/*Change Password*/}
      const changePassword = async () => {
@@ -417,7 +336,7 @@ export default function page() {
                     </div>
                     <p className=' text-sm text-orange-200'>Password</p>
                     <div className=' w-full flex items-center gap-4'>
-                        <Input placeholder='Password' value='test12345' type='password' className=' w-[70%] bg-zinc-900 border-none text-white'/>
+                        <Input placeholder='Password' value='••••••••' readOnly type='text' className=' w-[70%] bg-zinc-900 border-none text-white'/>
                         <Dialog>
                         <DialogTrigger className='h-10 w-[30%] text-sm font-bold py-2 rounded-lg text-amber-950 hover:scale-110 ease-in-out duration-200 bg-gradient-to-r from-orange-300 to-orange-400'
                         >

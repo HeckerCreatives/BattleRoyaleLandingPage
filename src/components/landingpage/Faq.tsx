@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import React from 'react'
 import {
@@ -13,7 +15,7 @@ import { faqs } from '@/app/data'
 export default function Faq() {
   return (
     <div className=' relative z-30 flex items-center justify-center w-screen h-auto py-32 text-white'
-   
+      style={{ clipPath: 'polygon(0 0, 100% 64px, 100% 100%, 0 100%)', backgroundImage: "url('/investor/assets/BG Pattern Solid.png')", backgroundSize: 'auto', backgroundRepeat: 'repeat' }}
    >
        <div className=' max-w-[1920px] w-full lg:w-[70%] h-auto flex items-center justify-center gap-10'>
           
@@ -29,7 +31,7 @@ export default function Faq() {
                     mass: 1,
                     delay: 0
                 }}
-          className=' text-4xl font-bold font-gilgond'>FAQ</motion.h2>
+          className=' ~text-2xl/4xl font-bold font-gilgond'>FAQ</motion.h2>
 
           <motion.div 
           initial={{ opacity: 0, y: 50 }}

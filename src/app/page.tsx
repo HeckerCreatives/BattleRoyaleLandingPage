@@ -9,7 +9,6 @@ import Footer from "@/components/common/Footer";
 import MapsSections from "@/components/landingpage/MapsSection";
 import About from "@/components/landingpage/About";
 import axios from "axios";
-import { list } from "postcss";
 import { FaInstagram, FaTelegram } from "react-icons/fa6";
 import { RiTwitterXLine } from "react-icons/ri";
 
@@ -33,9 +32,7 @@ export default function Home() {
     };
 
     if (document.readyState === 'complete') {
-      setTimeout(() => {
-        setLoading(false);
-      }, 2000);
+      setLoading(false);
     } else {
       window.addEventListener('load', handleLoad);
     }
@@ -108,10 +105,46 @@ export default function Home() {
           
                   </div>
           <HeroSection/>
-          <Latestnews/>
-          <MapsSections/>
 
-          <Faq/>
+          {/* Orange V border at hero clip boundary */}
+          <svg
+            viewBox="0 0 1440 64"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className='w-full h-16 -mt-16 relative z-10 block shrink-0 pointer-events-none'
+          >
+            <polyline points="0,0 720,64 1440,0" fill="none" stroke="#f97316" strokeWidth="5" strokeLinejoin="miter"/>
+          </svg>
+
+          <Latestnews/>
+
+          {/* Orange slope divider at news/maps boundary */}
+          <svg
+            viewBox="0 0 1440 64"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className='w-full h-16 -mt-16 relative z-10 block shrink-0 pointer-events-none'
+          >
+            <line x1="0" y1="64" x2="1440" y2="0" stroke="#f97316" strokeWidth="12"/>
+          </svg>
+
+          <div className='-mt-16 w-full'>
+            <MapsSections/>
+          </div>
+
+          {/* Orange slope divider at maps/faq boundary — rotated direction */}
+          <svg
+            viewBox="0 0 1440 64"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className='w-full h-16 -mt-16 relative z-10 block shrink-0 pointer-events-none'
+          >
+            <line x1="0" y1="0" x2="1440" y2="64" stroke="#f97316" strokeWidth="12"/>
+          </svg>
+
+          <div className='-mt-16 w-full'>
+            <Faq/>
+          </div>
           <Mapssection/>
 
           <Newsletter/>

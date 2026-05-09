@@ -1,7 +1,8 @@
+'use client'
+
 import { toast } from '@/components/ui/use-toast'
 import axios, { AxiosError } from 'axios'
 import { motion } from 'framer-motion'
-import router from 'next/router'
 import React, { useState } from 'react'
 
 export default function Newsletter() {
@@ -109,7 +110,7 @@ export default function Newsletter() {
                 delay: .2
             }}
             className=' flex lg:flex-row flex-col items-center justify-center gap-4'>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" name="" id="" placeholder='ENTER YOUR EMAIL' className=' placeholder:text-white text-xl font-bold px-6 text-white bg-zinc-950 bg-opacity-5 rounded-lg h-[50px] md:w-[400px] lg:w-[750px]'
+                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="newsletter-email" placeholder='ENTER YOUR EMAIL' className=' placeholder:text-white text-xl font-bold px-6 text-white bg-zinc-950 bg-opacity-5 rounded-lg h-[50px] w-[90vw] md:w-[400px] lg:w-[750px]'
                 style={{backgroundImage: "url('/assets/enter your email holder.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                 />
                 <button onClick={subscribe} className=' h-[80px] w-[250px] text-xl font-bold text-amber-950 hover:scale-110 ease-in-out duration-300 flex items-center justify-center gap-2'

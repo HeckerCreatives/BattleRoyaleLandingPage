@@ -284,7 +284,7 @@ const Country = [
   {name: 'Zimbabwe', code: 'ZW'} 
 ]
 
-export default function login() {
+export default function Register() {
     const [ loading, setLoading] = useState(false)
     const router = useRouter()
     const { toast } = useToast()

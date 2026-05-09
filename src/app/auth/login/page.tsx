@@ -10,7 +10,7 @@ import Footer from '@/components/common/Footer';
 import { WalletLogin } from '@/components/auth/WalletLogin';
 
 
-export default function login() {
+export default function Login() {
   const [playerusername, setPlayerusername] = useState('')
   const [playerpassword, setPlayerpassword] = useState('')
   const [ loading, setLoading] = useState(false)

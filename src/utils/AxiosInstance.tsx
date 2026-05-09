@@ -46,21 +46,20 @@ axiosInstance.interceptors.response.use(
           break;
 
         case 400:
-           showToastOnce(`${data?.message}, ${data.data}` || "Something went wrong.");
+           showToastOnce(data?.data || data?.message || "Something went wrong.");
           break;
         case 403:
-           showToastOnce(`${data?.message}, ${data.data}` || "Something went wrong.");
+           showToastOnce(data?.data || data?.message || "Something went wrong.");
           break;
         case 404:
-           showToastOnce(`${data?.message}, ${data.data}` || "Something went wrong.");
+           showToastOnce(data?.data || data?.message || "Something went wrong.");
           break;
         case 500:
-          
-          showToastOnce(`${data?.message}, ${data.data}` || "Something went wrong.");
+          showToastOnce(data?.data || data?.message || "Something went wrong.");
           break;
 
         default:
-          showToastOnce(`${data?.message}, ${data.data}` || "An unknown error occurred.");
+          showToastOnce(data?.data || data?.message || "An unknown error occurred.");
           break;
       }
     } else {

@@ -28,26 +28,26 @@ export default function Transaction() {
     
 
      const fetchData = async () => {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/marketplace/transactions?page=${currentpage}&limit=5`,{
-             withCredentials: true,
-         headers: {
-         'Content-Type': 'application/json',
-           }
-        })
-        setList(res.data.data.transactions)
-        setTotalPages(res.data.data.pagination.totalPages)
-      }
-    
-    
+        try {
+          const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/marketplace/transactions?page=${currentpage}&limit=5`, {
+            withCredentials: true,
+            headers: { 'Content-Type': 'application/json' },
+          });
+          setList(res.data.data.transactions);
+          setTotalPages(res.data.data.pagination.totalPages);
+        } catch {
+          // error shown by axios interceptor
+        } finally {
+          setLoading(false);
+        }
+      };
+
      useEffect(() => {
-        setLoading(true)
+        setLoading(true);
         const handler = setTimeout(() => {
           fetchData();
-          setLoading(false)
         }, 500);
-        return () => {
-          clearTimeout(handler);
-        };
+        return () => { clearTimeout(handler); };
       }, [currentpage]);
 
      

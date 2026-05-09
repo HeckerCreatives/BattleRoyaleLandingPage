@@ -23,37 +23,31 @@ export default function Footer() {
             <div className=' flex flex-col gap-10 items-center justify-start'>
                 <img src="/v2/auth/assets/rof.png" alt="" height={200} width={200} className=' relative lg:w-[200px] w-[150px]'/>
 
-                <div className=' flex md:flex-row flex-col items-center gap-4 lg:gap-6 text-white'>
+                <div className=' flex flex-wrap items-center justify-center gap-3 lg:gap-4 text-white'>
 
-                    <a href='/' className=' text-[.6em] md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
-                    style={{backgroundImage: "url('/pd/Button A.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                    
-                    >HOME</a>
+                    <a href='/' className='text-xs md:text-sm font-bold px-6 py-2 rounded-md bg-gradient-to-r from-orange-400 to-orange-600 text-amber-950 hover:scale-105 ease-in-out duration-300 text-center'>
+                      HOME
+                    </a>
 
-                     <a href='/#news' className=' text-[.6em] md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
-                    style={{backgroundImage: "url('/pd/Button B.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                    
-                    >NEWS</a>
+                    <a href='/#news' className='text-xs md:text-sm font-bold px-6 py-2 rounded-md bg-gradient-to-r from-orange-300 to-orange-500 text-amber-950 hover:scale-105 ease-in-out duration-300 text-center'>
+                      NEWS
+                    </a>
 
-                    <a href='/#maps' className=' text-[.6em] md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
-                    style={{backgroundImage: "url('/pd/Button B.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                    
-                    >MAPS</a>
+                    <a href='/#maps' className='text-xs md:text-sm font-bold px-6 py-2 rounded-md bg-gradient-to-r from-orange-300 to-orange-500 text-amber-950 hover:scale-105 ease-in-out duration-300 text-center'>
+                      MAPS
+                    </a>
 
-                     <a href='/#newsletter' className=' text-[.6em] md:text-xs font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
-                    style={{backgroundImage: "url('/pd/Button B.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                    
-                    >NEWSLETTER</a>
+                    <a href='/#newsletter' className='text-xs md:text-sm font-bold px-6 py-2 rounded-md bg-gradient-to-r from-orange-300 to-orange-500 text-amber-950 hover:scale-105 ease-in-out duration-300 text-center'>
+                      NEWSLETTER
+                    </a>
 
-                     <a href='/#about' className=' text-[.6em] md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
-                    style={{backgroundImage: "url('/pd/Button B.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                    
-                    >ABOUT</a>
+                    <a href='/#about' className='text-xs md:text-sm font-bold px-6 py-2 rounded-md bg-gradient-to-r from-orange-300 to-orange-500 text-amber-950 hover:scale-105 ease-in-out duration-300 text-center'>
+                      ABOUT
+                    </a>
 
-                    <a href={process.env.NEXT_PUBLIC_INVESTOR_URL} className=' text-[.6em] md:text-sm font-bold px-8 py-2 w-[120px] lg:w-[180px] text-center hover:scale-105 ease-in-out duration-300'
-                    style={{backgroundImage: "url('/pd/Button C.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                    
-                    >INVESTOR</a>
+                    <a href={process.env.NEXT_PUBLIC_INVESTOR_URL} className='text-xs md:text-sm font-bold px-6 py-2 rounded-md bg-gradient-to-r from-amber-500 to-amber-700 text-white hover:scale-105 ease-in-out duration-300 text-center'>
+                      INVESTOR
+                    </a>
 
 
 
@@ -70,12 +64,9 @@ export default function Footer() {
                  
 
                 </div> */}
-                <a href={process.env.NEXT_PUBLIC_INVESTOR_URL}>
-                  <button  className=' relative flex items-center justify-center hover:scale-105 transition-all duration-200 mt-8'
-                  // style={{backgroundImage: "url('/assets/button.png')", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
-                  >
-                    <img src="/assets/button.png" alt="btn" width={220} className=' '/>
-                    <p className=' absolute font-bold text-amber-950'>Invest Now</p>
+                <a href={process.env.NEXT_PUBLIC_INVESTOR_URL} className='mt-8'>
+                  <button className='bg-gradient-to-r from-orange-300 to-orange-500 px-12 py-3 rounded-md font-bold text-amber-950 hover:scale-105 transition-all duration-200 text-base shadow-lg shadow-orange-900/40'>
+                    Invest Now
                   </button>
                 </a>
 
@@ -92,7 +83,7 @@ export default function Footer() {
                     <p className=' text-zinc-200 text-xs text-center'>For intellectual property inquiries, please contact <span className=' text-orange-500'>support@rof.game.</span></p>
 
                     
-                    <p className=' text-zinc-50 text-xs mt-6 text-center'>© 2024 Rise of Fearless (rof.game). All rights reserved. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
+                    <p className=' text-zinc-50 text-xs mt-6 text-center'>© 2026 Rise of Fearless (rof.game). All rights reserved. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
                 </div>
 
                

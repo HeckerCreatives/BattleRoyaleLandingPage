@@ -82,12 +82,12 @@ export default function MapsSections() {
 
 
   return (
-   <div id="maps" className=' relative w-full h-auto flex flex-col items-center justify-center py-40 px-4'
+   <div id="maps" className=' relative w-full h-auto flex flex-col items-center justify-center py-20 px-4'
+    style={{backgroundImage: "url('/investor/assets/Tri Plate.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', clipPath: 'polygon(0 64px, 100% 0, 100% 100%, 0 calc(100% - 64px))'}}
     >
-      <img src="/investor/assets/Tri Plate.png" alt="bg" className=' absolute h-full w-full' />
+      <div className='absolute inset-0 bg-gradient-to-b from-black/50 via-black/80 to-transparent' />
 
-
-      <div className=' relative z-10 w-full py-40 flex flex-col gap-4 max-w-[1440px]'>
+      <div className=' relative z-10 w-full flex flex-col gap-4 max-w-[1440px]'>
         {data.length !== 0 ? (
           <>
           <motion.h2 
@@ -118,7 +118,7 @@ export default function MapsSections() {
                     <Carousel className=' w-full' setApi={setApi}>
                         <CarouselContent>
                             {data.map((data, idx) => (
-                            <CarouselItem className=' w-full cursor-pointer'>
+                            <CarouselItem key={idx} className=' w-full cursor-pointer'>
                             <div className=' relative flex flex-col gap-5 w-full md:h-[400px] h-[250px] rounded-xl p-6 text-white'
                                 style={{backgroundImage:`url('${process.env.NEXT_PUBLIC_API_URL}/${data.link.replace(/\\/g, '/')}')`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
                             >
@@ -144,56 +144,37 @@ export default function MapsSections() {
             </div>
             </div>
 
-            <div
-            className='hidden lg:block 2xl:w-[500px] 2xl:h-[500px] xl:w-[400px] xl:h-[400px] lg:w-[350px] lg:h-[350px] md:w-[95%] md:h-[650px] h-[350px] lg:p-8 md:p-12 p-8'
-            style={{
-            backgroundImage: "url('/v2/stage/assets/Description Tab.png')",
-            backgroundSize: 'contain',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            }}
-            >
-            
+            {/* Desktop description panel */}
+            <div className='hidden lg:flex flex-col gap-4 w-full max-w-[450px] h-auto min-h-[350px] p-8 rounded-xl bg-gradient-to-br from-amber-950 to-zinc-900 border border-orange-400/40 shadow-xl shadow-orange-950/40'>
             {data[current - 1] && (
-            <div className='flex flex-col gap-4 lg:w-full h-full overflow-y-auto'>
-              <p className='text-2xl md:text-4xl font-bold text-orange-300'>
+              <>
+              <p className='text-2xl xl:text-3xl font-bold text-orange-300 leading-snug'>
                 {data[current - 1].title}
               </p>
-              <p className='text-sm md:text-lg text-orange-100'>
+              <div className='h-px w-16 bg-orange-500/60 rounded-full' />
+              <p className='text-sm lg:text-base text-orange-100 leading-relaxed overflow-y-auto'>
                 {data[current - 1].description.split('\n').map((line, index) => (
-                      <React.Fragment key={index}>
-                        {line}
-                        <br />
-                      </React.Fragment>
-                    ))}
+                  <React.Fragment key={index}>{line}<br /></React.Fragment>
+                ))}
               </p>
-            </div>
+              </>
             )}
             </div>
 
-            <div
-            className='lg:hidden block w-[90%] h-[300px] lg:p-8 md:p-12 p-8'
-            style={{
-            backgroundImage: "url('/v2/stage/assets/Description Tab.png')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            }}
-            >
+            {/* Mobile description panel */}
+            <div className='lg:hidden w-full max-w-[560px] h-auto p-6 rounded-xl bg-gradient-to-br from-amber-950 to-zinc-900 border border-orange-400/40 shadow-lg shadow-orange-950/40'>
             {data[current - 1] && (
-            <div className='flex flex-col gap-4 lg:w-full h-full overflow-y-auto'>
-              <p className='text-2xl md:text-4xl font-bold text-orange-300'>
+              <>
+              <p className='text-xl sm:text-2xl font-bold text-orange-300 leading-snug mb-3'>
                 {data[current - 1].title}
               </p>
-              <p className='text-sm md:text-lg text-orange-100'>
-              {data[current - 1].description.split('\n').map((line, index) => (
-                      <React.Fragment key={index}>
-                        {line}
-                        <br />
-                      </React.Fragment>
-                    ))}
-            </p>
-            </div>
+              <div className='h-px w-12 bg-orange-500/60 rounded-full mb-3' />
+              <p className='text-sm text-orange-100 leading-relaxed'>
+                {data[current - 1].description.split('\n').map((line, index) => (
+                  <React.Fragment key={index}>{line}<br /></React.Fragment>
+                ))}
+              </p>
+              </>
             )}
             </div>
           </motion.div>

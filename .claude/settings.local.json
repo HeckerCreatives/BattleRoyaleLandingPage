@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\User\\\\Desktop\\\\Web Development\\\\BattleRoyaleLandingPage\" -Recurse -Force)",
+      "Bash(Select-Object -Property FullName, PSIsContainer)",
+      "Bash(Sort-Object -Property FullName)",
+      "Bash(ConvertTo-Csv -NoTypeInformation)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\User\\\\Desktop\\\\Web Development\\\\BattleRoyaleLandingPage\" -Recurse -Force | Select-Object -Property @{Name='FullPath';Expression={$_.FullName}}, @{Name='IsDir';Expression={$_.PSIsContainer}} | Sort-Object -Property FullPath | ForEach-Object { \"$\\($_.FullPath\\) [$\\($_.IsDir\\)]\" })",
+      "Bash(npm install *)",
+      "Bash(Remove-Item \"c:\\\\Users\\\\User\\\\Desktop\\\\Web Development\\\\BattleRoyaleLandingPage\\\\public\\\\favicon.ico\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\User\\\\Desktop\\\\Web Development\\\\BattleRoyaleLandingPage\\\\public\" -Recurse -File)",
+      "Bash(Select-Object FullName)",
+      "Bash(Sort-Object FullName)"
+    ]
+  }
+}

@@ -150,19 +150,19 @@ export default function About() {
             mass: 1,
             delay: .2
         }}
-        className='relative max-w-[1920px] w-[90%] lg:w-[85%] h-[400px] grid grid-cols-1 md:grid-cols-2 rounded-lg ~mt-8/8'
+        className='relative max-w-[1920px] w-[90%] lg:w-[85%] min-h-[400px] h-auto grid grid-cols-1 md:grid-cols-2 rounded-lg ~mt-8/8'
         style={{backgroundImage: "url('/v2/about/tab.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat:"no-repeat"}}
         
         >
-            <div className=' w-full h-[400px] flex flex-col gap-4 p-6'>
+            <div className=' w-full h-auto min-h-[200px] flex flex-col gap-4 p-6 pb-8'>
 
                   {data1.length === 0 && (
                     <>
                     <h2 className=' text-2xl lg:text-4xl font-bold text-orange-400'>ABOUT SECTION YET TO BE ADDED</h2>
                     </>
                   )}
-                {data1.map((data) => (
-                  <>
+                {data1.map((data, i) => (
+                  <React.Fragment key={i}>
                   <h2 className=' ~text-lg/2xl font-bold text-orange-400'>{data.title}</h2>
                 <div className=' h-auto overflow-y-auto'>
                     <p className=' ~text-xs/lg text-orange-100'>
@@ -175,12 +175,11 @@ export default function About() {
                     </p>
 
                 </div>
-                  </>
-                ) 
-                )}       
+                  </React.Fragment>
+                ))}       
             </div>
 
-            <div className=' relative w-full h-[400px] flex items-end justify-end'>
+            <div className=' relative w-full h-auto min-h-[200px] md:h-[400px] flex items-end justify-end'>
             {/* <img src="/pd/Tab Character.png" alt="" width={600} className=' relative left-20 bottom-0 md:block hidden'/> */}
 
             <img src="/investor/assets/IMAGE - Opportunity.png" alt="image" className=' lg:block hidden' />
