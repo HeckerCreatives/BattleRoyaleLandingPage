@@ -41,6 +41,7 @@ export default function LoginUsername() {
       if (playerusername !== '' && playerpassword !== '') {
         setLoading(true);
         try {
+          console.log(process.env.NEXT_PUBLIC_API_URL)
           const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
             username: playerusername,
             password: playerpassword,
@@ -50,7 +51,7 @@ export default function LoginUsername() {
               'Content-Type': 'application/json',
             }
           });
-    
+          console.log(response)
           if (response.data.message === 'success' && response.data) {
             setLoading(false);
             toast({
