@@ -2,7 +2,7 @@
 import NavbarUser from '@/components/NavbarUser'
 import Footer from '@/sections/Footer'
 import Navbar from '@/sections/Navbar'
-import React, { useState } from 'react'
+import React from 'react'
 import { SiGoogledrive, SiMega, SiMicrosoftonedrive, SiDropbox } from 'react-icons/si'
 
 const DOWNLOAD_LINKS = [
@@ -33,8 +33,6 @@ const DOWNLOAD_LINKS = [
 ]
 
 export default function Page() {
-  const [showComingSoon, setShowComingSoon] = useState(false)
-
   return (
     <div className='relative download w-screen min-h-screen flex flex-col items-center justify-start'
       style={{ backgroundImage: "url('/pd/BG.png')", backgroundSize: 'cover', backgroundPosition: 'bottom', backgroundRepeat: 'no-repeat' }}
@@ -53,9 +51,9 @@ export default function Page() {
             <a href="https://apps.apple.com/ph/app/rise-of-fearless/id6739428806" target="_blank">
               <img src="/astore.png" alt="App Store" width={200} className='2xl:w-[200px] w-[120px] drop-shadow-md' />
             </a>
-            <button onClick={() => setShowComingSoon(true)}>
+            <a href="https://play.google.com/store/apps/details?id=com.riseoffearless.games" target="_blank" rel="noopener noreferrer">
               <img src="/gp.png" alt="Google Play" width={200} className='2xl:w-[200px] w-[120px]' />
-            </button>
+            </a>
           </div>
 
           {/* Direct download buttons */}
@@ -84,28 +82,6 @@ export default function Page() {
 
       <Footer />
 
-      {/* Coming Soon popup */}
-      {showComingSoon && (
-        <div
-          className='fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm'
-          onClick={() => setShowComingSoon(false)}
-        >
-          <div
-            className='relative flex flex-col items-center gap-4 bg-zinc-950 border border-orange-500/40 rounded-2xl px-12 py-10 shadow-2xl shadow-orange-900/40 text-center'
-            onClick={e => e.stopPropagation()}
-          >
-            <img src="/pd/Tab Character.png" alt="" width={80} />
-            <h3 className='text-2xl font-bold text-orange-300 font-dihjauti tracking-widest uppercase'>Coming Soon</h3>
-            <p className='text-sm text-orange-100/70 max-w-[260px]'>The Google Play Store version is on its way. Stay tuned!</p>
-            <button
-              onClick={() => setShowComingSoon(false)}
-              className='mt-2 px-8 py-2 rounded-md bg-gradient-to-r from-orange-400 to-orange-600 text-amber-950 font-bold text-sm hover:scale-105 transition-transform duration-200'
-            >
-              Got it
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   )
 }
